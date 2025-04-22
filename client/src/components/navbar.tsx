@@ -152,7 +152,7 @@ export function Navbar() {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none animate-fadeIn"
+                  className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none"
                 >
                   Home
                 </Button>

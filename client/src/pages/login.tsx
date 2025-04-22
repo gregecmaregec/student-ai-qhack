@@ -52,6 +52,12 @@ export function LoginPage() {
             <AuthForm mode="login" />
             
             <div className="text-center md:text-left mt-6 space-y-4">
+              <div className="text-center mb-4">
+                <p className="text-sm text-muted-foreground py-2">
+                  Don't have an account yet?
+                </p>
+              </div>
+              
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
@@ -62,9 +68,6 @@ export function LoginPage() {
               </div>
               
               <div className="text-center">
-                <p className="text-sm text-muted-foreground py-2">
-                  Don't have an account yet?
-                </p>
                 <Link href="/signup">
                   <a className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
                     Create a free account

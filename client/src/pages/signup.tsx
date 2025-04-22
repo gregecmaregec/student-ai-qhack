@@ -83,6 +83,12 @@ export function SignupPage() {
             <AuthForm mode="signup" />
             
             <div className="text-center md:text-left mt-6 space-y-4">
+              <div className="text-center mb-4">
+                <p className="text-sm text-muted-foreground py-2">
+                  Already have an account?
+                </p>
+              </div>
+              
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
@@ -93,9 +99,6 @@ export function SignupPage() {
               </div>
               
               <div className="text-center">
-                <p className="text-sm text-muted-foreground py-2">
-                  Already have an account?
-                </p>
                 <Link href="/login">
                   <a className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/5 to-purple-500/5 border border-primary/10 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
                     Log in to your account
