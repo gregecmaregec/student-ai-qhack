@@ -1,6 +1,7 @@
 import { MainLayout } from "@/components/main-layout";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 import {
   CheckCircle,
   Zap,
@@ -13,6 +14,42 @@ import {
 } from "lucide-react";
 
 export function HomePage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the user has scrolled to the end of the mobile features carousel
+      const featuresSection = document.getElementById('features');
+      if (featuresSection) {
+        const featuresMobileCarousel = featuresSection.querySelector('.sm\\:hidden');
+        if (featuresMobileCarousel) {
+          const isAtEnd = featuresMobileCarousel.scrollLeft + featuresMobileCarousel.clientWidth >= featuresMobileCarousel.scrollWidth - 20;
+          
+          // Get the wellness icon and add 'animate' class if at the end
+          const wellnessIcon = document.querySelector('.wellness-icon');
+          if (wellnessIcon) {
+            if (isAtEnd) {
+              wellnessIcon.classList.add('animate-nod');
+            } else {
+              wellnessIcon.classList.remove('animate-nod');
+            }
+          }
+        }
+      }
+    };
+
+    // Add scroll event listener to mobile features carousel
+    const featuresCarousel = document.querySelector('.sm\\:hidden');
+    if (featuresCarousel) {
+      featuresCarousel.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      const featuresCarousel = document.querySelector('.sm\\:hidden');
+      if (featuresCarousel) {
+        featuresCarousel.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
   return (
     <MainLayout>
       {/* Hero Section */}

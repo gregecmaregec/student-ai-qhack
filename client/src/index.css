@@ -204,3 +204,7 @@
   fill: #41a5da !important;
 }
 
+.animate-nod {
+  animation: nod 1.5s ease-in-out infinite !important;
+}
+
