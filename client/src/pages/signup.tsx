@@ -66,6 +66,12 @@ export function SignupPage() {
         {/* Right side: Sign up form */}
         <div className="w-full md:w-1/2 p-6 md:p-12 flex items-center justify-center">
           <div className="w-full max-w-md space-y-8">
+            <div className="rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/5 p-4 mb-4 border border-primary/20">
+              <p className="text-sm text-foreground font-medium flex items-center">
+                <Sparkles className="h-4 w-4 mr-2 text-primary" />
+                Free account with all essential features
+              </p>
+            </div>
             <div className="text-center md:text-left space-y-2">
               <h1 className="text-3xl font-bold">Create your account</h1>
               <p className="text-muted-foreground">
@@ -94,12 +100,6 @@ export function SignupPage() {
               </div>
               
               <div className="text-center">
-                <div className="rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/5 p-4 mb-6 border border-primary/20">
-                  <p className="text-sm text-foreground font-medium flex items-center">
-                    <Sparkles className="h-4 w-4 mr-2 text-primary" />
-                    Free account with all essential features
-                  </p>
-                </div>
                 <Link href="/login">
                   <button className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/5 to-purple-500/5 border border-primary/10 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
                     Log in to your account

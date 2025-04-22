@@ -19,36 +19,40 @@ export function HomePage() {
   useEffect(() => {
     // Keep track of whether animation has been triggered
     const animationTriggered = { mobile: false, desktop: false };
-    
+
     // Original scroll handling for mobile view
     const handleScroll = () => {
       // If animation already triggered in mobile, do nothing
       if (animationTriggered.mobile) return;
-      
+
       // Check if the user has scrolled to the end of the mobile features carousel
-      const featuresSection = document.getElementById('features');
+      const featuresSection = document.getElementById("features");
       if (featuresSection) {
-        const featuresMobileCarousel = featuresSection.querySelector('.sm\\:hidden');
+        const featuresMobileCarousel =
+          featuresSection.querySelector(".sm\\:hidden");
         if (featuresMobileCarousel) {
-          const isAtEnd = featuresMobileCarousel.scrollLeft + featuresMobileCarousel.clientWidth >= featuresMobileCarousel.scrollWidth - 20;
-          
+          const isAtEnd =
+            featuresMobileCarousel.scrollLeft +
+              featuresMobileCarousel.clientWidth >=
+            featuresMobileCarousel.scrollWidth - 20;
+
           // Get the wellness icon and add animation class if at the end
-          const wellnessIcon = document.querySelector('.wellness-icon');
+          const wellnessIcon = document.querySelector(".wellness-icon");
           if (wellnessIcon && isAtEnd) {
-            wellnessIcon.classList.add('animate-nod');
+            wellnessIcon.classList.add("animate-nod");
             // Mark animation as triggered for mobile
             animationTriggered.mobile = true;
             // Remove the event listener since we only need to trigger once
-            featuresCarousel?.removeEventListener('scroll', handleScroll);
+            featuresCarousel?.removeEventListener("scroll", handleScroll);
           }
         }
       }
     };
 
     // Add scroll event listener to mobile features carousel
-    const featuresCarousel = document.querySelector('.sm\\:hidden');
+    const featuresCarousel = document.querySelector(".sm\\:hidden");
     if (featuresCarousel) {
-      featuresCarousel.addEventListener('scroll', handleScroll);
+      featuresCarousel.addEventListener("scroll", handleScroll);
     }
 
     // Set up intersection observer for desktop view
@@ -56,13 +60,13 @@ export function HomePage() {
       (entries) => {
         // If animation already triggered in desktop, do nothing
         if (animationTriggered.desktop) return;
-        
+
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // When mental wellness feature is visible, make the face nod
-            const wellnessIcon = entry.target.querySelector('.wellness-icon');
+            const wellnessIcon = entry.target.querySelector(".wellness-icon");
             if (wellnessIcon) {
-              wellnessIcon.classList.add('animate-nod');
+              wellnessIcon.classList.add("animate-nod");
               // Mark animation as triggered for desktop
               animationTriggered.desktop = true;
               // No need to observe anymore
@@ -73,14 +77,17 @@ export function HomePage() {
           }
         });
       },
-      { threshold: 0.7 } // When 70% of the element is visible
+      { threshold: 0.7 }, // When 70% of the element is visible
     );
 
     // Get all desktop feature cards and find the one with mental wellness
-    const desktopFeatureCards = document.querySelectorAll('.hidden.sm\\:grid .pt-6');
+    const desktopFeatureCards = document.querySelectorAll(
+      ".hidden.sm\\:grid .pt-6",
+    );
     if (desktopFeatureCards.length > 0) {
       // The Mental Wellness feature is at the end of the features array
-      const mentalWellnessCard = desktopFeatureCards[desktopFeatureCards.length - 1];
+      const mentalWellnessCard =
+        desktopFeatureCards[desktopFeatureCards.length - 1];
       if (mentalWellnessCard) {
         observer.observe(mentalWellnessCard);
       }
@@ -88,15 +95,18 @@ export function HomePage() {
 
     return () => {
       // Clean up the mobile scroll event listener
-      const featuresCarousel = document.querySelector('.sm\\:hidden');
+      const featuresCarousel = document.querySelector(".sm\\:hidden");
       if (featuresCarousel) {
-        featuresCarousel.removeEventListener('scroll', handleScroll);
+        featuresCarousel.removeEventListener("scroll", handleScroll);
       }
-      
+
       // Clean up the intersection observer
-      const desktopFeatureCards = document.querySelectorAll('.hidden.sm\\:grid .pt-6');
+      const desktopFeatureCards = document.querySelectorAll(
+        ".hidden.sm\\:grid .pt-6",
+      );
       if (desktopFeatureCards.length > 0) {
-        const mentalWellnessCard = desktopFeatureCards[desktopFeatureCards.length - 1];
+        const mentalWellnessCard =
+          desktopFeatureCards[desktopFeatureCards.length - 1];
         if (mentalWellnessCard) {
           observer.unobserve(mentalWellnessCard);
         }
@@ -116,9 +126,6 @@ export function HomePage() {
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground text-primary/90">
               <span className="block">Supercharged</span>
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Meet Studie, world's best student-focused AI agent.
-            </p>
             <div className="mt-10 sm:flex sm:justify-center gap-4">
               <div>
                 <Link href="/signup">
@@ -142,23 +149,11 @@ export function HomePage() {
                 </Link>
               </div>
             </div>
-
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+              Meet Studie, world's best studying-focused AI agent.
+            </p>
             <div className="mt-16"></div>
           </div>
-        </div>
-
-        {/* Decorative wave pattern */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-16 w-5/6 max-w-5xl bg-gradient-to-r from-primary via-primary-600 to-primary-700 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 rounded-t-lg">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="currentColor"
-              d="M0,128L48,133.3C96,139,192,149,288,170.7C384,192,480,224,576,224C672,224,768,192,864,181.3C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
         </div>
       </section>
 
@@ -237,8 +232,8 @@ export function HomePage() {
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-1 lg:gap-8 lg:items-center">
             <div className="w-full">
-              <h2 className="text-3xl font-serif text-foreground sm:text-4xl"><i>
-                We do not learn for school, but for life</i>
+              <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
+                <i>We do not learn for school, but for life</i>
               </h2>
               <p className="mt-3 max-w-3xl text-muted-foreground">
                 Built for academic success

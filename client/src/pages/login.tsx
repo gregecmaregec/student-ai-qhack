@@ -22,20 +22,7 @@ export function LoginPage() {
               </p>
             </div>
             
-            <div className="bg-white/50 rounded-xl p-6 border border-primary/10 shadow-sm">
-              <blockquote className="text-foreground/80 italic">
-                "students-ai.com has transformed how I study and manage my coursework. I can't imagine going back to traditional methods."
-              </blockquote>
-              <div className="mt-4 flex items-center">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">
-                  JS
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium">Jamie Smith</p>
-                  <p className="text-xs text-muted-foreground">Computer Science Student</p>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
         
