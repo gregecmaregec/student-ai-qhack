@@ -1,7 +1,7 @@
 import { MainLayout } from "@/components/main-layout";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   CheckCircle,
   Zap,
@@ -14,7 +14,10 @@ import {
 } from "lucide-react";
 
 export function HomePage() {
+  const mentalWellnessFeatureRef = useRef(null);
+
   useEffect(() => {
+    // Original scroll handling for mobile view
     const handleScroll = () => {
       // Check if the user has scrolled to the end of the mobile features carousel
       const featuresSection = document.getElementById('features');
@@ -23,7 +26,7 @@ export function HomePage() {
         if (featuresMobileCarousel) {
           const isAtEnd = featuresMobileCarousel.scrollLeft + featuresMobileCarousel.clientWidth >= featuresMobileCarousel.scrollWidth - 20;
           
-          // Get the wellness icon and add 'animate' class if at the end
+          // Get the wellness icon and add animation class if at the end
           const wellnessIcon = document.querySelector('.wellness-icon');
           if (wellnessIcon) {
             if (isAtEnd) {
@@ -42,10 +45,52 @@ export function HomePage() {
       featuresCarousel.addEventListener('scroll', handleScroll);
     }
 
+    // Set up intersection observer for desktop view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // When mental wellness feature is visible, make the face nod
+            const wellnessIcon = entry.target.querySelector('.wellness-icon');
+            if (wellnessIcon) {
+              wellnessIcon.classList.add('animate-nod');
+            }
+          } else {
+            // When it's not visible, stop the animation
+            const wellnessIcon = entry.target.querySelector('.wellness-icon');
+            if (wellnessIcon) {
+              wellnessIcon.classList.remove('animate-nod');
+            }
+          }
+        });
+      },
+      { threshold: 0.7 } // When 70% of the element is visible
+    );
+
+    // Get all desktop feature cards and find the one with mental wellness
+    const desktopFeatureCards = document.querySelectorAll('.hidden.sm\\:grid .pt-6');
+    if (desktopFeatureCards.length > 0) {
+      // The Mental Wellness feature is at the end of the features array
+      const mentalWellnessCard = desktopFeatureCards[desktopFeatureCards.length - 1];
+      if (mentalWellnessCard) {
+        observer.observe(mentalWellnessCard);
+      }
+    }
+
     return () => {
+      // Clean up the mobile scroll event listener
       const featuresCarousel = document.querySelector('.sm\\:hidden');
       if (featuresCarousel) {
         featuresCarousel.removeEventListener('scroll', handleScroll);
+      }
+      
+      // Clean up the intersection observer
+      const desktopFeatureCards = document.querySelectorAll('.hidden.sm\\:grid .pt-6');
+      if (desktopFeatureCards.length > 0) {
+        const mentalWellnessCard = desktopFeatureCards[desktopFeatureCards.length - 1];
+        if (mentalWellnessCard) {
+          observer.unobserve(mentalWellnessCard);
+        }
       }
     };
   }, []);
