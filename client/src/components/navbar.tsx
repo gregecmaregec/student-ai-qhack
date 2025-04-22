@@ -1,32 +1,25 @@
-import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuSeparator, 
-  DropdownMenuTrigger 
-} from '@/components/ui/dropdown-menu';
-import { Menu, X, LogOut, User, Settings } from 'lucide-react';
-import { logOut } from '@/lib/firebase';
 import { useAuth } from '@/hooks/use-auth';
+import { logOut } from '@/lib/firebase';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { LogOut, Settings, User } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { ThemeToggle } from '@/components/theme-toggle';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated, profile } = useAuth();
   const [location] = useLocation();
-
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const { user, profile } = useAuth();
+  const isMobile = useIsMobile();
+  
+  const isAuthenticated = Boolean(user);
 
   const handleLogout = async () => {
     try {
@@ -35,12 +28,14 @@ export function Navbar() {
       console.error('Error logging out:', error);
     }
   };
-
+  
+  // Get user initials for avatar fallback
   const getInitials = (name?: string | null) => {
-    if (!name) return 'U';
+    if (!name) return '?';
+    
     return name
       .split(' ')
-      .map(n => n[0])
+      .map(part => part[0])
       .join('')
       .toUpperCase()
       .substring(0, 2);
@@ -54,25 +49,39 @@ export function Navbar() {
             <Link href="/" className="flex items-center">
               <span className="font-serif text-xl font-medium text-foreground">students-ai</span>
             </Link>
-            <div className="hidden sm:ml-6 sm:flex space-x-4">
-              <Link href="/about" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">
-                About
+            <div className="flex ml-4 space-x-2 items-center">
+              <Link href="/about">
+                <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                  About
+                </Button>
+              </Link>
+              <Link href="/features">
+                <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                  Features
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                  Pricing
+                </Button>
               </Link>
               {isAuthenticated && (
-                <Link href="/app" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">
-                  Dashboard
+                <Link href="/app">
+                  <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                    Dashboard
+                  </Button>
                 </Link>
               )}
             </div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <ThemeToggle />
 
             {isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                    <Avatar className="h-10 w-10 border-2 border-primary/20">
+                  <Button variant="ghost" className="relative h-9 w-9 rounded-full">
+                    <Avatar className="h-9 w-9 border-2 border-primary/20">
                       <AvatarImage src={profile?.photoUrl || undefined} alt={profile?.displayName || 'User'} />
                       <AvatarFallback className="bg-primary/10 text-primary">{getInitials(profile?.displayName)}</AvatarFallback>
                     </Avatar>
@@ -95,50 +104,20 @@ export function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <div className="hidden md:flex items-center space-x-2">
-                <Link href="/login" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-all">
-                  Log in
+              <div className="flex items-center space-x-2">
+                <Link href="/login">
+                  <Button variant="ghost" size="sm" className="px-3 py-1 text-xs">
+                    Log in
+                  </Button>
                 </Link>
-                <Link href="/signup" className="px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition-all">
-                  Sign up
+                <Link href="/signup">
+                  <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-primary/90 hover:bg-primary text-white">
+                    Sign up
+                  </Button>
                 </Link>
               </div>
             )}
-
-            {/* Mobile menu button */}
-            <button onClick={toggleMenu} className="md:hidden p-2 rounded-md text-foreground hover:bg-muted transition-all">
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
           </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-background border-b border-border transition-colors duration-300`}>
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">
-            About
-          </Link>
-          {isAuthenticated && (
-            <Link href="/app" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">
-              Dashboard
-            </Link>
-          )}
-
-          {!isAuthenticated && (
-            <div className="pt-4 pb-3 border-t border-border">
-              <Link href="/login" className="block w-full text-center px-4 py-2 text-base font-medium text-foreground hover:text-primary transition-all">
-                Log in
-              </Link>
-              <Link href="/signup" className="block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90 transition-all">
-                Sign up
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     </nav>

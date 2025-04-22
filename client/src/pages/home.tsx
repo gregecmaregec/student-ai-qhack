@@ -14,22 +14,7 @@ import {
 export function HomePage() {
   return (
     <MainLayout>
-      {/* Navigation Buttons */}
-      <div className="bg-white dark:bg-gray-900 py-2">
-        <div className="max-w-7xl mx-auto px-4 flex justify-center gap-3">
-          <Link href="/features">
-            <Button variant="outline" className="rounded-full px-5 py-2 bg-primary/10 hover:bg-primary/20 text-primary border-none">
-              Features
-            </Button>
-          </Link>
-          <Link href="/pricing">
-            <Button variant="outline" className="rounded-full px-5 py-2 bg-primary/10 hover:bg-primary/20 text-primary border-none">
-              Pricing
-            </Button>
-          </Link>
-        </div>
-      </div>
-      
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
@@ -70,7 +55,7 @@ export function HomePage() {
         </div>
 
         {/* Decorative wave pattern */}
-        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-r from-primary via-primary-600 to-primary-700 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900">
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-16 w-5/6 max-w-5xl bg-gradient-to-r from-primary via-primary-600 to-primary-700 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 rounded-t-lg">
           <svg
             className="absolute inset-0 h-full w-full"
             xmlns="http://www.w3.org/2000/svg"
@@ -100,17 +85,17 @@ export function HomePage() {
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((feature, index) => (
                 <div key={index} className="pt-6">
-                  <div className="flow-root rounded-lg bg-card px-6 pb-8 h-full border border-border transition-all duration-300">
+                  <div className="flow-root rounded-2xl bg-card px-6 pb-8 h-full border border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-primary rounded-md shadow-lg">
+                        <span className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-primary to-primary-600 rounded-xl shadow-lg transform transition-transform hover:scale-110">
                           {feature.icon}
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium text-foreground tracking-tight">
+                      <h3 className="mt-6 text-lg font-medium text-foreground tracking-tight">
                         {feature.title}
                       </h3>
-                      <p className="mt-5 text-base text-muted-foreground">
+                      <p className="mt-4 text-base text-muted-foreground">
                         {feature.description}
                       </p>
                     </div>
