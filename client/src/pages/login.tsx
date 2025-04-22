@@ -51,13 +51,29 @@ export function LoginPage() {
             
             <AuthForm mode="login" />
             
-            <div className="text-center md:text-left text-sm text-muted-foreground pt-4">
-              Don't have an account yet?{' '}
-              <Link href="/signup">
-                <a className="font-medium text-primary hover:text-primary/90 transition-colors">
-                  Create an account
-                </a>
-              </Link>
+            <div className="text-center md:text-left mt-6 space-y-4">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">or</span>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground py-2">
+                  Don't have an account yet?
+                </p>
+                <Link href="/signup">
+                  <a className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
+                    Create a free account
+                  </a>
+                </Link>
+                <p className="text-xs text-muted-foreground/70 mt-3">
+                  Join students-ai.com and start improving your studies today!
+                </p>
+              </div>
             </div>
           </div>
         </div>

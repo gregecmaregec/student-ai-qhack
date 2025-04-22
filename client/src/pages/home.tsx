@@ -71,7 +71,7 @@ export function HomePage() {
 
       {/* Features Section */}
       <section className="py-16 sm:py-20 bg-background transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
               Essential Features
@@ -85,10 +85,10 @@ export function HomePage() {
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((feature, index) => (
                 <div key={index} className="pt-6">
-                  <div className="flow-root rounded-2xl bg-card px-6 pb-8 h-full border border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1">
+                  <div className="flow-root rounded-xl bg-card px-6 pb-8 h-full border-none shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-primary to-primary-600 rounded-xl shadow-lg transform transition-transform hover:scale-110">
+                        <span className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-primary to-purple-500 rounded-xl shadow-lg transform transition-transform hover:scale-110">
                           {feature.icon}
                         </span>
                       </div>
@@ -109,7 +109,7 @@ export function HomePage() {
 
       {/* Benefits Section */}
       <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className="w-full">
               <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
@@ -120,13 +120,24 @@ export function HomePage() {
               </p>
               <div className="mt-8 space-y-5">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center">
+                  <div key={index} className="flex items-center p-3 rounded-lg hover:bg-primary/5 transition-colors duration-200">
                     <div className="flex-shrink-0">
-                      <CheckCircle className="h-6 w-6 text-success-light dark:text-success-dark" />
+                      <CheckCircle className="h-6 w-6 text-primary" />
                     </div>
                     <p className="ml-3 text-base text-foreground">{benefit}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+            <div className="mt-10 lg:mt-0 relative">
+              <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 p-8 rounded-xl shadow-md">
+                <div className="relative z-10 space-y-6">
+                  <h3 className="text-xl font-medium text-foreground">We focus on simplicity</h3>
+                  <p className="text-muted-foreground">
+                    Simplicity is the ultimate form of sophistication. Our intuitive interface puts powerful AI capabilities at your fingertips without unnecessary complexity.
+                  </p>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-xl blur-xl"></div>
               </div>
             </div>
           </div>
@@ -135,8 +146,8 @@ export function HomePage() {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br from-primary-700 via-primary to-purple-600 dark:from-primary-900 dark:via-primary-700 dark:to-purple-800">
+        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary-600 via-primary to-purple-500 dark:from-primary-800 dark:via-primary-700 dark:to-purple-700">
             <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20 relative">
               <div className="lg:self-center relative z-10">
                 <h2 className="text-3xl font-serif font-bold text-white sm:text-4xl">
@@ -145,27 +156,38 @@ export function HomePage() {
                   </span>
                 </h2>
                 <p className="mt-4 text-lg leading-6 text-white/90">
-                  Sign up for free today
+                  Join students-ai.com today for free
                 </p>
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Link href="/signup">
                     <Button
                       size="lg"
                       variant="secondary"
-                      className="w-full sm:w-auto bg-white hover:bg-white/90 text-primary hover:text-primary/90 transition-all duration-300 transform hover:scale-105"
+                      className="w-full sm:w-auto bg-white hover:bg-white/90 text-primary hover:text-primary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg rounded-md border-none"
                     >
                       Get started for free
                     </Button>
                   </Link>
+                  <Link href="/features">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full sm:w-auto border-white text-white hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
+                    >
+                      Learn more
+                    </Button>
+                  </Link>
                 </div>
               </div>
+              
+              {/* Decorative elements */}
               <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 rounded-full bg-purple-500/20 blur-3xl"></div>
               <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 rounded-full bg-primary-300/20 blur-3xl"></div>
-            </div>
-            <div className="relative aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
-              <div className="transform translate-x-6 translate-y-6 rounded-md object-cover object-left-top sm:translate-x-16 w-full h-full lg:absolute lg:w-1/2 lg:h-full">
-                <div className="w-full h-full bg-primary-100/10 rounded-tl-lg backdrop-blur-sm"></div>
-              </div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-white/5 blur-2xl opacity-30"></div>
+              
+              {/* Floating elements */}
+              <div className="hidden lg:block absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-primary-300/20 to-purple-400/20 rounded-lg backdrop-blur-sm rotate-12 animate-pulse"></div>
+              <div className="hidden lg:block absolute bottom-10 right-20 w-16 h-16 bg-gradient-to-br from-primary-300/20 to-purple-400/20 rounded-full backdrop-blur-sm animate-pulse"></div>
             </div>
           </div>
         </div>
