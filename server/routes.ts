@@ -41,24 +41,41 @@ const authMiddleware = async (req: Request, res: Response, next: Function) => {
     let user = await storage.getUserByFirebaseUid(decodedToken.uid);
     
     if (!user) {
-      // New user, create in our database
-      const userData = {
-        firebaseUid: decodedToken.uid,
-        email: decodedToken.email || "",
-        displayName: decodedToken.name,
-        photoUrl: decodedToken.picture,
-        provider: decodedToken.firebase.sign_in_provider.replace("firebase.com", "")
-      };
+      try {
+        // Check if a user with the same email already exists
+        const existingUserWithEmail = decodedToken.email ? 
+          await storage.getUserByEmail(decodedToken.email) : null;
+        
+        if (existingUserWithEmail) {
+          // User exists with this email but different firebase ID - update the Firebase UID
+          await storage.updateFirebaseUid(existingUserWithEmail.id, decodedToken.uid);
+          user = existingUserWithEmail;
+          // Update last login
+          await storage.updateUserLastLogin(existingUserWithEmail.id);
+        } else {
+          // Truly new user, create in our database
+          const userData = {
+            firebaseUid: decodedToken.uid,
+            email: decodedToken.email || "",
+            displayName: decodedToken.name,
+            photoUrl: decodedToken.picture,
+            provider: decodedToken.firebase.sign_in_provider.replace("firebase.com", "")
+          };
 
-      user = await storage.createUser(userData);
-      
-      // Create default assistant settings for new user
-      await storage.createAssistantSettings({
-        userId: user.id,
-        assistantName: "Study Buddy",
-        enabledFeatures: ["research", "planning", "writing"],
-        theme: "system"
-      });
+          user = await storage.createUser(userData);
+          
+          // Create default assistant settings for new user
+          await storage.createAssistantSettings({
+            userId: user.id,
+            assistantName: "Study Buddy",
+            enabledFeatures: ["research", "planning", "writing"],
+            theme: "system"
+          });
+        }
+      } catch (error) {
+        console.error("Error creating/finding user:", error);
+        throw error;
+      }
     } else {
       // Existing user, update last login
       await storage.updateUserLastLogin(user.id);

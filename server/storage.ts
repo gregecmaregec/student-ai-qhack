@@ -6,8 +6,10 @@ export interface IStorage {
   // User related
   getUser(id: number): Promise<User | undefined>;
   getUserByFirebaseUid(firebaseUid: string): Promise<User | undefined>;
+  getUserByEmail(email: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   updateUserLastLogin(id: number): Promise<void>;
+  updateFirebaseUid(id: number, firebaseUid: string): Promise<void>;
   
   // Assistant settings related
   getAssistantSettings(userId: number): Promise<AssistantSettings | undefined>;
@@ -33,6 +35,11 @@ export class DatabaseStorage implements IStorage {
     const [user] = await db.select().from(users).where(eq(users.firebaseUid, firebaseUid));
     return user || undefined;
   }
+  
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user || undefined;
+  }
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const [user] = await db
@@ -40,6 +47,15 @@ export class DatabaseStorage implements IStorage {
       .values(insertUser)
       .returning();
     return user;
+  }
+  
+  async updateFirebaseUid(id: number, firebaseUid: string): Promise<void> {
+    await db
+      .update(users)
+      .set({ 
+        firebaseUid
+      })
+      .where(eq(users.id, id));
   }
 
   async updateUserLastLogin(id: number): Promise<void> {
@@ -69,7 +85,7 @@ export class DatabaseStorage implements IStorage {
   async updateAssistantSettings(id: number, settings: Partial<InsertAssistantSettings>): Promise<AssistantSettings> {
     const [updatedSettings] = await db
       .update(assistantSettings)
-      .set({ ...settings, updatedAt: new Date() })
+      .set(settings)
       .where(eq(assistantSettings.id, id))
       .returning();
     return updatedSettings;
@@ -103,7 +119,7 @@ export class DatabaseStorage implements IStorage {
   async updateTask(id: number, userId: number, task: Partial<InsertTask>): Promise<Task | undefined> {
     const [updatedTask] = await db
       .update(tasks)
-      .set({ ...task, updatedAt: new Date() })
+      .set(task)
       .where(and(eq(tasks.id, id), eq(tasks.userId, userId)))
       .returning();
     return updatedTask || undefined;
