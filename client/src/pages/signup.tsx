@@ -94,17 +94,17 @@ export function SignupPage() {
               </div>
               
               <div className="text-center">
-                <Link href="/login">
-                  <a className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/5 to-purple-500/5 border border-primary/10 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
-                    Log in to your account
-                  </a>
-                </Link>
                 <div className="rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/5 p-4 mb-6 border border-primary/20">
                   <p className="text-sm text-foreground font-medium flex items-center">
                     <Sparkles className="h-4 w-4 mr-2 text-primary" />
                     Free account with all essential features
                   </p>
                 </div>
+                <Link href="/login">
+                  <button className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/5 to-purple-500/5 border border-primary/10 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
+                    Log in to your account
+                  </button>
+                </Link>
                 <p className="text-xs text-muted-foreground/70 mt-3">
                   By creating an account, you agree to our Terms of Service and Privacy Policy.
                 </p>

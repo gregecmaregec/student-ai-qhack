@@ -44,9 +44,6 @@ export function LoginPage() {
           <div className="w-full max-w-md space-y-8">
             <div className="text-center md:text-left space-y-2">
               <h1 className="text-3xl font-bold">Sign in</h1>
-              <p className="text-muted-foreground">
-                Enter your details to access your account
-              </p>
             </div>
             
             <AuthForm mode="login" />
@@ -69,9 +66,9 @@ export function LoginPage() {
               
               <div className="text-center">
                 <Link href="/signup">
-                  <a className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
+                  <button className="inline-block w-full py-3 px-4 rounded-md bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium text-foreground hover:text-primary text-center">
                     Create a free account
-                  </a>
+                  </button>
                 </Link>
                 <p className="text-xs text-muted-foreground/70 mt-3">
                   Join students-ai.com and start improving your studies today!
