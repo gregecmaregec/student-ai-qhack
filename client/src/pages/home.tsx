@@ -15,15 +15,15 @@ export function HomePage() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white dark:bg-[#1E1E1E] transition-colors duration-300">
+      <section className="relative overflow-hidden bg-background transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
               <span className="block">
                 Full power of AI to supercharge your study{" "}
               </span>
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
               AI tools designed for students. Research, assignments,
               planning—all in one place.
             </p>
@@ -43,7 +43,7 @@ export function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full px-8 py-3 text-primary-700 bg-primary-100 dark:text-primary-300 dark:bg-gray-800 hover:bg-primary-200 dark:hover:bg-gray-700 border-none md:py-4 md:text-lg md:px-10"
+                    className="w-full px-8 py-3 bg-primary/10 hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30 border-none md:py-4 md:text-lg md:px-10"
                   >
                     Learn More
                   </Button>
@@ -54,7 +54,7 @@ export function HomePage() {
         </div>
 
         {/* Decorative wave pattern */}
-        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-r from-primary-500 via-purple-500 to-primary-700 dark:from-primary-700 dark:via-purple-700 dark:to-primary-900">
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-r from-primary via-primary-600 to-primary-700 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900">
           <svg
             className="absolute inset-0 h-full w-full"
             xmlns="http://www.w3.org/2000/svg"
@@ -69,13 +69,13 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 sm:py-20 bg-white dark:bg-[#1E1E1E] transition-colors duration-300">
+      <section className="py-16 sm:py-20 bg-background transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
               Essential Features
             </h2>
-            <p className="max-w-xl mt-4 mx-auto text-gray-600 dark:text-gray-300">
+            <p className="max-w-xl mt-4 mx-auto text-muted-foreground">
               Built by students, for students
             </p>
           </div>
@@ -84,17 +84,17 @@ export function HomePage() {
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((feature, index) => (
                 <div key={index} className="pt-6">
-                  <div className="flow-root rounded-lg bg-white dark:bg-[#1E1E1E] px-6 pb-8 h-full border border-gray-200 dark:border-gray-800 transition-all duration-300">
+                  <div className="flow-root rounded-lg bg-card px-6 pb-8 h-full border border-border transition-all duration-300">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-primary-600 dark:bg-primary-700 rounded-md shadow-lg">
+                        <span className="inline-flex items-center justify-center p-3 bg-primary rounded-md shadow-lg">
                           {feature.icon}
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium text-gray-900 dark:text-white tracking-tight">
+                      <h3 className="mt-8 text-lg font-medium text-foreground tracking-tight">
                         {feature.title}
                       </h3>
-                      <p className="mt-5 text-base text-gray-600 dark:text-gray-300">
+                      <p className="mt-5 text-base text-muted-foreground">
                         {feature.description}
                       </p>
                     </div>
@@ -107,23 +107,23 @@ export function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 sm:py-20 transition-colors duration-300">
+      <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div>
-              <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white sm:text-4xl">
+              <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
                 AI that understands student needs
               </h2>
-              <p className="mt-3 max-w-3xl text-gray-600 dark:text-gray-300">
+              <p className="mt-3 max-w-3xl text-muted-foreground">
                 Built for academic success
               </p>
               <div className="mt-8 space-y-5">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center">
                     <div className="flex-shrink-0">
-                      <CheckCircle className="h-6 w-6 text-green-500" />
+                      <CheckCircle className="h-6 w-6 text-success-light dark:text-success-dark" />
                     </div>
-                    <p className="ml-3 text-base text-gray-700 dark:text-gray-300">
+                    <p className="ml-3 text-base text-foreground">
                       {benefit}
                     </p>
                   </div>
@@ -134,7 +134,7 @@ export function HomePage() {
               <div className="relative w-full max-w-lg h-64 bg-primary-100 dark:bg-primary-900/20 rounded-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-purple-500/20 dark:from-primary-500/10 dark:to-purple-500/10"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Zap className="h-24 w-24 text-primary-600 dark:text-primary-400" />
+                  <Zap className="h-24 w-24 text-primary dark:text-primary" />
                 </div>
               </div>
             </div>
@@ -143,9 +143,9 @@ export function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 transition-colors duration-300">
+      <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary-700 dark:bg-primary-800 rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-primary dark:bg-primary-800 rounded-2xl shadow-xl overflow-hidden">
             <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
               <div className="lg:self-center">
                 <h2 className="text-3xl font-serif font-bold text-white sm:text-4xl">
@@ -153,7 +153,7 @@ export function HomePage() {
                     Ready to transform your studying?
                   </span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-primary-200">
+                <p className="mt-4 text-lg leading-6 text-primary-50">
                   Sign up for free today
                 </p>
                 <div className="mt-8">
