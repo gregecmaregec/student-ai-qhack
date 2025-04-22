@@ -180,7 +180,7 @@ const plans = [
   {
     name: 'Free',
     price: '0',
-    description: 'Perfect for trying out our AI assistant and basic study needs.',
+    description: 'Free account with all essential features to get started.',
     features: [
       'Basic AI study assistant',
       'Limited research queries (10/day)',
@@ -188,7 +188,7 @@ const plans = [
       '24/7 availability',
       'Single user only'
     ],
-    popular: false
+    popular: true
   },
   {
     name: 'Pro',
@@ -203,7 +203,7 @@ const plans = [
       'Collaboration tools for group projects',
       'File uploads and analysis'
     ],
-    popular: true
+    popular: false
   },
   {
     name: 'Teams',
