@@ -169,45 +169,53 @@ export function Navbar() {
             isSubNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
           }`} 
           id="sub-navbar">
-          <div className="max-w-[880px] mx-auto px-4 flex justify-center sm:justify-start gap-3">
-            {location !== '/' && (
-              <Link href="/" onClick={scrollToTop}>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none"
-                >
-                  Home
-                </Button>
-              </Link>
-            )}
-            <Link href="/about" onClick={scrollToTop}>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/about' ? 'bg-primary/30' : ''}`}
-              >
-                About
-              </Button>
-            </Link>
-            <Link href="/features" onClick={scrollToTop}>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/features' ? 'bg-primary/30' : ''}`}
-              >
-                Features
-              </Button>
-            </Link>
-            <Link href="/pricing" onClick={scrollToTop}>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/pricing' ? 'bg-primary/30' : ''}`}
-              >
-                Pricing
-              </Button>
-            </Link>
+          <div className="max-w-[880px] mx-auto px-4 flex justify-center items-center">
+            <div className="flex justify-center sm:justify-start gap-3 relative w-full">
+              <div className="w-[72px] flex justify-center absolute left-0 sm:static">
+                {location !== '/' ? (
+                  <Link href="/" onClick={scrollToTop}>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none animate-in fade-in-0 zoom-in-95 duration-300"
+                    >
+                      Home
+                    </Button>
+                  </Link>
+                ) : (
+                  <div className="w-[72px]"></div>
+                )}
+              </div>
+              <div className="flex gap-3 ml-3 sm:ml-0">
+                <Link href="/about" onClick={scrollToTop}>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/about' ? 'bg-primary/30' : ''}`}
+                  >
+                    About
+                  </Button>
+                </Link>
+                <Link href="/features" onClick={scrollToTop}>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/features' ? 'bg-primary/30' : ''}`}
+                  >
+                    Features
+                  </Button>
+                </Link>
+                <Link href="/pricing" onClick={scrollToTop}>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/pricing' ? 'bg-primary/30' : ''}`}
+                  >
+                    Pricing
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       )}
