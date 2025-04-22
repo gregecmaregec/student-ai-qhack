@@ -121,52 +121,38 @@ export function HomePage() {
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="text-center">
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
-                <motion.span 
-                  className="block"
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                >
+                <span className="block">
                   Your studies
-                </motion.span>
+                </span>
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
-                <motion.span 
-                  className="block inline-flex items-center justify-center"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                >
+                <span className="block inline-flex items-center justify-center">
                   <motion.div
                     className="mr-2 inline-flex"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ delay: 1, duration: 0.4, type: "spring" }}
+                    transition={{ duration: 0.4, type: "spring" }}
                   >
                     <Zap className="h-7 w-2 sm:h-8 sm:w-2 md:h-10 md:w-2.5 text-primary fill-primary" strokeWidth={1} />
                   </motion.div>
                   Supercharged
-                </motion.span>
+                </span>
               </h1>
-            </motion.div>
+            </div>
             
             <motion.div 
-              className="mt-12 sm:flex sm:justify-center gap-5"
+              className="mt-10 sm:flex sm:justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="mb-4 sm:mb-0">
+              <div className="mb-3 sm:mb-0">
                 <Link href="/signup">
                   <Button
-                    size="lg"
-                    className="w-full px-8 py-6 text-base sm:text-lg bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
+                    size="default"
+                    className="w-full px-6 py-3 text-base bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
                   >
                     Get Started
                   </Button>
@@ -175,9 +161,9 @@ export function HomePage() {
               <div>
                 <Link href="/features">
                   <Button
-                    size="lg"
+                    size="default"
                     variant="outline"
-                    className="w-full px-8 py-6 text-base sm:text-lg bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
+                    className="w-full px-6 py-3 text-base bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
                   >
                     Learn More
                   </Button>
@@ -189,7 +175,7 @@ export function HomePage() {
               className="mt-8 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.6, duration: 0.8 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
             >
               Meet Studie, world's best studying-focused AI agent.
             </motion.p>
