@@ -75,80 +75,70 @@ export function AppPage() {
     <MainLayout withFooter={false}>
       <div className="bg-background min-h-screen">
         <div className="container mx-auto p-4">
-          <header className="mb-6">
+          <header className="mb-6 text-center">
             <h1 className="text-2xl font-serif font-bold text-foreground">
-              {getGreeting()}, {profile?.displayName || user?.displayName || 'Student'}
+              {getGreeting()}, {profile?.displayName?.split(' ')[0] || user?.displayName?.split(' ')[0] || 'Student'}
             </h1>
             <p className="text-sm text-muted-foreground">
               {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </header>
           
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <Card className="h-full">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Tools</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <Button 
-                      variant={activeTab === 'chat' ? 'default' : 'ghost'} 
-                      className="w-full justify-start" 
-                      onClick={() => setActiveTab('chat')}
-                    >
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      AI Assistant
-                    </Button>
-                    <Button 
-                      variant={activeTab === 'notes' ? 'default' : 'ghost'} 
-                      className="w-full justify-start"
-                      onClick={() => setActiveTab('notes')}
-                    >
-                      <NotebookPen className="mr-2 h-4 w-4" />
-                      Notes
-                    </Button>
-                    <Button 
-                      variant={activeTab === 'calendar' ? 'default' : 'ghost'} 
-                      className="w-full justify-start"
-                      onClick={() => setActiveTab('calendar')}
-                    >
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Calendar
-                    </Button>
-                    <Button 
-                      variant={activeTab === 'pdf' ? 'default' : 'ghost'} 
-                      className="w-full justify-start"
-                      onClick={() => setActiveTab('pdf')}
-                    >
-                      <FileText className="mr-2 h-4 w-4" />
-                      PDF Manager
-                    </Button>
-                    <Button 
-                      variant={activeTab === 'library' ? 'default' : 'ghost'} 
-                      className="w-full justify-start"
-                      onClick={() => setActiveTab('library')}
-                    >
-                      <Library className="mr-2 h-4 w-4" />
-                      Library
-                    </Button>
-                    <Separator className="my-3" />
-                    <Button 
-                      variant={activeTab === 'settings' ? 'default' : 'ghost'} 
-                      className="w-full justify-start"
-                      onClick={() => setActiveTab('settings')}
-                    >
-                      <Settings className="mr-2 h-4 w-4" />
-                      Settings
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
+          {/* Tools row at the top */}
+          <div className="mb-4 flex flex-wrap justify-center gap-2">
+            <Button 
+              variant={activeTab === 'chat' ? 'default' : 'outline'} 
+              className="px-4 py-2 rounded-full text-sm bg-primary/90 hover:bg-primary text-white" 
+              onClick={() => setActiveTab('chat')}
+            >
+              <MessageSquare className="mr-2 h-4 w-4" />
+              AI Assistant
+            </Button>
+            <Button 
+              variant={activeTab === 'notes' ? 'default' : 'outline'} 
+              className="px-4 py-2 rounded-full text-sm bg-primary/90 hover:bg-primary text-white"
+              onClick={() => setActiveTab('notes')}
+            >
+              <NotebookPen className="mr-2 h-4 w-4" />
+              Notes
+            </Button>
+            <Button 
+              variant={activeTab === 'calendar' ? 'default' : 'outline'} 
+              className="px-4 py-2 rounded-full text-sm bg-primary/90 hover:bg-primary text-white"
+              onClick={() => setActiveTab('calendar')}
+            >
+              <Calendar className="mr-2 h-4 w-4" />
+              Calendar
+            </Button>
+            <Button 
+              variant={activeTab === 'pdf' ? 'default' : 'outline'} 
+              className="px-4 py-2 rounded-full text-sm bg-primary/90 hover:bg-primary text-white"
+              onClick={() => setActiveTab('pdf')}
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              PDF
+            </Button>
+            <Button 
+              variant={activeTab === 'library' ? 'default' : 'outline'} 
+              className="px-4 py-2 rounded-full text-sm bg-primary/90 hover:bg-primary text-white"
+              onClick={() => setActiveTab('library')}
+            >
+              <Library className="mr-2 h-4 w-4" />
+              Library
+            </Button>
+            <Button 
+              variant={activeTab === 'settings' ? 'default' : 'outline'} 
+              className="px-4 py-2 rounded-full text-sm bg-primary/90 hover:bg-primary text-white"
+              onClick={() => setActiveTab('settings')}
+            >
+              <Settings className="mr-2 h-4 w-4" />
+              Settings
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-6">
             {/* Main Content */}
-            <div className="lg:col-span-3">
+            <div>
               <Card className="h-full">
                 <CardHeader className="pb-2">
                   <CardTitle>

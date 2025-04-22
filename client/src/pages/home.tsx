@@ -14,6 +14,22 @@ import {
 export function HomePage() {
   return (
     <MainLayout>
+      {/* Navigation Buttons */}
+      <div className="bg-white dark:bg-gray-900 py-2">
+        <div className="max-w-7xl mx-auto px-4 flex justify-center gap-3">
+          <Link href="/features">
+            <Button variant="outline" className="rounded-full px-5 py-2 bg-primary/10 hover:bg-primary/20 text-primary border-none">
+              Features
+            </Button>
+          </Link>
+          <Link href="/pricing">
+            <Button variant="outline" className="rounded-full px-5 py-2 bg-primary/10 hover:bg-primary/20 text-primary border-none">
+              Pricing
+            </Button>
+          </Link>
+        </div>
+      </div>
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
