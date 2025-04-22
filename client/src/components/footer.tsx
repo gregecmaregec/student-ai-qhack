@@ -11,13 +11,13 @@ export function Footer() {
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/blog" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-              Blog
+            <Link href="/features" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Features
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/jobs" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-              Jobs
+            <Link href="/careers" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Careers
             </Link>
           </div>
           <div className="px-5 py-2">
