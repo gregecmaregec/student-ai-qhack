@@ -181,8 +181,8 @@ export function Navbar() {
             isSubNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
           }`} 
           id="sub-navbar">
-          <div className="max-w-[880px] mx-auto px-4">
-            <div className="flex justify-center sm:justify-start gap-3">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-start gap-3">
               <div className={`${location === '/' ? 'hidden' : 'block'}`}>
                 <Link href="/" onClick={scrollToTop}>
                   <Button 
