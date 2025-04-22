@@ -10,7 +10,7 @@ export function AboutPage() {
         {/* Hero section */}
         <div className="text-center mb-16">
           <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            About Students AI
+            About students-ai.com
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
             We're on a mission to transform education by making personalized AI assistance accessible to every student.
@@ -26,7 +26,7 @@ export function AboutPage() {
                   Our Story
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Students AI was born out of our own struggles as students. We experienced firsthand the challenges of balancing coursework, research, and personal life, often working late into the night to meet deadlines.
+                  students-ai.com was born out of our own struggles as students. We experienced firsthand the challenges of balancing coursework, research, and personal life, often working late into the night to meet deadlines.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300">
                   We realized that AI could revolutionize how students learn and complete their work—not by doing it for them, but by providing intelligent assistance that enhances their natural abilities and helps them become better learners. Our team of educators, AI researchers, and former students came together to build a platform specifically designed for the unique challenges of academic life.
@@ -50,7 +50,7 @@ export function AboutPage() {
               Our Values
             </h2>
             <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-              These core principles guide everything we do at Students AI.
+              These core principles guide everything we do at students-ai.com.
             </p>
           </div>
 
@@ -78,7 +78,7 @@ export function AboutPage() {
               Our Team
             </h2>
             <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-              Meet the passionate people behind Students AI.
+              Meet the passionate people behind students-ai.com.
             </p>
           </div>
 
@@ -138,7 +138,7 @@ export function AboutPage() {
               <Link href="/signup">
                 <Button size="lg" variant="outline" className="text-white border-white hover:bg-primary-800">
                   <GraduationCap className="mr-2 h-5 w-5" />
-                  Try Students AI
+                  Try students-ai.com
                 </Button>
               </Link>
             </div>
