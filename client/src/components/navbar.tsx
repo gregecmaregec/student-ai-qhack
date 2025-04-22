@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useAuth } from '@/hooks/use-auth';
 import { logOut } from '@/lib/firebase';
@@ -18,8 +19,33 @@ export function Navbar() {
   const [location] = useLocation();
   const { user, profile } = useAuth();
   const isMobile = useIsMobile();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isSubNavVisible, setIsSubNavVisible] = useState(true);
   
   const isAuthenticated = Boolean(user);
+
+  // Handle scroll events for showing/hiding the sub-navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isScrollingDown = prevScrollPos < currentScrollPos;
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+      
+      setIsScrolled(currentScrollPos > 50);
+      
+      if (isScrollingDown && currentScrollPos > 150) {
+        setIsSubNavVisible(false);
+      } else if (isScrollingUp) {
+        setIsSubNavVisible(true);
+      }
+      
+      setPrevScrollPos(currentScrollPos);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
 
   const handleLogout = async () => {
     try {
@@ -115,20 +141,47 @@ export function Navbar() {
       
       {/* Navigation buttons below navbar - only visible when not authenticated */}
       {!isAuthenticated && (
-        <div className="bg-background py-2 shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 flex justify-center sm:justify-start gap-3">
+        <div 
+          className={`bg-background py-2 shadow-sm sticky top-16 z-40 transition-all duration-300 ${
+            isSubNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`} 
+          id="sub-navbar">
+          <div className="max-w-[880px] mx-auto px-4 flex justify-center sm:justify-start gap-3">
+            {location !== '/' && (
+              <Link href="/">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none animate-fadeIn"
+                >
+                  Home
+                </Button>
+              </Link>
+            )}
             <Link href="/about">
-              <Button variant="outline" size="sm" className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/about' ? 'bg-primary/30' : ''}`}
+              >
                 About
               </Button>
             </Link>
             <Link href="/features">
-              <Button variant="outline" size="sm" className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/features' ? 'bg-primary/30' : ''}`}
+              >
                 Features
               </Button>
             </Link>
             <Link href="/pricing">
-              <Button variant="outline" size="sm" className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/pricing' ? 'bg-primary/30' : ''}`}
+              >
                 Pricing
               </Button>
             </Link>

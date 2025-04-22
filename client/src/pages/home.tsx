@@ -14,37 +14,37 @@ import {
 export function HomePage() {
   return (
     <MainLayout>
-
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
+        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
-              <span className="block">
-                Full power of AI to supercharge your study{" "}
-              </span>
+              <span className="block">Full power of AI</span>
+            </h1>
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground text-primary/90">
+              <span className="block">supercharge your studies</span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
               AI tools designed for students. Research, assignments,
               planning—all in one place.
             </p>
-            <div className="mt-10 sm:flex sm:justify-center">
-              <div className="rounded-md shadow">
+            <div className="mt-10 sm:flex sm:justify-center gap-4">
+              <div>
                 <Link href="/signup">
                   <Button
                     size="lg"
-                    className="w-full px-8 py-3 md:py-4 md:text-lg md:px-10"
+                    className="w-full px-8 py-3 md:py-4 md:text-lg md:px-10 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
                   >
                     Get Started
                   </Button>
                 </Link>
               </div>
-              <div className="mt-3 sm:mt-0 sm:ml-3">
+              <div className="mt-3 sm:mt-0">
                 <Link href="/features">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full px-8 py-3 bg-primary/10 hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30 border-none md:py-4 md:text-lg md:px-10"
+                    className="w-full px-8 py-3 bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none md:py-4 md:text-lg md:px-10 hover:-translate-y-1 transition-all duration-300 rounded-md"
                   >
                     Learn More
                   </Button>
@@ -124,9 +124,7 @@ export function HomePage() {
                     <div className="flex-shrink-0">
                       <CheckCircle className="h-6 w-6 text-success-light dark:text-success-dark" />
                     </div>
-                    <p className="ml-3 text-base text-foreground">
-                      {benefit}
-                    </p>
+                    <p className="ml-3 text-base text-foreground">{benefit}</p>
                   </div>
                 ))}
               </div>
