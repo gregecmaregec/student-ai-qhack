@@ -14,7 +14,7 @@ import DashboardPage from "@/pages/dashboard";
 import AppPage from "@/pages/app";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider, AuthContext } from "@/contexts/auth-context";
-import ProtectedRoute from "@/components/auth/protected-route";
+import ProtectedRoute from "./components/auth/protected-route";
 import { useContext } from "react";
 
 // Landing routes are only accessible for non-authenticated users
@@ -32,7 +32,7 @@ const LandingRoute = ({ component: Component, ...rest }: any) => {
 function Router() {
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route path="/">
         <LandingRoute component={HomePage} />
       </Route>
       <Route path="/login">

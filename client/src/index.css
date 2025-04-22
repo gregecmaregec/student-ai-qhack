@@ -2,50 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Color system CSS variables
+ * 
+ * This is where we set up our theme color variables for the entire application
+ * Light and dark mode colors are defined in CSS variables using HSL format
+ * F7EFE6 = hsl(33, 55%, 94%) in HSL
+ */
+
 :root {
-      --background: 0 0% 100%;
---foreground: 20 14.3% 4.1%;
---muted: 60 4.8% 95.9%;
---muted-foreground: 25 5.3% 44.7%;
---popover: 30 30% 96%;
---popover-foreground: 20 14.3% 4.1%;
---card: 0 0% 100%;
---card-foreground: 20 14.3% 4.1%;
---border: 20 5.9% 90%;
---input: 20 5.9% 90%;
---primary: 207 90% 54%;
---primary-foreground: 211 100% 99%;
---secondary: 60 4.8% 95.9%;
---secondary-foreground: 24 9.8% 10%;
---accent: 60 4.8% 95.9%;
---accent-foreground: 24 9.8% 10%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 60 9.1% 97.8%;
---ring: 20 14.3% 4.1%;
---radius: 0.5rem;
-  }
-  .dark {
-      --background: 240 10% 12%;
---foreground: 0 0% 98%;
---muted: 240 3.7% 15.9%;
---muted-foreground: 240 5% 64.9%;
---popover: 240 10% 3.9%;
---popover-foreground: 0 0% 98%;
---card: 240 10% 3.9%;
---card-foreground: 0 0% 98%;
---border: 240 3.7% 15.9%;
---input: 240 3.7% 15.9%;
---primary: 207 90% 54%;
---primary-foreground: 211 100% 99%;
---secondary: 240 3.7% 15.9%;
---secondary-foreground: 0 0% 98%;
---accent: 240 3.7% 15.9%;
---accent-foreground: 0 0% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 0 0% 98%;
---ring: 240 4.9% 83.9%;
---radius: 0.5rem;
-  }
+  /* Main colors - Light mode */
+  --background: 33 55% 94%; /* F7EFE6 as requested */
+  --foreground: 0 0% 4%; /* Near black for text */
+  
+  /* Card and Popover styles */
+  --card: 0 0% 100%; /* White cards on sand background */
+  --card-foreground: 0 0% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 4%;
+  
+  /* UI element colors */
+  --primary: 199 89% 48%; /* Vibrant blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 33 55% 94%; /* Same as background */
+  --secondary-foreground: 0 0% 4%;
+  
+  /* Supporting UI colors */
+  --muted: 33 40% 96%; /* Slightly lighter than background */
+  --muted-foreground: 0 0% 45%;
+  --accent: 33 80% 98%; /* Very light accent */
+  --accent-foreground: 0 0% 4%;
+  
+  /* Alert colors */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  
+  /* Borders and focus rings */
+  --border: 33 25% 90%;
+  --input: 33 25% 90%;
+  --ring: 199 89% 48%; /* Same as primary */
+  
+  /* Chart colors */
+  --chart-1: 199 89% 48%; /* Primary blue */
+  --chart-2: 150 84% 39%; /* Green */
+  --chart-3: 266 83% 45%; /* Purple */
+  --chart-4: 12 83% 55%; /* Orange */
+  --chart-5: 54 89% 48%; /* Yellow */
+  
+  /* Other */
+  --radius: 0.5rem;
+  
+  /* Sidebar colors */
+  --sidebar-background: 33 40% 97%;
+  --sidebar-foreground: 0 0% 4%;
+  --sidebar-primary: 199 89% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 33 80% 98%;
+  --sidebar-accent-foreground: 0 0% 4%;
+  --sidebar-border: 33 25% 90%;
+  --sidebar-ring: 199 89% 48%;
+}
+
+.dark {
+  /* Main colors - Dark mode */
+  --background: 0 0% 4%; /* Almost black for dark mode */
+  --foreground: 0 0% 98%; /* Off-white text */
+  
+  /* Card and Popover styles */
+  --card: 0 0% 7%; /* Slightly lighter than background */
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 98%;
+  
+  /* UI element colors */
+  --primary: 199 89% 48%; /* Same as light mode */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 12%; /* Slightly lighter than background */
+  --secondary-foreground: 0 0% 98%;
+  
+  /* Supporting UI colors */
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 12%;
+  --accent-foreground: 0 0% 98%;
+  
+  /* Alert colors */
+  --destructive: 0 84% 45%; /* Darker red for dark mode */
+  --destructive-foreground: 0 0% 98%;
+  
+  /* Borders and focus rings */
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 199 89% 48%;
+  
+  /* Chart colors (slightly adjusted for dark mode) */
+  --chart-1: 199 89% 48%;
+  --chart-2: 150 84% 39%;
+  --chart-3: 266 83% 45%;
+  --chart-4: 12 83% 55%;
+  --chart-5: 54 89% 48%;
+  
+  /* Sidebar colors */
+  --sidebar-background: 0 0% 8%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 199 89% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 12%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 0 0% 20%;
+  --sidebar-ring: 199 89% 48%;
+}
 
 @layer base {
   * {
@@ -54,6 +120,11 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* Override any white backgrounds with our sand color in light mode */
+  .light-mode-overrides {
+    @apply bg-[#F7EFE6] dark:bg-[#0B0B0B];
   }
 }
 
