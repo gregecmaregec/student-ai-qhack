@@ -1,7 +1,7 @@
 import { MainLayout } from "@/components/main-layout";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle,
   Zap,
@@ -12,6 +12,7 @@ import {
   Smile,
   ChevronDown,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function HomePage() {
   const mentalWellnessFeatureRef = useRef(null);
@@ -120,38 +121,78 @@ export function HomePage() {
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
-              <span className="block">Your studies</span>
-            </h1>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground text-primary/90">
-              <span className="block">Supercharged</span>
-            </h1>
-            <div className="mt-10 sm:flex sm:justify-center gap-4">
-              <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
+                <motion.span 
+                  className="block"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                >
+                  Your studies
+                </motion.span>
+              </h1>
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
+                <motion.span 
+                  className="block inline-flex items-center justify-center"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                >
+                  Supercharged
+                  <motion.div
+                    className="ml-2 inline-flex"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1, duration: 0.4, type: "spring" }}
+                  >
+                    <Zap className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-primary fill-primary" />
+                  </motion.div>
+                </motion.span>
+              </h1>
+            </motion.div>
+            
+            <motion.div 
+              className="mt-12 sm:flex sm:justify-center gap-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              <div className="mb-4 sm:mb-0">
                 <Link href="/signup">
                   <Button
-                    size="sm"
-                    className="w-full px-4 py-2 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
+                    size="lg"
+                    className="w-full px-8 py-6 text-base sm:text-lg bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
                   >
                     Get Started
                   </Button>
                 </Link>
               </div>
-              <div className="mt-3 sm:mt-0">
+              <div>
                 <Link href="/features">
                   <Button
-                    size="sm"
+                    size="lg"
                     variant="outline"
-                    className="w-full px-4 py-2 text-sm bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
+                    className="w-full px-8 py-6 text-base sm:text-lg bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
                   >
                     Learn More
                   </Button>
                 </Link>
               </div>
-            </div>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+            </motion.div>
+            
+            <motion.p 
+              className="mt-8 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.6, duration: 0.8 }}
+            >
               Meet Studie, world's best studying-focused AI agent.
-            </p>
+            </motion.p>
             <div className="mt-16"></div>
           </div>
         </div>
@@ -270,12 +311,12 @@ export function HomePage() {
                 <p className="mt-4 text-lg leading-6 text-muted-foreground">
                   Join students-ai.com today for free
                 </p>
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <div className="mt-8 flex flex-col sm:flex-row gap-5">
                   <Link href="/signup">
                     <Button
                       size="lg"
                       variant="default"
-                      className="w-full sm:w-auto bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
+                      className="w-full sm:w-auto px-8 py-6 text-base sm:text-lg bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
                     >
                       Get started for free
                     </Button>
@@ -284,7 +325,7 @@ export function HomePage() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="w-full sm:w-auto border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
+                      className="w-full sm:w-auto px-8 py-6 text-base sm:text-lg border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
                     >
                       Learn more
                     </Button>
