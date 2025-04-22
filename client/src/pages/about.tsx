@@ -56,7 +56,7 @@ export function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-[#F5F5DC] dark:bg-[#121212] rounded-lg p-8 shadow-md transition-colors duration-300 border border-gray-200 dark:border-gray-800">
+              <div key={index} className="bg-[#F7EFE6] dark:bg-[#121212] rounded-lg p-8 shadow-md transition-colors duration-300 border border-gray-200 dark:border-gray-800">
                 <div className="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg inline-flex mb-5">
                   {value.icon}
                 </div>
@@ -176,7 +176,7 @@ const team = [
     bio: 'Former AI researcher with a passion for education. Sarah holds a PhD in Computer Science from MIT and has published extensively on educational AI.',
     social: [
       {
-        name: 'Twitter',
+        name: "X",
         url: '#',
         icon: <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
       },
@@ -194,7 +194,7 @@ const team = [
     bio: 'Software engineer and former educator with 10+ years of experience building AI systems. Michael taught high school computer science before joining the tech industry.',
     social: [
       {
-        name: 'Twitter',
+        name: "X",
         url: '#',
         icon: <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
       },
@@ -212,7 +212,7 @@ const team = [
     bio: 'Former university professor with expertise in educational psychology. Olivia ensures our AI tools are grounded in learning science and effective pedagogy.',
     social: [
       {
-        name: 'Twitter',
+        name: "X",
         url: '#',
         icon: <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
       },
