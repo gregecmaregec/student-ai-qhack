@@ -69,7 +69,7 @@ export function SignupPage() {
             <div className="rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/5 p-4 mb-4 border border-primary/20">
               <p className="text-sm text-foreground font-medium flex items-center">
                 <Sparkles className="h-4 w-4 mr-2 text-primary" />
-                Free account with all essential features
+                Free account contains all essential features
               </p>
             </div>
             <div className="text-center md:text-left space-y-2">

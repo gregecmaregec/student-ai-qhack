@@ -233,10 +233,10 @@ export function HomePage() {
           <div className="lg:grid lg:grid-cols-1 lg:gap-8 lg:items-center">
             <div className="w-full">
               <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
-                <i>We do not learn for school, but for life</i>
+                <i>"We do not learn for school, but for life"</i>
               </h2>
               <p className="mt-3 max-w-3xl text-muted-foreground">
-                Built for academic success
+                students-ai is built for academic success
               </p>
               <div className="mt-8 space-y-5">
                 {benefits.map((benefit, index) => (

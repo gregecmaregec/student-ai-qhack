@@ -31,6 +31,48 @@ export function Navbar() {
   }, []);
 
   // Handle scroll events for showing/hiding the sub-navbar with improved smoothness
+  // Effect to calculate and apply logo alignment to text
+  useEffect(() => {
+    // Function to calculate and apply the offset
+    const calculateLogoAlignment = () => {
+      // Get the logo element and the center indicator
+      const logoText = document.querySelector('.font-serif.text-xl');
+      const centerIndicator = document.getElementById('logo-center-indicator');
+      // Using a more compatible selector
+      const aboutButton = document.querySelector('button span');
+      
+      if (logoText && centerIndicator) {
+        // Get the width of the logo text and the button text
+        const logoRect = logoText.getBoundingClientRect();
+        const logoWidth = logoRect.width;
+        
+        // Calculate logo center position
+        const logoCenter = logoWidth / 2;
+        
+        // Get the logo's left position
+        const logoLeft = logoRect.left;
+        const logoMiddle = logoLeft + logoCenter;
+        
+        // Set a CSS variable with the calculated center position
+        document.documentElement.style.setProperty('--logo-center-offset', `${logoCenter}px`);
+        
+        // Log for debugging
+        console.log('Logo alignment calculation:', { logoWidth, logoCenter });
+      }
+    };
+    
+    // Run calculation on mount
+    calculateLogoAlignment();
+    
+    // Also recalculate on window resize
+    window.addEventListener('resize', calculateLogoAlignment);
+    
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('resize', calculateLogoAlignment);
+    };
+  }, []);
+
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -108,21 +150,29 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center" onClick={scrollToTop}>
-                <span className="font-serif text-xl text-foreground">students-ai</span>
-              </Link>
+              <div className="flex flex-col items-center relative">
+                <Link href="/" className="flex items-center" onClick={scrollToTop}>
+                  <span className="font-serif text-xl text-foreground">students-ai</span>
+                </Link>
+                {/* Position indicator used for alignment */}
+                <div className="absolute w-0.5 h-0.5 bg-transparent bottom-0 left-1/2 transform -translate-x-1/2" id="logo-center-indicator"></div>
+              </div>
               {isAuthenticated && (
                 <div className="flex ml-4 space-x-2 items-center">
-                  <Link href="/about" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                      About
-                    </Button>
-                  </Link>
-                  <Link href="/app" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                      Dashboard
-                    </Button>
-                  </Link>
+                  <div className="flex flex-col items-center">
+                    <Link href="/about" onClick={scrollToTop}>
+                      <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                        <span className="relative left-[calc(var(--logo-center-offset,0px))]">About</span>
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Link href="/app" onClick={scrollToTop}>
+                      <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                        <span className="relative left-[calc(var(--logo-center-offset,0px))]">Dashboard</span>
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
