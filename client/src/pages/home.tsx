@@ -9,6 +9,7 @@ import {
   Book,
   Users,
   Smile,
+  ChevronDown,
 } from "lucide-react";
 
 export function HomePage() {
@@ -18,10 +19,10 @@ export function HomePage() {
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
               <span className="block">Full power of AI</span>
             </h1>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground text-primary/90">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground text-primary/90">
               <span className="block">supercharge your studies</span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -32,8 +33,8 @@ export function HomePage() {
               <div>
                 <Link href="/signup">
                   <Button
-                    size="lg"
-                    className="w-full px-8 py-3 md:py-4 md:text-lg md:px-10 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
+                    size="sm"
+                    className="w-full px-4 py-2 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
                   >
                     Get Started
                   </Button>
@@ -42,14 +43,29 @@ export function HomePage() {
               <div className="mt-3 sm:mt-0">
                 <Link href="/features">
                   <Button
-                    size="lg"
+                    size="sm"
                     variant="outline"
-                    className="w-full px-8 py-3 bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none md:py-4 md:text-lg md:px-10 hover:-translate-y-1 transition-all duration-300 rounded-md"
+                    className="w-full px-4 py-2 text-sm bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
                   >
                     Learn More
                   </Button>
                 </Link>
               </div>
+            </div>
+            
+            {/* Scroll down animation */}
+            <div className="flex justify-center mt-16">
+              <a 
+                href="#features" 
+                className="text-muted-foreground flex flex-col items-center animate-bounce"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <span className="text-sm mb-1">Scroll Down</span>
+                <ChevronDown className="h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>
@@ -70,10 +86,10 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 sm:py-20 bg-background transition-colors duration-300">
+      <section id="features" className="py-16 sm:py-20 bg-background transition-colors duration-300">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
+            <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
               Essential Features
             </h2>
             <p className="max-w-xl mt-4 mx-auto text-muted-foreground">
@@ -82,7 +98,8 @@ export function HomePage() {
           </div>
 
           <div className="mt-12">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Desktop grid - hidden on mobile */}
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div key={index} className="pt-6">
                   <div className="flow-root rounded-xl bg-card px-6 pb-8 h-full border-none shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
@@ -103,6 +120,42 @@ export function HomePage() {
                 </div>
               ))}
             </div>
+            
+            {/* Mobile swipeable carousel - hidden on tablet and up */}
+            <div className="sm:hidden overflow-x-auto pb-6 no-scrollbar">
+              <div className="flex space-x-4 w-max px-1">
+                {features.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className="pt-6 w-[280px] shrink-0 snap-center"
+                  >
+                    <div className="flow-root rounded-xl bg-card px-6 pb-8 h-full border-none shadow-md bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
+                      <div className="-mt-6">
+                        <div>
+                          <span className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-primary to-purple-500 rounded-xl shadow-lg">
+                            {feature.icon}
+                          </span>
+                        </div>
+                        <h3 className="mt-6 text-lg font-medium text-foreground tracking-tight">
+                          {feature.title}
+                        </h3>
+                        <p className="mt-4 text-base text-muted-foreground">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center mt-6 space-x-2">
+                {features.map((_, index) => (
+                  <div 
+                    key={index} 
+                    className="w-2 h-2 rounded-full bg-primary/30"
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -112,7 +165,7 @@ export function HomePage() {
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className="w-full">
-              <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
+              <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
                 AI that understands student needs
               </h2>
               <p className="mt-3 max-w-3xl text-muted-foreground">
@@ -150,7 +203,7 @@ export function HomePage() {
           <div className="rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary-600 via-primary to-purple-500 dark:from-primary-800 dark:via-primary-700 dark:to-purple-700">
             <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20 relative">
               <div className="lg:self-center relative z-10">
-                <h2 className="text-3xl font-serif font-bold text-white sm:text-4xl">
+                <h2 className="text-3xl font-serif text-white sm:text-4xl">
                   <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100 dark:from-white dark:to-purple-100">
                     Ready to transform your studying?
                   </span>

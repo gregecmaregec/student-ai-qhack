@@ -74,7 +74,7 @@ export function Navbar() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <span className="font-serif text-xl font-medium text-foreground">students-ai</span>
+                <span className="font-serif text-xl text-foreground">students-ai</span>
               </Link>
               {isAuthenticated && (
                 <div className="flex ml-4 space-x-2 items-center">

@@ -166,3 +166,15 @@
   animation: pulse 4s ease-in-out infinite;
 }
 
+/* Remove scrollbar for iOS and other mobile browsers */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
