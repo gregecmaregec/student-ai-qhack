@@ -102,12 +102,12 @@ export function Navbar() {
               {isAuthenticated && (
                 <div className="flex ml-4 space-x-2 items-center">
                   <Link href="/about" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                    <Button variant="ghost" size="sm" className="px-1.5 py-0.5 text-xs rounded-full hover:bg-primary/10 h-auto">
                       About
                     </Button>
                   </Link>
                   <Link href="/app" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                    <Button variant="ghost" size="sm" className="px-1.5 py-0.5 text-xs rounded-full hover:bg-primary/10 h-auto">
                       Dashboard
                     </Button>
                   </Link>
@@ -146,12 +146,12 @@ export function Navbar() {
               ) : (
                 <div className="flex items-center space-x-2">
                   <Link href="/login" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-3 py-1 text-xs">
+                    <Button variant="ghost" size="sm" className="px-2 py-0.5 text-xs h-auto">
                       Log in
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={scrollToTop}>
-                    <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-primary/90 hover:bg-primary text-white">
+                    <Button size="sm" className="px-2 py-0.5 text-xs rounded-full bg-primary/90 hover:bg-primary text-white h-auto">
                       Sign up
                     </Button>
                   </Link>
@@ -175,7 +175,7 @@ export function Navbar() {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none"
+                  className="px-2.5 py-0.5 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none h-auto"
                 >
                   Home
                 </Button>
@@ -185,7 +185,7 @@ export function Navbar() {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/about' ? 'bg-primary/30' : ''}`}
+                className={`px-2.5 py-0.5 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none h-auto ${location === '/about' ? 'bg-primary/30' : ''}`}
               >
                 About
               </Button>
@@ -194,7 +194,7 @@ export function Navbar() {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/features' ? 'bg-primary/30' : ''}`}
+                className={`px-2.5 py-0.5 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none h-auto ${location === '/features' ? 'bg-primary/30' : ''}`}
               >
                 Features
               </Button>
@@ -203,7 +203,7 @@ export function Navbar() {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/pricing' ? 'bg-primary/30' : ''}`}
+                className={`px-2.5 py-0.5 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none h-auto ${location === '/pricing' ? 'bg-primary/30' : ''}`}
               >
                 Pricing
               </Button>
