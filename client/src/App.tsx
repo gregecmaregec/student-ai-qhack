@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,22 +11,53 @@ import FeaturesPage from "@/pages/features";
 import AboutPage from "@/pages/about";
 import PricingPage from "@/pages/pricing";
 import DashboardPage from "@/pages/dashboard";
+import AppPage from "@/pages/app";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AuthProvider } from "@/contexts/auth-context";
+import { AuthProvider, AuthContext } from "@/contexts/auth-context";
 import ProtectedRoute from "@/components/auth/protected-route";
+import { useContext } from "react";
+
+// Landing routes are only accessible for non-authenticated users
+const LandingRoute = ({ component: Component, ...rest }: any) => {
+  const authContext = useContext(AuthContext);
+  const [location] = useLocation();
+  
+  if (authContext?.user) {
+    return <Redirect to="/app" />;
+  }
+  
+  return <Component {...rest} />;
+};
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={HomePage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/signup" component={SignupPage} />
-      <Route path="/features" component={FeaturesPage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/pricing" component={PricingPage} />
+      <Route path="/" exact>
+        <LandingRoute component={HomePage} />
+      </Route>
+      <Route path="/login">
+        <LandingRoute component={LoginPage} />
+      </Route>
+      <Route path="/signup">
+        <LandingRoute component={SignupPage} />
+      </Route>
+      <Route path="/features">
+        <LandingRoute component={FeaturesPage} />
+      </Route>
+      <Route path="/about">
+        <LandingRoute component={AboutPage} />
+      </Route>
+      <Route path="/pricing">
+        <LandingRoute component={PricingPage} />
+      </Route>
       <Route path="/dashboard">
         <ProtectedRoute>
           <DashboardPage />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/app">
+        <ProtectedRoute>
+          <AppPage />
         </ProtectedRoute>
       </Route>
       <Route component={NotFound} />
