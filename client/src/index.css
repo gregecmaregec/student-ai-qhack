@@ -122,9 +122,9 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
   
-  /* Override any white backgrounds with our sand color in light mode */
+  /* Light mode background overrides - using white instead of sand */
   .light-mode-overrides {
-    @apply bg-[#F7EFE6] dark:bg-[#0B0B0B];
+    @apply bg-white dark:bg-[#0B0B0B];
   }
 }
 

@@ -6,10 +6,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
           <div className="px-5 py-2">
-            <Link href="/about">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                About
-              </a>
+            <Link href="/about" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              About
             </Link>
           </div>
           <div className="px-5 py-2">
