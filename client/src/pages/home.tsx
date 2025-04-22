@@ -135,7 +135,7 @@ export function HomePage() {
               <div className="relative w-full max-w-lg h-64 bg-primary-100 dark:bg-primary-900/20 rounded-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-purple-500/20 dark:from-primary-500/10 dark:to-purple-500/10"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Zap className="h-24 w-24 text-primary dark:text-primary" />
+                  <div className="font-serif text-4xl font-bold text-primary/60 dark:text-primary/60">students-ai.com</div>
                 </div>
               </div>
             </div>
@@ -146,15 +146,15 @@ export function HomePage() {
       {/* CTA Section */}
       <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary dark:bg-primary-800 rounded-2xl shadow-xl overflow-hidden">
-            <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
-              <div className="lg:self-center">
+          <div className="rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br from-primary-700 via-primary to-purple-600 dark:from-primary-900 dark:via-primary-700 dark:to-purple-800">
+            <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20 relative">
+              <div className="lg:self-center relative z-10">
                 <h2 className="text-3xl font-serif font-bold text-white sm:text-4xl">
-                  <span className="block">
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100 dark:from-white dark:to-purple-100">
                     Ready to transform your studying?
                   </span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-primary-50">
+                <p className="mt-4 text-lg leading-6 text-white/90">
                   Sign up for free today
                 </p>
                 <div className="mt-8">
@@ -162,17 +162,19 @@ export function HomePage() {
                     <Button
                       size="lg"
                       variant="secondary"
-                      className="w-full sm:w-auto"
+                      className="w-full sm:w-auto bg-white hover:bg-white/90 text-primary hover:text-primary/90 transition-all duration-300 transform hover:scale-105"
                     >
                       Get started for free
                     </Button>
                   </Link>
                 </div>
               </div>
+              <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 rounded-full bg-purple-500/20 blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 rounded-full bg-primary-300/20 blur-3xl"></div>
             </div>
             <div className="relative aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
               <div className="transform translate-x-6 translate-y-6 rounded-md object-cover object-left-top sm:translate-x-16 w-full h-full lg:absolute lg:w-1/2 lg:h-full">
-                <div className="w-full h-full bg-primary-800 rounded-tl-lg opacity-30"></div>
+                <div className="w-full h-full bg-primary-100/10 rounded-tl-lg backdrop-blur-sm"></div>
               </div>
             </div>
           </div>
