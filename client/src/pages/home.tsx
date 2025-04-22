@@ -20,14 +20,13 @@ export function HomePage() {
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
-              <span className="block">Full power of AI</span>
+              <span className="block">Supercharge</span>
             </h1>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground text-primary/90">
-              <span className="block">supercharge your studies</span>
+              <span className="block">your studies</span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-              AI tools designed for students. Research, assignments,
-              planning—all in one place.
+              Meet Studie, world's best student-focused AI agent.
             </p>
             <div className="mt-10 sm:flex sm:justify-center gap-4">
               <div>
@@ -52,7 +51,7 @@ export function HomePage() {
                 </Link>
               </div>
             </div>
-            
+
             <div className="mt-16"></div>
           </div>
         </div>
@@ -73,7 +72,10 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-16 sm:py-20 bg-background transition-colors duration-300">
+      <section
+        id="features"
+        className="py-16 sm:py-20 bg-background transition-colors duration-300"
+      >
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
@@ -107,13 +109,13 @@ export function HomePage() {
                 </div>
               ))}
             </div>
-            
+
             {/* Mobile swipeable carousel - hidden on tablet and up */}
             <div className="sm:hidden overflow-x-auto pb-6 no-scrollbar">
               <div className="flex space-x-4 w-max px-1">
                 {features.map((feature, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="pt-6 w-[280px] shrink-0 snap-center"
                   >
                     <div className="flow-root rounded-xl bg-card px-6 pb-8 h-full border-none shadow-md bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
@@ -134,7 +136,6 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </div>
@@ -153,7 +154,10 @@ export function HomePage() {
               </p>
               <div className="mt-8 space-y-5">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center p-3 rounded-lg hover:bg-primary/5 transition-colors duration-200">
+                  <div
+                    key={index}
+                    className="flex items-center p-3 rounded-lg hover:bg-primary/5 transition-colors duration-200"
+                  >
                     <div className="flex-shrink-0">
                       <CheckCircle className="h-6 w-6 text-primary" />
                     </div>
@@ -201,7 +205,7 @@ export function HomePage() {
                   </Link>
                 </div>
               </div>
-              
+
               {/* Blur effect in the background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-xl blur-xl"></div>
             </div>
@@ -250,11 +254,34 @@ const features = [
       "Get support managing stress, maintaining focus, and balancing your academic and personal life.",
     icon: (
       <div className="wellness-icon-container">
-        <svg className="h-6 w-6 wellness-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          className="h-6 w-6 wellness-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <circle cx="12" cy="12" r="10" />
           <path className="wellness-icon-eyes" d="M8 14s1.5 2 4 2 4-2 4-2" />
-          <circle className="wellness-icon-eyes" cx="9" cy="9" r="1" fill="white" />
-          <circle className="wellness-icon-eyes" cx="15" cy="9" r="1" fill="white" />
+          <circle
+            className="wellness-icon-eyes"
+            cx="9"
+            cy="9"
+            r="1"
+            fill="white"
+          />
+          <circle
+            className="wellness-icon-eyes"
+            cx="15"
+            cy="9"
+            r="1"
+            fill="white"
+          />
         </svg>
       </div>
     ),
