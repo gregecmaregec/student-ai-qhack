@@ -173,7 +173,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <path fill="#05a6f0" d="M1 12h10v10H1z"/>
             <path fill="#ffba08" d="M12 12h10v10H12z"/>
           </svg>
-          Sign in with Microsoft
+          Continue with Microsoft
         </Button>
       </div>
 

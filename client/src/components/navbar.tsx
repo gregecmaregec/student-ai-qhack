@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useAuth } from '@/hooks/use-auth';
 import { logOut } from '@/lib/firebase';
@@ -24,6 +24,11 @@ export function Navbar() {
   const [isSubNavVisible, setIsSubNavVisible] = useState(true);
   
   const isAuthenticated = Boolean(user);
+  
+  // Function to scroll to top when navigating
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   // Handle scroll events for showing/hiding the sub-navbar
   useEffect(() => {
@@ -73,17 +78,17 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center">
+              <Link href="/" className="flex items-center" onClick={scrollToTop}>
                 <span className="font-serif text-xl text-foreground">students-ai</span>
               </Link>
               {isAuthenticated && (
                 <div className="flex ml-4 space-x-2 items-center">
-                  <Link href="/about">
+                  <Link href="/about" onClick={scrollToTop}>
                     <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
                       About
                     </Button>
                   </Link>
-                  <Link href="/app">
+                  <Link href="/app" onClick={scrollToTop}>
                     <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
                       Dashboard
                     </Button>
@@ -122,12 +127,12 @@ export function Navbar() {
                 </DropdownMenu>
               ) : (
                 <div className="flex items-center space-x-2">
-                  <Link href="/login">
+                  <Link href="/login" onClick={scrollToTop}>
                     <Button variant="ghost" size="sm" className="px-3 py-1 text-xs">
                       Log in
                     </Button>
                   </Link>
-                  <Link href="/signup">
+                  <Link href="/signup" onClick={scrollToTop}>
                     <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-primary/90 hover:bg-primary text-white">
                       Sign up
                     </Button>
@@ -148,7 +153,7 @@ export function Navbar() {
           id="sub-navbar">
           <div className="max-w-[880px] mx-auto px-4 flex justify-center sm:justify-start gap-3">
             {location !== '/' && (
-              <Link href="/">
+              <Link href="/" onClick={scrollToTop}>
                 <Button 
                   variant="outline" 
                   size="sm" 
@@ -158,7 +163,7 @@ export function Navbar() {
                 </Button>
               </Link>
             )}
-            <Link href="/about">
+            <Link href="/about" onClick={scrollToTop}>
               <Button 
                 variant="outline" 
                 size="sm" 
@@ -167,7 +172,7 @@ export function Navbar() {
                 About
               </Button>
             </Link>
-            <Link href="/features">
+            <Link href="/features" onClick={scrollToTop}>
               <Button 
                 variant="outline" 
                 size="sm" 
@@ -176,7 +181,7 @@ export function Navbar() {
                 Features
               </Button>
             </Link>
-            <Link href="/pricing">
+            <Link href="/pricing" onClick={scrollToTop}>
               <Button 
                 variant="outline" 
                 size="sm" 
