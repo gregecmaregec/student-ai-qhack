@@ -17,8 +17,14 @@ export function HomePage() {
   const mentalWellnessFeatureRef = useRef(null);
 
   useEffect(() => {
+    // Keep track of whether animation has been triggered
+    const animationTriggered = { mobile: false, desktop: false };
+    
     // Original scroll handling for mobile view
     const handleScroll = () => {
+      // If animation already triggered in mobile, do nothing
+      if (animationTriggered.mobile) return;
+      
       // Check if the user has scrolled to the end of the mobile features carousel
       const featuresSection = document.getElementById('features');
       if (featuresSection) {
@@ -28,12 +34,12 @@ export function HomePage() {
           
           // Get the wellness icon and add animation class if at the end
           const wellnessIcon = document.querySelector('.wellness-icon');
-          if (wellnessIcon) {
-            if (isAtEnd) {
-              wellnessIcon.classList.add('animate-nod');
-            } else {
-              wellnessIcon.classList.remove('animate-nod');
-            }
+          if (wellnessIcon && isAtEnd) {
+            wellnessIcon.classList.add('animate-nod');
+            // Mark animation as triggered for mobile
+            animationTriggered.mobile = true;
+            // Remove the event listener since we only need to trigger once
+            featuresCarousel?.removeEventListener('scroll', handleScroll);
           }
         }
       }
@@ -48,18 +54,21 @@ export function HomePage() {
     // Set up intersection observer for desktop view
     const observer = new IntersectionObserver(
       (entries) => {
+        // If animation already triggered in desktop, do nothing
+        if (animationTriggered.desktop) return;
+        
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // When mental wellness feature is visible, make the face nod
             const wellnessIcon = entry.target.querySelector('.wellness-icon');
             if (wellnessIcon) {
               wellnessIcon.classList.add('animate-nod');
-            }
-          } else {
-            // When it's not visible, stop the animation
-            const wellnessIcon = entry.target.querySelector('.wellness-icon');
-            if (wellnessIcon) {
-              wellnessIcon.classList.remove('animate-nod');
+              // Mark animation as triggered for desktop
+              animationTriggered.desktop = true;
+              // No need to observe anymore
+              if (entry.target) {
+                observer.unobserve(entry.target);
+              }
             }
           }
         });
@@ -350,18 +359,14 @@ const features = [
         >
           <circle cx="12" cy="12" r="10" />
           <path className="wellness-icon-eyes" d="M8 14s1.5 2 4 2 4-2 4-2" />
-          <circle
+          <path
             className="wellness-icon-eyes"
-            cx="9"
-            cy="9"
-            r="1"
+            d="M8.5 9C8.5 9 9 8.8 9.2 9C9.4 9.2 9.2 9.3 9 9.3C8.8 9.3 8.5 9 8.5 9"
             fill="white"
           />
-          <circle
+          <path
             className="wellness-icon-eyes"
-            cx="15"
-            cy="9"
-            r="1"
+            d="M15.5 9C15.5 9 16 8.8 16.2 9C16.4 9.2 16.2 9.3 16 9.3C15.8 9.3 15.5 9 15.5 9"
             fill="white"
           />
         </svg>

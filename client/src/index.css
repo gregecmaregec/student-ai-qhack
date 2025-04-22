@@ -205,7 +205,7 @@
 }
 
 .animate-nod {
-  animation: nod 1.5s ease-in-out infinite !important;
+  animation: nod 1.5s ease-in-out forwards !important;
 }
 
 /* Custom input styles to hide placeholder on focus */
