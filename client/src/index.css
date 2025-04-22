@@ -64,53 +64,57 @@
 }
 
 .dark {
-  /* Main colors - Dark mode */
-  --background: 0 0% 4%; /* Almost black for dark mode */
-  --foreground: 0 0% 98%; /* Off-white text */
+  /* Main colors - Softer Dark mode */
+  --background: 225 25% 12%; /* Soft navy blue-gray background */
+  --foreground: 220 30% 90%; /* Soft white text with slight blue tint */
   
   /* Card and Popover styles */
-  --card: 0 0% 7%; /* Slightly lighter than background */
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 98%;
+  --card: 225 25% 15%; /* Slightly lighter than background */
+  --card-foreground: 220 30% 90%;
+  --popover: 225 25% 15%;
+  --popover-foreground: 220 30% 90%;
   
   /* UI element colors */
-  --primary: 199 89% 48%; /* Same as light mode */
+  --primary: 265 89% 65%; /* Keep purple for primary */
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 12%; /* Slightly lighter than background */
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 225 25% 20%; /* Slightly lighter than background */
+  --secondary-foreground: 220 30% 90%;
   
   /* Supporting UI colors */
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
-  --accent: 0 0% 12%;
-  --accent-foreground: 0 0% 98%;
+  --muted: 225 25% 22%;
+  --muted-foreground: 220 30% 70%;
+  --accent: 265 30% 20%;
+  --accent-foreground: 220 30% 90%;
   
   /* Alert colors */
-  --destructive: 0 84% 45%; /* Darker red for dark mode */
+  --destructive: 0 70% 50%; /* Softer red for dark mode */
   --destructive-foreground: 0 0% 98%;
   
   /* Borders and focus rings */
-  --border: 0 0% 20%;
-  --input: 0 0% 20%;
-  --ring: 199 89% 48%;
+  --border: 225 25% 25%;
+  --input: 225 25% 25%;
+  --ring: 265 89% 65%;
   
-  /* Chart colors (slightly adjusted for dark mode) */
-  --chart-1: 199 89% 48%;
-  --chart-2: 150 84% 39%;
-  --chart-3: 266 83% 45%;
-  --chart-4: 12 83% 55%;
-  --chart-5: 54 89% 48%;
+  /* Chart colors (slightly adjusted for soft dark mode) */
+  --chart-1: 265 89% 65%;
+  --chart-2: 170 70% 45%;
+  --chart-3: 45 85% 60%;
+  --chart-4: 0 70% 60%;
+  --chart-5: 200 75% 60%;
   
   /* Sidebar colors */
-  --sidebar-background: 0 0% 8%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-primary: 199 89% 48%;
+  --sidebar-background: 225 25% 10%;
+  --sidebar-foreground: 220 30% 90%;
+  --sidebar-primary: 265 89% 65%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 12%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-border: 0 0% 20%;
-  --sidebar-ring: 199 89% 48%;
+  --sidebar-accent: 225 25% 18%;
+  --sidebar-accent-foreground: 220 30% 90%;
+  --sidebar-border: 225 25% 25%;
+  --sidebar-ring: 265 89% 65%;
+  
+  /* Success colors */
+  --success-light: 145 65% 50%;
+  --success-dark: 145 65% 50%;
 }
 
 @layer base {
@@ -124,7 +128,7 @@
   
   /* Light mode background overrides - using white instead of sand */
   .light-mode-overrides {
-    @apply bg-white dark:bg-[#0B0B0B];
+    @apply bg-white dark:bg-[#1a1f2e];
   }
 }
 

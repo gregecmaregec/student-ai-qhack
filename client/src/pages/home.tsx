@@ -111,7 +111,7 @@ export function HomePage() {
       <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-            <div>
+            <div className="w-full">
               <h2 className="text-3xl font-serif font-bold text-foreground sm:text-4xl">
                 AI that understands student needs
               </h2>
@@ -129,14 +129,6 @@ export function HomePage() {
                     </p>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className="mt-10 lg:mt-0 flex justify-center">
-              <div className="relative w-full max-w-lg h-64 bg-primary-100 dark:bg-primary-900/20 rounded-xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-purple-500/20 dark:from-primary-500/10 dark:to-purple-500/10"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="font-serif text-4xl font-bold text-primary/60 dark:text-primary/60">students-ai.com</div>
-                </div>
               </div>
             </div>
           </div>
