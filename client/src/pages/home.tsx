@@ -111,10 +111,10 @@ export function HomePage() {
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
           <div className="text-center">
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
-              <span className="block">Supercharge</span>
+              <span className="block">Your studies</span>
             </h1>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground text-primary/90">
-              <span className="block">your studies</span>
+              <span className="block">Supercharged</span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
               Meet Studie, world's best student-focused AI agent.

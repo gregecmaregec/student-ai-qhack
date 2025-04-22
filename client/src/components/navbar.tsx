@@ -30,10 +30,11 @@ export function Navbar() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Handle scroll events for showing/hiding the sub-navbar with debounce for smoothness
+  // Handle scroll events for showing/hiding the sub-navbar with improved smoothness
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
+    let timeout: number | null = null;
     
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
@@ -41,13 +42,24 @@ export function Navbar() {
       // Always update scrolled state immediately for better UX
       setIsScrolled(currentScrollPos > 20);
       
-      // Smooth transition for sub-navbar visibility
-      if (currentScrollPos > lastScrollY && currentScrollPos > 80) {
-        // Scrolling down - hide navbar
-        setIsSubNavVisible(false);
-      } else if (currentScrollPos < lastScrollY) {
-        // Scrolling up - show navbar
-        setIsSubNavVisible(true);
+      // Use a larger threshold to prevent small scroll changes from triggering the animation
+      const scrollDelta = Math.abs(currentScrollPos - lastScrollY);
+      
+      // Only trigger animation when significant scrolling occurs (more than 10px)
+      if (scrollDelta > 10) {
+        if (currentScrollPos > lastScrollY && currentScrollPos > 80) {
+          // Scrolling down - hide navbar with a slight delay for smoother appearance
+          // Clear any existing timeout to prevent rapid flickering
+          if (timeout) window.clearTimeout(timeout);
+          
+          timeout = window.setTimeout(() => {
+            setIsSubNavVisible(false);
+          }, 100);
+        } else if (currentScrollPos < lastScrollY) {
+          // Scrolling up - show navbar immediately
+          if (timeout) window.clearTimeout(timeout);
+          setIsSubNavVisible(true);
+        }
       }
       
       lastScrollY = currentScrollPos;
@@ -165,23 +177,23 @@ export function Navbar() {
       {/* Navigation buttons below navbar - only visible when not authenticated */}
       {!isAuthenticated && (
         <div 
-          className={`bg-background py-2 shadow-sm sticky top-16 z-40 transition-all duration-300 ${
+          className={`bg-background py-2 shadow-sm sticky top-16 z-40 transition-all duration-500 ${
             isSubNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
           }`} 
           id="sub-navbar">
           <div className="max-w-[880px] mx-auto px-4">
             <div className="flex justify-center sm:justify-start gap-3">
-              {location !== '/' && (
+              <div className={`${location === '/' ? 'hidden' : 'block'}`}>
                 <Link href="/" onClick={scrollToTop}>
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none animate-in fade-in-0 zoom-in-95 duration-300"
+                    className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none"
                   >
                     Home
                   </Button>
                 </Link>
-              )}
+              </div>
               <Link href="/about" onClick={scrollToTop}>
                 <Button 
                   variant="outline" 
