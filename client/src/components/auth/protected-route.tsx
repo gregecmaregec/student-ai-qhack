@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import { useLocation, useNavigate } from 'wouter';
+import { useLocation } from 'wouter';
 import { useAuth } from '@/hooks/use-auth';
 
 interface ProtectedRouteProps {
