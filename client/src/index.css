@@ -208,3 +208,10 @@
   animation: nod 1.5s ease-in-out infinite !important;
 }
 
+/* Custom input styles to hide placeholder on focus */
+input[type="password"]:focus::placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+

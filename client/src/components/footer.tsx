@@ -1,5 +1,4 @@
 import { Link } from 'wouter';
-import { Mail } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -40,7 +39,6 @@ export function Footer() {
         
         {/* Contact information */}
         <div className="mt-6 flex justify-center items-center">
-          <Mail className="h-4 w-4 text-primary mr-2" />
           <a href="mailto:info@students-ai.com" className="text-sm text-primary hover:text-primary-dark transition-colors duration-200">
             info@students-ai.com
           </a>
