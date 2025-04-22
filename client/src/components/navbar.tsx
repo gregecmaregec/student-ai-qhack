@@ -135,30 +135,30 @@ export function Navbar() {
         <div className="px-2 pt-2 pb-3 space-y-1">
           {!isAuthenticated && (
             <>
-              <Link href="/features">
-                <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">Features</a>
+              <Link href="/features" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">
+                Features
               </Link>
-              <Link href="/pricing">
-                <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">Pricing</a>
+              <Link href="/pricing" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">
+                Pricing
               </Link>
             </>
           )}
-          <Link href="/about">
-            <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">About</a>
+          <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">
+            About
           </Link>
           {isAuthenticated && (
-            <Link href="/app">
-              <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">Dashboard</a>
+            <Link href="/app" className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">
+              Dashboard
             </Link>
           )}
 
           {!isAuthenticated && (
             <div className="pt-4 pb-3 border-t border-border">
-              <Link href="/login">
-                <a className="block w-full text-center px-4 py-2 text-base font-medium text-foreground hover:text-primary transition-all">Log in</a>
+              <Link href="/login" className="block w-full text-center px-4 py-2 text-base font-medium text-foreground hover:text-primary transition-all">
+                Log in
               </Link>
-              <Link href="/signup">
-                <a className="block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90 transition-all">Sign up</a>
+              <Link href="/signup" className="block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90 transition-all">
+                Sign up
               </Link>
             </div>
           )}
