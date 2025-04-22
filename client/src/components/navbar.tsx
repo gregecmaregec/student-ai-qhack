@@ -30,27 +30,45 @@ export function Navbar() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Handle scroll events for showing/hiding the sub-navbar
+  // Handle scroll events for showing/hiding the sub-navbar with debounce for smoothness
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      const isScrollingDown = prevScrollPos < currentScrollPos;
-      const isScrollingUp = prevScrollPos > currentScrollPos;
       
-      setIsScrolled(currentScrollPos > 50);
+      // Always update scrolled state immediately for better UX
+      setIsScrolled(currentScrollPos > 20);
       
-      if (isScrollingDown && currentScrollPos > 150) {
+      // Smooth transition for sub-navbar visibility
+      if (currentScrollPos > lastScrollY && currentScrollPos > 80) {
+        // Scrolling down - hide navbar
         setIsSubNavVisible(false);
-      } else if (isScrollingUp) {
+      } else if (currentScrollPos < lastScrollY) {
+        // Scrolling up - show navbar
         setIsSubNavVisible(true);
       }
       
-      setPrevScrollPos(currentScrollPos);
+      lastScrollY = currentScrollPos;
+      ticking = false;
     };
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
+    // Main scroll event handler with requestAnimationFrame for smoother performance
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -74,7 +92,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-background backdrop-blur-sm transition-colors duration-300">
+      <nav className="sticky top-0 z-50 bg-background backdrop-blur-sm transition-all duration-300 transform">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">

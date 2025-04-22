@@ -169,23 +169,23 @@ export function HomePage() {
       {/* CTA Section */}
       <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary-600 via-primary to-purple-500 dark:from-primary-800 dark:via-primary-700 dark:to-purple-700">
+          <div className="rounded-xl shadow-md overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
             <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20 relative">
               <div className="lg:self-center relative z-10">
-                <h2 className="text-3xl font-serif text-white sm:text-4xl">
-                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100 dark:from-white dark:to-purple-100">
+                <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
+                  <span className="block">
                     Ready to transform your studying?
                   </span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-white/90">
+                <p className="mt-4 text-lg leading-6 text-muted-foreground">
                   Join students-ai.com today for free
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Link href="/signup">
                     <Button
                       size="lg"
-                      variant="secondary"
-                      className="w-full sm:w-auto bg-white hover:bg-white/90 text-primary hover:text-primary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg rounded-md border-none"
+                      variant="default"
+                      className="w-full sm:w-auto bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
                     >
                       Get started for free
                     </Button>
@@ -194,7 +194,7 @@ export function HomePage() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="w-full sm:w-auto border-white text-white hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
+                      className="w-full sm:w-auto border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
                     >
                       Learn more
                     </Button>
@@ -202,14 +202,8 @@ export function HomePage() {
                 </div>
               </div>
               
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 rounded-full bg-purple-500/20 blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 rounded-full bg-primary-300/20 blur-3xl"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-white/5 blur-2xl opacity-30"></div>
-              
-              {/* Floating elements */}
-              <div className="hidden lg:block absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-primary-300/20 to-purple-400/20 rounded-lg backdrop-blur-sm rotate-12 animate-pulse"></div>
-              <div className="hidden lg:block absolute bottom-10 right-20 w-16 h-16 bg-gradient-to-br from-primary-300/20 to-purple-400/20 rounded-full backdrop-blur-sm animate-pulse"></div>
+              {/* Blur effect in the background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-xl blur-xl"></div>
             </div>
           </div>
         </div>
@@ -254,7 +248,16 @@ const features = [
     title: "Mental Wellness",
     description:
       "Get support managing stress, maintaining focus, and balancing your academic and personal life.",
-    icon: <Smile className="h-6 w-6 text-white" />,
+    icon: (
+      <div className="wellness-icon-container">
+        <svg className="h-6 w-6 wellness-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path className="wellness-icon-eyes" d="M8 14s1.5 2 4 2 4-2 4-2" />
+          <circle className="wellness-icon-eyes" cx="9" cy="9" r="1" fill="white" />
+          <circle className="wellness-icon-eyes" cx="15" cy="9" r="1" fill="white" />
+        </svg>
+      </div>
+    ),
   },
 ];
 

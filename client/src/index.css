@@ -178,3 +178,29 @@
   }
 }
 
+/* Smiley icon animation */
+@keyframes nod {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(2px) rotate(8deg); }
+  50% { transform: translateY(4px) rotate(0); }
+  75% { transform: translateY(0) rotate(-8deg); }
+}
+
+.wellness-icon {
+  animation: nod 3s ease-in-out 0.5s;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.wellness-icon-eyes {
+  transition: all 0.5s ease;
+}
+
+.wellness-icon-container:hover .wellness-icon {
+  animation: nod 1.5s ease-in-out infinite;
+}
+
+.wellness-icon-container:hover .wellness-icon-eyes {
+  fill: #41a5da !important;
+}
+
