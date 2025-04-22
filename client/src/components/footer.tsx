@@ -1,39 +1,93 @@
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 
 export function Footer() {
+  const [_, navigate] = useLocation();
+
+  // Function to handle link click - navigate and scroll to top
+  const handleLinkClick = (path: string) => {
+    navigate(path);
+    // Scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <footer className="bg-white dark:bg-[#1E1E1E] border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-[880px] mx-auto py-10 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
           <div className="px-5 py-2">
-            <Link href="/about" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+            <a 
+              href="/about" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/about');
+              }}
+              className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200"
+            >
               About
-            </Link>
+            </a>
           </div>
           <div className="px-5 py-2">
-            <Link href="/features" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+            <a 
+              href="/features" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/features');
+              }}
+              className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200"
+            >
               Features
-            </Link>
+            </a>
           </div>
           <div className="px-5 py-2">
-            <Link href="/careers" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-              Careers
-            </Link>
+            <a 
+              href="/careers" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/careers');
+              }}
+              className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200"
+            >
+              Opportunities
+            </a>
           </div>
           <div className="px-5 py-2">
-            <Link href="/press" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+            <a 
+              href="/press" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/press');
+              }}
+              className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200"
+            >
               Press
-            </Link>
+            </a>
           </div>
           <div className="px-5 py-2">
-            <Link href="/privacy" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+            <a 
+              href="/privacy" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/privacy');
+              }}
+              className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200"
+            >
               Privacy
-            </Link>
+            </a>
           </div>
           <div className="px-5 py-2">
-            <Link href="/terms" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+            <a 
+              href="/terms" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/terms');
+              }}
+              className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200"
+            >
               Terms
-            </Link>
+            </a>
           </div>
         </nav>
         

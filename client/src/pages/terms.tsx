@@ -125,7 +125,7 @@ export function TermsPage() {
               className="inline-flex items-center"
             >
               <Mail className="h-4 w-4 mr-2" />
-              Contact Legal Team
+              Contact us with your concerns
             </Button>
           </div>
         </div>
