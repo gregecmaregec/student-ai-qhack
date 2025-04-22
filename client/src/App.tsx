@@ -10,11 +10,16 @@ import SignupPage from "@/pages/signup";
 import FeaturesPage from "@/pages/features";
 import AboutPage from "@/pages/about";
 import PricingPage from "@/pages/pricing";
+import PrivacyPage from "@/pages/privacy";
+import TermsPage from "@/pages/terms";
+import CareersPage from "@/pages/careers";
+import PressPage from "@/pages/press";
 import DashboardPage from "@/pages/dashboard";
 import AppPage from "@/pages/app";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider, AuthContext } from "@/contexts/auth-context";
 import ProtectedRoute from "./components/auth/protected-route";
+import CookieConsent from "@/components/cookie-consent";
 import { useContext } from "react";
 
 // Landing routes are only accessible for non-authenticated users
@@ -50,6 +55,18 @@ function Router() {
       <Route path="/pricing">
         <LandingRoute component={PricingPage} />
       </Route>
+      <Route path="/privacy">
+        <PrivacyPage />
+      </Route>
+      <Route path="/terms">
+        <TermsPage />
+      </Route>
+      <Route path="/careers">
+        <CareersPage />
+      </Route>
+      <Route path="/press">
+        <PressPage />
+      </Route>
       <Route path="/dashboard">
         <ProtectedRoute>
           <DashboardPage />
@@ -73,6 +90,7 @@ function App() {
           <TooltipProvider>
             <Toaster />
             <Router />
+            <CookieConsent />
           </TooltipProvider>
         </ThemeProvider>
       </AuthProvider>
