@@ -147,7 +147,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <Button 
           type="button" 
           variant="outline"
-          className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 shadow-sm transition-all duration-200" 
+          className="w-full bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/15 hover:to-purple-500/15 text-foreground border border-primary/20 hover:border-primary/30 shadow-sm transition-all duration-200 hover:-translate-y-0.5" 
           onClick={handleGoogleSignIn}
           disabled={isLoading}
         >
@@ -163,7 +163,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <Button 
           type="button" 
           variant="outline"
-          className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 shadow-sm transition-all duration-200" 
+          className="w-full bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/15 hover:to-purple-500/15 text-foreground border border-primary/20 hover:border-primary/30 shadow-sm transition-all duration-200 hover:-translate-y-0.5" 
           onClick={handleMicrosoftSignIn}
           disabled={isLoading}
         >
@@ -252,7 +252,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           
           <Button 
             type="submit" 
-            className="w-full h-11 text-base shadow-md bg-gradient-to-br from-primary-400 to-purple-500 hover:from-primary-500 hover:to-purple-600 text-white border-none transition-all duration-200" 
+            className="w-full h-11 text-base shadow-md bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 text-white border-none transition-all duration-300 rounded-md" 
             disabled={isLoading}
           >
             {isLoading ? (
