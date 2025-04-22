@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 export function MainLayout({ children, withFooter = true }: MainLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5F5DC] dark:bg-[#121212] transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#121212] transition-colors duration-300">
       <Navbar />
       <main className="flex-1">{children}</main>
       {withFooter && <Footer />}

@@ -11,45 +11,33 @@ export function Footer() {
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/blog">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                Blog
-              </a>
+            <Link href="/blog" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Blog
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/jobs">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                Jobs
-              </a>
+            <Link href="/jobs" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Jobs
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/press">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                Press
-              </a>
+            <Link href="/press" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Press
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/partners">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                Partners
-              </a>
+            <Link href="/partners" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Partners
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/privacy">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                Privacy
-              </a>
+            <Link href="/privacy" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Privacy
             </Link>
           </div>
           <div className="px-5 py-2">
-            <Link href="/terms">
-              <a className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
-                Terms
-              </a>
+            <Link href="/terms" className="text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition-colors duration-200">
+              Terms
             </Link>
           </div>
         </nav>
