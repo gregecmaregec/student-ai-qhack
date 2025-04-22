@@ -47,26 +47,35 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#F5F5DC]/90 dark:bg-[#121212]/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <nav className="sticky top-0 z-50 bg-background backdrop-blur-sm border-b border-border transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <svg className="h-8 w-8 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2v6m0 12V11m0 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
               </svg>
-              <span className="ml-2 font-serif text-xl font-medium text-gray-900 dark:text-white">students-ai</span>
+              <span className="ml-2 font-serif text-xl font-medium text-foreground">students-ai</span>
             </Link>
             <div className="hidden sm:ml-6 sm:flex space-x-4">
-              <Link href="/features">
-                <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Features</a>
-              </Link>
-              <Link href="/pricing">
-                <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Pricing</a>
-              </Link>
+              {!isAuthenticated && (
+                <>
+                  <Link href="/features">
+                    <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">Features</a>
+                  </Link>
+                  <Link href="/pricing">
+                    <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">Pricing</a>
+                  </Link>
+                </>
+              )}
               <Link href="/about">
-                <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">About</a>
+                <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">About</a>
               </Link>
+              {isAuthenticated && (
+                <Link href="/app">
+                  <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">Dashboard</a>
+                </Link>
+              )}
             </div>
           </div>
           <div className="flex items-center space-x-4">
@@ -76,9 +85,9 @@ export function Navbar() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                    <Avatar className="h-10 w-10">
+                    <Avatar className="h-10 w-10 border-2 border-primary/20">
                       <AvatarImage src={profile?.photoUrl || undefined} alt={profile?.displayName || 'User'} />
-                      <AvatarFallback>{getInitials(profile?.displayName)}</AvatarFallback>
+                      <AvatarFallback className="bg-primary/10 text-primary">{getInitials(profile?.displayName)}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
@@ -101,16 +110,16 @@ export function Navbar() {
             ) : (
               <div className="hidden md:flex items-center space-x-2">
                 <Link href="/login">
-                  <a className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Log in</a>
+                  <a className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-all">Log in</a>
                 </Link>
                 <Link href="/signup">
-                  <a className="px-4 py-2 rounded-md text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-600 transition-all">Sign up</a>
+                  <a className="px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition-all">Sign up</a>
                 </Link>
               </div>
             )}
 
             {/* Mobile menu button */}
-            <button onClick={toggleMenu} className="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+            <button onClick={toggleMenu} className="md:hidden p-2 rounded-md text-foreground hover:bg-muted transition-all">
               {isOpen ? (
                 <X className="h-6 w-6" />
               ) : (
@@ -122,25 +131,34 @@ export function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-[#F5F5DC] dark:bg-[#1E1E1E] border-b border-gray-200 dark:border-gray-800 transition-colors duration-300`}>
+      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-background border-b border-border transition-colors duration-300`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link href="/features">
-            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Features</a>
-          </Link>
-          <Link href="/pricing">
-            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Pricing</a>
-          </Link>
+          {!isAuthenticated && (
+            <>
+              <Link href="/features">
+                <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">Features</a>
+              </Link>
+              <Link href="/pricing">
+                <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">Pricing</a>
+              </Link>
+            </>
+          )}
           <Link href="/about">
-            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">About</a>
+            <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">About</a>
           </Link>
+          {isAuthenticated && (
+            <Link href="/app">
+              <a className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-all">Dashboard</a>
+            </Link>
+          )}
 
           {!isAuthenticated && (
-            <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
+            <div className="pt-4 pb-3 border-t border-border">
               <Link href="/login">
-                <a className="block w-full text-center px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Log in</a>
+                <a className="block w-full text-center px-4 py-2 text-base font-medium text-foreground hover:text-primary transition-all">Log in</a>
               </Link>
               <Link href="/signup">
-                <a className="block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-600 transition-all">Sign up</a>
+                <a className="block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90 transition-all">Sign up</a>
               </Link>
             </div>
           )}
