@@ -53,20 +53,7 @@ export function HomePage() {
               </div>
             </div>
             
-            {/* Scroll down animation */}
-            <div className="flex justify-center mt-16">
-              <a 
-                href="#features" 
-                className="text-muted-foreground flex flex-col items-center animate-bounce"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <span className="text-sm mb-1">Scroll Down</span>
-                <ChevronDown className="h-5 w-5" />
-              </a>
-            </div>
+            <div className="mt-16"></div>
           </div>
         </div>
 
@@ -147,14 +134,7 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center mt-6 space-x-2">
-                {features.map((_, index) => (
-                  <div 
-                    key={index} 
-                    className="w-2 h-2 rounded-full bg-primary/30"
-                  />
-                ))}
-              </div>
+
             </div>
           </div>
         </div>
@@ -163,7 +143,7 @@ export function HomePage() {
       {/* Benefits Section */}
       <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+          <div className="lg:grid lg:grid-cols-1 lg:gap-8 lg:items-center">
             <div className="w-full">
               <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
                 AI that understands student needs
@@ -180,17 +160,6 @@ export function HomePage() {
                     <p className="ml-3 text-base text-foreground">{benefit}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className="mt-10 lg:mt-0 relative">
-              <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 p-8 rounded-xl shadow-md">
-                <div className="relative z-10 space-y-6">
-                  <h3 className="text-xl font-medium text-foreground">We focus on simplicity</h3>
-                  <p className="text-muted-foreground">
-                    Simplicity is the ultimate form of sophistication. Our intuitive interface puts powerful AI capabilities at your fingertips without unnecessary complexity.
-                  </p>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-xl blur-xl"></div>
               </div>
             </div>
           </div>
