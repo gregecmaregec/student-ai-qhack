@@ -69,16 +69,11 @@ export function SignupPage() {
             <div className="text-center md:text-left space-y-2">
               <h1 className="text-3xl font-bold">Create your account</h1>
               <p className="text-muted-foreground">
-                Start your academic journey with students-ai.com
+                Start your journey with students-ai.com
               </p>
             </div>
             
-            <div className="rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/5 p-4 mb-6 border border-primary/20">
-              <p className="text-sm text-foreground font-medium flex items-center">
-                <Sparkles className="h-4 w-4 mr-2 text-primary" />
-                Free account with all essential features
-              </p>
-            </div>
+
             
             <AuthForm mode="signup" />
             
@@ -104,6 +99,12 @@ export function SignupPage() {
                     Log in to your account
                   </a>
                 </Link>
+                <div className="rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/5 p-4 mb-6 border border-primary/20">
+                  <p className="text-sm text-foreground font-medium flex items-center">
+                    <Sparkles className="h-4 w-4 mr-2 text-primary" />
+                    Free account with all essential features
+                  </p>
+                </div>
                 <p className="text-xs text-muted-foreground/70 mt-3">
                   By creating an account, you agree to our Terms of Service and Privacy Policy.
                 </p>

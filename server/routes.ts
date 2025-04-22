@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertUserSchema, insertTaskSchema, insertAssistantSettingsSchema } from "@shared/schema";
 import { z } from "zod";
+import { getAIResponse, PerplexityRequest } from "./perplexity";
 
 // Firebase Admin initialization for verifying tokens
 import { initializeApp, cert } from "firebase-admin/app";
@@ -230,6 +231,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Delete task error:", error);
       res.status(500).json({ message: "Failed to delete task" });
+    }
+  });
+
+  // AI Help endpoint - available both for authenticated and non-authenticated users
+  app.post("/api/ai-help", async (req, res) => {
+    try {
+      // Validate the request
+      const requestSchema = z.object({
+        query: z.string().min(2).max(500),
+        context: z.string().optional(),
+        page: z.string().optional()
+      });
+      
+      const validatedRequest = requestSchema.parse(req.body);
+      
+      // Construct a context-aware request
+      const perplexityRequest: PerplexityRequest = {
+        query: validatedRequest.query,
+        context: validatedRequest.page 
+          ? `User is on page: ${validatedRequest.page}. ${validatedRequest.context || ''}`
+          : validatedRequest.context
+      };
+      
+      // Get AI response
+      const response = await getAIResponse(perplexityRequest);
+      
+      res.json(response);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ 
+          message: "Invalid input", 
+          errors: error.errors 
+        });
+      }
+      
+      console.error("AI help error:", error);
+      res.status(500).json({ message: "Failed to get AI help" });
     }
   });
 
