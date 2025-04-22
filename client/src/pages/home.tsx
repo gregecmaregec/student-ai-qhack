@@ -149,7 +149,7 @@ export function HomePage() {
                     animate={{ scale: 1 }}
                     transition={{ delay: 1, duration: 0.4, type: "spring" }}
                   >
-                    <Zap className="h-5 w-2 sm:h-6 sm:w-2.5 md:h-7 md:w-3 text-primary fill-primary" strokeWidth={1} />
+                    <Zap className="h-7 w-2 sm:h-8 sm:w-2 md:h-10 md:w-2.5 text-primary fill-primary" strokeWidth={1} />
                   </motion.div>
                   Supercharged
                 </motion.span>
