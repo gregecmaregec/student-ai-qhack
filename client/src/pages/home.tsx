@@ -84,7 +84,7 @@ export function HomePage() {
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((feature, index) => (
                 <div key={index} className="pt-6">
-                  <div className="flow-root rounded-lg bg-[#F7EFE6] dark:bg-[#121212] px-6 pb-8 h-full border border-gray-200 dark:border-gray-800 transition-all duration-300">
+                  <div className="flow-root rounded-lg bg-white dark:bg-[#1E1E1E] px-6 pb-8 h-full border border-gray-200 dark:border-gray-800 transition-all duration-300">
                     <div className="-mt-6">
                       <div>
                         <span className="inline-flex items-center justify-center p-3 bg-primary-600 dark:bg-primary-700 rounded-md shadow-lg">
