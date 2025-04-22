@@ -60,20 +60,20 @@ export function Navbar() {
             <div className="hidden sm:ml-6 sm:flex space-x-4">
               {!isAuthenticated && (
                 <>
-                  <Link href="/features">
-                    <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">Features</a>
+                  <Link href="/features" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">
+                    Features
                   </Link>
-                  <Link href="/pricing">
-                    <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">Pricing</a>
+                  <Link href="/pricing" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">
+                    Pricing
                   </Link>
                 </>
               )}
-              <Link href="/about">
-                <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">About</a>
+              <Link href="/about" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">
+                About
               </Link>
               {isAuthenticated && (
-                <Link href="/app">
-                  <a className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">Dashboard</a>
+                <Link href="/app" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-all">
+                  Dashboard
                 </Link>
               )}
             </div>
@@ -109,11 +109,11 @@ export function Navbar() {
               </DropdownMenu>
             ) : (
               <div className="hidden md:flex items-center space-x-2">
-                <Link href="/login">
-                  <a className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-all">Log in</a>
+                <Link href="/login" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-all">
+                  Log in
                 </Link>
-                <Link href="/signup">
-                  <a className="px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition-all">Sign up</a>
+                <Link href="/signup" className="px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition-all">
+                  Sign up
                 </Link>
               </div>
             )}

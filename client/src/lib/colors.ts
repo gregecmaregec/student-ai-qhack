@@ -22,7 +22,7 @@ export const colors = {
   
   // Main backgrounds
   background: {
-    light: '#F7EFE6', // Light mode background - requested by client
+    light: '#ffffff', // Light mode background - clean white
     dark: '#0B0B0B', // Dark mode deep background
     paper: {
       light: '#ffffff',
@@ -33,7 +33,7 @@ export const colors = {
       dark: '#121212',
     },
     elevated: {
-      light: '#F7EFE6',
+      light: '#ffffff',
       dark: '#262626',
     },
   },

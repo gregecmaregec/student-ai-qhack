@@ -12,25 +12,25 @@
 
 :root {
   /* Main colors - Light mode */
-  --background: 33 55% 94%; /* F7EFE6 as requested */
+  --background: 0 0% 100%; /* Pure white */
   --foreground: 0 0% 4%; /* Near black for text */
   
   /* Card and Popover styles */
-  --card: 0 0% 100%; /* White cards on sand background */
+  --card: 0 0% 100%; /* White cards */
   --card-foreground: 0 0% 4%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 4%;
   
   /* UI element colors */
-  --primary: 199 89% 48%; /* Vibrant blue */
+  --primary: 265 89% 65%; /* Vibrant purple */
   --primary-foreground: 0 0% 100%;
-  --secondary: 33 55% 94%; /* Same as background */
+  --secondary: 0 0% 98%; /* Very light gray */
   --secondary-foreground: 0 0% 4%;
   
   /* Supporting UI colors */
-  --muted: 33 40% 96%; /* Slightly lighter than background */
+  --muted: 220 20% 98%; /* Very light blue-gray */
   --muted-foreground: 0 0% 45%;
-  --accent: 33 80% 98%; /* Very light accent */
+  --accent: 267 100% 97%; /* Very light purple accent */
   --accent-foreground: 0 0% 4%;
   
   /* Alert colors */
