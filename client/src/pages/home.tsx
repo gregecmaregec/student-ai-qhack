@@ -141,8 +141,8 @@ export function HomePage() {
               <div className="mb-2 sm:mb-0">
                 <Link href="/signup">
                   <Button
-                    size="default"
-                    className="w-full px-5 py-2 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
+                    size="sm"
+                    className="w-full px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
                   >
                     Get Started
                   </Button>
@@ -151,9 +151,9 @@ export function HomePage() {
               <div>
                 <Link href="/features">
                   <Button
-                    size="default"
+                    size="sm"
                     variant="outline"
-                    className="w-full px-5 py-2 text-sm bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
+                    className="w-full px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
                   >
                     Learn More
                   </Button>
@@ -287,18 +287,18 @@ export function HomePage() {
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <Link href="/signup">
                     <Button
-                      size="default"
+                      size="sm"
                       variant="default"
-                      className="w-full sm:w-auto px-5 py-2 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-sm hover:shadow-primary/10 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
+                      className="w-full sm:w-auto px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-sm hover:shadow-primary/10 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
                     >
                       Get started free
                     </Button>
                   </Link>
                   <Link href="/features">
                     <Button
-                      size="default"
+                      size="sm"
                       variant="outline"
-                      className="w-full sm:w-auto px-5 py-2 text-sm border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
+                      className="w-full sm:w-auto px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
                     >
                       Learn more
                     </Button>
