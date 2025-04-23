@@ -343,10 +343,10 @@ const features = [
     icon: <Book className="h-6 w-6 text-white" />,
   },
   {
-    title: "Study Tools & Practice",
+    title: "Group Project Manager",
     description:
-      "Generate flash cards and exam-like questions that match your course material for effective preparation.",
-    icon: <FileText className="h-6 w-6 text-white" />,
+      "Coordinate group projects with task distribution, progress tracking, and communication tools.",
+    icon: <Users className="h-6 w-6 text-white" />,
   },
   {
     title: "Mental Wellness",

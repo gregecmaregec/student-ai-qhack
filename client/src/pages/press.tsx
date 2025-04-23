@@ -91,6 +91,100 @@ export function PressPage() {
         </div>
       </div>
 
+      {/* Press Contact */}
+      <div className="bg-primary/5 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif text-2xl font-medium text-gray-900 dark:text-white">Media Inquiries</h2>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+              For press inquiries, interview requests, or additional information, please contact our press team.
+            </p>
+            <div className="mt-6 inline-flex items-center justify-center">
+              <Mail className="h-5 w-5 text-primary mr-2" />
+              <a href="mailto:press@students-ai.com" className="text-primary hover:text-primary-dark hover:underline">
+                press@students-ai.com
+              </a>
+            </div>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              Response time: within 24 hours (weekdays)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Press Kit */}
+      <div className="bg-white dark:bg-gray-900 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Press Kit</h2>
+              <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Download our media assets for press coverage.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary/10 p-3 rounded-lg mr-3">
+                    <FileText className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-xl font-medium text-gray-900 dark:text-white">Fact Sheet</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  Key information about students-ai.com, our mission, and impact metrics.
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Download PDF
+                </Button>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary/10 p-3 rounded-lg mr-3">
+                    <Award className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-xl font-medium text-gray-900 dark:text-white">Logo Pack</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  High-resolution logos in various formats (PNG, SVG, EPS).
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Download ZIP
+                </Button>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary/10 p-3 rounded-lg mr-3">
+                    <AlignLeft className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-xl font-medium text-gray-900 dark:text-white">Founder Bios</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  Biographies and high-resolution photos of our founding team.
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Download PDF
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Press Releases */}
       <div className="bg-gray-50 dark:bg-gray-800 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

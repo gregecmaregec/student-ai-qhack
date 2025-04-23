@@ -54,7 +54,74 @@ export function FeaturesPage() {
           ))}
         </div>
 
-        
+        <div className="bg-white dark:bg-[#121212] rounded-xl p-8 md:p-12 mt-16 transition-colors duration-300 border border-gray-200 dark:border-gray-800">
+          <div className="text-center mb-8">
+            <h2 className="font-serif text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Compare Plans
+            </h2>
+            <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+              Choose the plan that fits your needs. Start with our free tier and
+              upgrade as you grow.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {plans.map((plan, index) => (
+              <div
+                key={index}
+                className={`bg-white dark:bg-[#1E1E1E] rounded-lg p-6 shadow-md transition-all duration-300 border ${
+                  plan.popular
+                    ? "border-primary-500 dark:border-primary-400 ring-2 ring-primary-500 dark:ring-primary-400 relative"
+                    : "border-gray-200 dark:border-gray-800"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
+                    Most Popular
+                  </div>
+                )}
+
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  {plan.name}
+                </h3>
+                <div className="mb-4">
+                  <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                    ${plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className="text-gray-500 dark:text-gray-400">
+                      /{plan.period}
+                    </span>
+                  )}
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  {plan.description}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                      <span className="text-gray-700 dark:text-gray-300">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  className={`w-full ${
+                    plan.popular
+                      ? "bg-primary-600 hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700"
+                      : ""
+                  }`}
+                  variant={plan.popular ? "default" : "outline"}
+                >
+                  {plan.price === "0" ? "Get Started" : "Subscribe"}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-16 text-center">
           <h2 className="font-serif text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -128,30 +195,6 @@ const features = [
       "Interactive learning through guided questions",
       "Visual aids and diagrams for better comprehension",
       "Practice problems with step-by-step solutions",
-    ],
-  },
-  {
-    title: "Flashcard Generation",
-    description:
-      "Create effective flashcards automatically from your study materials and notes.",
-    icon: <FileText className="h-6 w-6" />,
-    benefits: [
-      "AI-powered extraction of key concepts",
-      "Smart spacing for optimal retention",
-      "Custom card templates for different subjects",
-      "Progress tracking and review suggestions",
-    ],
-  },
-  {
-    title: "Exam-like Quizzes",
-    description:
-      "Practice with AI-generated quizzes that mirror real exam formats and difficulty.",
-    icon: <Book className="h-6 w-6" />,
-    benefits: [
-      "Questions based on your study materials",
-      "Multiple question formats (MCQ, short answer, etc.)",
-      "Difficulty adaptation based on performance",
-      "Detailed explanations for each answer",
     ],
   },
 ];

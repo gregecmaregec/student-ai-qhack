@@ -169,7 +169,11 @@ export function AboutPage() {
                 </Button>
               </Link>
               <Link href="/signup">
-                <Button size="lg" variant="secondary">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-white border-white hover:bg-primary-800"
+                >
                   <GraduationCap className="mr-2 h-5 w-5" />
                   Try students-ai.com
                 </Button>
