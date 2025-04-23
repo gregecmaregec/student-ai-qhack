@@ -13,7 +13,7 @@ export async function queryStudentsAI(query: string): Promise<string> {
   try {
     // The actual StudentsAI API call
     const response = await axios.post<StudentsAIResponse>(
-      'http://api.students-ai.com/api/query',
+      'https://api.students-ai.com/api/query',
       { query }
     );
     
