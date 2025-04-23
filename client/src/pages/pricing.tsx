@@ -130,25 +130,6 @@ export function PricingPage() {
           </div>
         </div>
 
-        {/* FAQ Section - simplified */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-serif font-bold text-center text-gray-900 dark:text-white mb-6">
-            FAQs
-          </h2>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {faqs.slice(0, 4).map((faq, index) => (
-              <div key={index} className="bg-white dark:bg-[#121212] rounded-lg p-4 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
-                <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                  {faq.question}
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-300">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* CTA Section - simplified */}
         <div className="mt-12 text-center">
@@ -158,12 +139,7 @@ export function PricingPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-4">
             <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
               <Button className="px-5 py-2">
-                Try for Free
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button variant="outline" className="px-5 py-2">
-                Contact Sales
+                Chat with Studie
               </Button>
             </Link>
           </div>
@@ -284,30 +260,6 @@ const featureComparison = [
 ];
 
 const faqs = [
-  {
-    question: 'How do credits work?',
-    answer: 'Monthly credits can be used for any AI model offered. Different models cost different amounts of credits based on their processing power and capabilities.'
-  },
-  {
-    question: 'What happens when I run out of credits?',
-    answer: 'When you run out of credits, you can either wait until your next billing cycle or purchase additional credits separately. Free users are limited to 5 uses per day regardless of credits.'
-  },
-  {
-    question: 'What is the 22% API markup?',
-    answer: 'For developers using our API, there is a 22% markup on the base token price. This covers our infrastructure, API maintenance, and support costs for developers.'
-  },
-  {
-    question: 'Can I switch between plans?',
-    answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes to your billing will be prorated based on the time remaining in your current billing cycle.'
-  },
-  {
-    question: 'Do unused credits roll over?',
-    answer: 'No, credits do not roll over to the next month. Each billing cycle provides a fresh allocation of credits as specified in your plan.'
-  },
-  {
-    question: 'Can I cancel my subscription?',
-    answer: 'Yes, you can cancel your subscription at any time. You\'ll continue to have access to your paid features until the end of your current billing period.'
-  }
 ];
 
 export default PricingPage;
