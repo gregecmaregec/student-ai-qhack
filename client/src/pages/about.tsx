@@ -12,7 +12,20 @@ import {
   Linkedin,
 } from "lucide-react";
 
-// No founder images available yet
+// Define types for team members
+type TeamMember = {
+  name: string;
+  initials: string;
+  image?: string;
+  role: string;
+  bio: string;
+  social: {
+    name: string;
+    url: string;
+    icon: React.ReactNode;
+  }[];
+};
+
 export function AboutPage() {
   return (
     <MainLayout>
@@ -206,11 +219,11 @@ const values = [
   },
 ];
 
-const team = [
+const team: TeamMember[] = [
   {
     name: "Gregor Mihelač",
     initials: "GM",
-    image: null,
+    image: undefined,
     role: "Co-Founder",
     bio: "AI and education specialist with a vision to transform how students learn through technology.",
     social: [

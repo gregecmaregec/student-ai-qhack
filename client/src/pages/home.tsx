@@ -138,11 +138,11 @@ export function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-2 sm:mb-0">
+              <div className="mb-0">
                 <Link href="/signup">
                   <Button
                     size="sm"
-                    className="w-full px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
+                    className="w-full px-5 py-2.5 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 active:scale-95 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-full"
                   >
                     Get Started
                   </Button>
@@ -153,7 +153,7 @@ export function HomePage() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="w-full px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
+                    className="w-full px-5 py-2.5 text-sm bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none active:scale-95 hover:-translate-y-1 transition-all duration-300 rounded-full"
                   >
                     Learn More
                   </Button>
@@ -291,7 +291,7 @@ export function HomePage() {
                     <Button
                       size="sm"
                       variant="default"
-                      className="w-full sm:w-auto px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-sm hover:shadow-primary/10 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
+                      className="w-full sm:w-auto px-6 py-3 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 active:scale-95 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-full border-none"
                     >
                       Try for free
                     </Button>
