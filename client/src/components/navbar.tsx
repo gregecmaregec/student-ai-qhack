@@ -162,14 +162,14 @@ export function Navbar() {
                   <div className="flex flex-col items-center">
                     <Link href="/about" onClick={scrollToTop}>
                       <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                        <span className="relative left-[calc(var(--logo-center-offset,0px))]">About</span>
+                        <span className="relative">About</span>
                       </Button>
                     </Link>
                   </div>
                   <div className="flex flex-col items-center">
                     <Link href="/app" onClick={scrollToTop}>
                       <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                        <span className="relative left-[calc(var(--logo-center-offset,0px))]">Dashboard</span>
+                        <span className="relative">Dashboard</span>
                       </Button>
                     </Link>
                   </div>
