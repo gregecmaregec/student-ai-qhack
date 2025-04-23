@@ -157,24 +157,27 @@ export function Navbar() {
                 {/* Position indicator used for alignment */}
                 <div className="absolute w-0.5 h-0.5 bg-transparent bottom-0 left-1/2 transform -translate-x-1/2" id="logo-center-indicator"></div>
               </div>
-              {isAuthenticated && (
-                <div className="flex ml-4 space-x-2 items-center">
-                  <div className="flex flex-col items-center">
-                    <Link href="/about" onClick={scrollToTop}>
-                      <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                        <span className="relative">About</span>
-                      </Button>
-                    </Link>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <Link href="/app" onClick={scrollToTop}>
-                      <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                        <span className="relative">Dashboard</span>
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              )}
+              <div className="flex ml-4 space-x-2 items-center">
+                
+                {isAuthenticated && (
+                  <>
+                    <div className="flex flex-col items-center">
+                      <Link href="/about" onClick={scrollToTop}>
+                        <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                          <span className="relative">About</span>
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <Link href="/app" onClick={scrollToTop}>
+                        <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                          <span className="relative">Dashboard</span>
+                        </Button>
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
             <div className="flex items-center space-x-2">
               <ThemeToggle />
@@ -190,10 +193,12 @@ export function Navbar() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem>
-                      <User className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
-                    </DropdownMenuItem>
+                    <Link href="/profile">
+                      <DropdownMenuItem>
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Profile</span>
+                      </DropdownMenuItem>
+                    </Link>
                     <DropdownMenuItem>
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Settings</span>
@@ -213,7 +218,7 @@ export function Navbar() {
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={scrollToTop}>
-                    <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-primary/90 hover:bg-primary text-white">
+                    <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 text-white">
                       Sign up
                     </Button>
                   </Link>
@@ -233,17 +238,15 @@ export function Navbar() {
           id="sub-navbar">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-start gap-3">
-              <div className={`${location === '/' ? 'hidden' : 'block'}`}>
-                <Link href="/" onClick={scrollToTop}>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="px-4 py-1 text-xs rounded-full text-primary border-none bg-primary/10 active:bg-primary/20"
-                  >
-                    Home
-                  </Button>
-                </Link>
-              </div>
+              <Link href="/" onClick={scrollToTop}>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
+                >
+                  Home
+                </Button>
+              </Link>
               <Link href="/about" onClick={scrollToTop}>
                 <Button 
                   variant="outline" 

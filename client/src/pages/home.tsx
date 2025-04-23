@@ -279,11 +279,13 @@ export function HomePage() {
           <div className="rounded-lg shadow-sm overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10 hover:shadow hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
             <div className="pt-8 pb-8 px-4 sm:pt-10 sm:px-10 relative">
               <div className="relative z-10">
-                <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
-                  <span className="block">
-                    Ready to improve your studies?
-                  </span>
-                </h2>
+                <div className="flex justify-center">
+                  <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
+                    <span className="block">
+                      Ready to supercharge your studies?
+                    </span>
+                  </h2>
+                </div>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <Link href="/signup">
                     <Button
@@ -291,17 +293,10 @@ export function HomePage() {
                       variant="default"
                       className="w-full sm:w-auto px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-sm hover:shadow-primary/10 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
                     >
-                      Get started free
+                      Try for free
                     </Button>
                   </Link>
                   <Link href="/features">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full sm:w-auto px-4 py-1.5 text-xs sm:text-sm sm:px-5 sm:py-2 border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
-                    >
-                      Learn more
-                    </Button>
                   </Link>
                 </div>
               </div>
@@ -343,10 +338,10 @@ const features = [
     icon: <Book className="h-6 w-6 text-white" />,
   },
   {
-    title: "Group Project Manager",
+    title: "Study Tools & Practice",
     description:
-      "Coordinate group projects with task distribution, progress tracking, and communication tools.",
-    icon: <Users className="h-6 w-6 text-white" />,
+      "Generate flash cards and exam-like questions that match your course material for effective preparation.",
+    icon: <FileText className="h-6 w-6 text-white" />,
   },
   {
     title: "Mental Wellness",
