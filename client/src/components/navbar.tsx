@@ -157,33 +157,24 @@ export function Navbar() {
                 {/* Position indicator used for alignment */}
                 <div className="absolute w-0.5 h-0.5 bg-transparent bottom-0 left-1/2 transform -translate-x-1/2" id="logo-center-indicator"></div>
               </div>
-              <div className="flex ml-4 space-x-2 items-center">
-                <div className="flex flex-col items-center">
-                  <Link href="/" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                      <span className="relative">Home</span>
-                    </Button>
-                  </Link>
+              {isAuthenticated && (
+                <div className="flex ml-4 space-x-2 items-center">
+                  <div className="flex flex-col items-center">
+                    <Link href="/about" onClick={scrollToTop}>
+                      <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                        <span className="relative">About</span>
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Link href="/app" onClick={scrollToTop}>
+                      <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
+                        <span className="relative">Dashboard</span>
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-                {isAuthenticated && (
-                  <>
-                    <div className="flex flex-col items-center">
-                      <Link href="/about" onClick={scrollToTop}>
-                        <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                          <span className="relative">About</span>
-                        </Button>
-                      </Link>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <Link href="/app" onClick={scrollToTop}>
-                        <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                          <span className="relative">Dashboard</span>
-                        </Button>
-                      </Link>
-                    </div>
-                  </>
-                )}
-              </div>
+              )}
             </div>
             <div className="flex items-center space-x-2">
               <ThemeToggle />
