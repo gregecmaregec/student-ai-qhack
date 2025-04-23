@@ -33,38 +33,25 @@ export function PricingPage() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-white dark:bg-[#1E1E1E] rounded-lg shadow-md overflow-hidden transition-all duration-300 border ${
-                plan.popular
-                  ? 'border-primary-500 dark:border-primary-400 ring-1 ring-primary-500 dark:ring-primary-400 relative'
-                  : 'border-gray-200 dark:border-gray-800'
-              }`}
+              className="bg-white dark:bg-[#1E1E1E] rounded-lg shadow-sm overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-800 hover:shadow-md"
             >
-              {plan.popular && (
-                <div className="absolute top-0 right-0 -mt-2 -mr-2 px-3 py-1 bg-primary-600 text-white text-xs font-medium rounded-full">
-                  Popular
-                </div>
-              )}
-              <div className="p-4 sm:p-5">
+              <div className="p-4">
                 <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2">
                   {plan.name}
                 </h2>
-                <div className="mb-3 flex items-baseline">
-                  <span className="text-3xl font-bold text-gray-900 dark:text-white font-['Tiro_Kannada']">${plan.price}</span>
+                <div className="mb-3 flex items-baseline justify-center">
+                  <span className="text-3xl font-bold text-gray-900 dark:text-white tabular-nums">${Number(plan.price).toLocaleString()}</span>
                   {plan.period && (
                     <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">/{plan.period}</span>
                   )}
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 h-12">
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 h-12 text-center">
                   {plan.description}
                 </p>
                 <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
                   <Button
-                    className={`w-full mb-4 text-sm py-2 ${
-                      plan.popular
-                        ? 'bg-primary-600 hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700'
-                        : ''
-                    }`}
-                    variant={plan.popular ? 'default' : 'outline'}
+                    className="w-full mb-4 text-sm py-2"
+                    variant="outline"
                     size="sm"
                   >
                     {plan.price === '0' ? 'Get Started' : 'Subscribe'}
@@ -72,15 +59,12 @@ export function PricingPage() {
                 </Link>
                 <div>
                   <ul className="space-y-2">
-                    {plan.features.slice(0, 3).map((feature, idx) => (
+                    {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300 text-xs">{feature}</span>
                       </li>
                     ))}
-                    {plan.features.length > 3 && (
-                      <li className="text-xs text-primary-600 pt-1">+ {plan.features.length - 3} more features</li>
-                    )}
                   </ul>
                 </div>
               </div>
