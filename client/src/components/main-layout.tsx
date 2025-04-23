@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { ContextualHelp } from '@/components/help/contextual-help';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -14,7 +13,6 @@ export function MainLayout({ children, withFooter = true }: MainLayoutProps) {
       <Navbar />
       <main className="flex-1">{children}</main>
       {withFooter && <Footer />}
-      <ContextualHelp />
     </div>
   );
 }

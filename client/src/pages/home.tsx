@@ -349,37 +349,37 @@ const features = [
   {
     title: "Research Assistant",
     description:
-      "Get help finding quality sources, summarizing research papers, and organizing your findings.",
+      "Find quality sources and organize research efficiently.",
     icon: <Zap className="h-6 w-6 text-white" />,
   },
   {
     title: "Study Planner",
     description:
-      "Create personalized study schedules based on your courses, deadlines, and learning preferences.",
+      "Smart schedules based on your deadlines and preferences.",
     icon: <Calendar className="h-6 w-6 text-white" />,
   },
   {
     title: "Assignment Helper",
     description:
-      "Get writing suggestions, citation help, and feedback on your assignments before submission.",
+      "Writing suggestions and feedback for better submissions.",
     icon: <FileText className="h-6 w-6 text-white" />,
   },
   {
     title: "Concept Explainer",
     description:
-      "Get clear, simple explanations for complex academic concepts across all subjects.",
+      "Clear explanations for complex academic concepts.",
     icon: <Book className="h-6 w-6 text-white" />,
   },
   {
-    title: "Study Tools & Practice",
+    title: "Study Tools",
     description:
-      "Generate flash cards and exam-like questions that match your course material for effective preparation.",
+      "Flash cards and practice questions for better retention.",
     icon: <FileText className="h-6 w-6 text-white" />,
   },
   {
     title: "Mental Wellness",
     description:
-      "Get support managing stress, maintaining focus, and balancing your academic and personal life.",
+      "Support for stress, focus, and work-life balance.",
     icon: (
       <div id="smiley-container" className="wellness-icon-container">
         <svg
@@ -416,7 +416,7 @@ const features = [
 ];
 
 const benefits = [
-  "Best AI models like OpenAI's GPT-4.5-Preview, Gemini 2.5-Pro Preview, Claude 3.7.-thinking. Simplify the AI selection process to the best AI has to offer ",
+  "Latest AI models powering your academic success",
 ];
 
 const testimonials = [];
