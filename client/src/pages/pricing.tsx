@@ -74,12 +74,8 @@ export function PricingPage() {
 
         {/* Feature comparison - mobile friendly */}
         <div className="mt-12 overflow-x-auto -mx-3 sm:-mx-6 lg:mx-0">
-          <h2 className="text-2xl font-serif font-bold text-center text-gray-900 dark:text-white mb-6">
-            Key Features
-          </h2>
           <div className="inline-block min-w-full align-middle">
             <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-              <TableCaption className="text-xs">Feature comparison by plan</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-1/3 text-xs">Feature</TableHead>
@@ -117,13 +113,10 @@ export function PricingPage() {
 
         {/* CTA Section - simplified */}
         <div className="mt-12 text-center">
-          <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-3">
-            Ready to start?
-          </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-4">
             <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
               <Button className="px-5 py-2">
-                Chat with Studie
+                Chat with Studie, our newest Agent
               </Button>
             </Link>
           </div>
@@ -141,10 +134,8 @@ const plans = [
     description: 'Limited free plan with basic features to get started.',
     features: [
       'Up to 5 uses per day',
-      'Basic AI study assistance',
-      'Access to standard models',
-      'No credit card required',
-      'Web access only'
+      'All essential features',
+      'Access to all models',
     ],
     popular: false
   },
@@ -152,14 +143,11 @@ const plans = [
     name: 'Standard',
     price: '10',
     period: 'month',
-    description: '$10 of credits per month for token usage across all models.',
     features: [
-      '$10 worth of processing credits',
+      '$10 worth of token credits',
       'Access to all AI models',
       'Unlimited uses (until credits depleted)',
-      'Higher priority in the queue',
       'File uploads and analysis',
-      'API access for developers'
     ],
     popular: true
   },
@@ -167,12 +155,10 @@ const plans = [
     name: 'Premium',
     price: '30',
     period: 'month',
-    description: '$50 of credits per month for intensive research and larger projects.',
+    description: '$30 of credits',
     features: [
-      '$50 worth of processing credits',
-      'Access to all AI models including premium',
-      'Priority processing',
-      'Advanced study analytics',
+      '$30 worth of processing credits',
+      'Higher priority in the queue',
       'Collaboration tools for group projects',
       'Dedicated support'
     ],
@@ -195,9 +181,9 @@ const featureComparison = [
   },
   { 
     name: 'AI Models Access', 
-    free: 'Standard only', 
+    free: 'Standard set', 
     pro: 'All models', 
-    teams: 'All + Premium models' 
+    teams: 'All models' 
   },
   { 
     name: 'Processing Priority', 
@@ -207,7 +193,7 @@ const featureComparison = [
   },
   { 
     name: 'File Upload & Analysis', 
-    free: false, 
+    free: true, 
     pro: true, 
     teams: true 
   },
