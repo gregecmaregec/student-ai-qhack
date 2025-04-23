@@ -1,9 +1,16 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertUserSchema, insertTaskSchema, insertAssistantSettingsSchema } from "@shared/schema";
+import { 
+  insertUserSchema, 
+  insertTaskSchema, 
+  insertAssistantSettingsSchema,
+  insertChatSchema,
+  insertChatMessageSchema
+} from "@shared/schema";
 import { z } from "zod";
 import { getAIResponse, PerplexityRequest } from "./perplexity";
+import { queryStudentsAI } from "./studentsAi";
 
 // Firebase Admin initialization for verifying tokens
 import { initializeApp, cert } from "firebase-admin/app";
