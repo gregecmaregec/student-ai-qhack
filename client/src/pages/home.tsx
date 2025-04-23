@@ -133,30 +133,25 @@ export function HomePage() {
             </div>
 
             <motion.div
-              className="mt-8 relative z-10 flex justify-center"
+              className="mt-8 relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-lg shadow-primary/10 dark:shadow-primary/5">
-                <Link href="/signup">
-                  <button 
-                    className="relative overflow-hidden group whitespace-nowrap px-5 py-2.5 text-sm font-medium text-white rounded-full bg-gradient-to-r from-primary to-purple-500"
-                  >
-                    <span className="relative z-10">Get Started</span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 group-active:opacity-90 transition-opacity duration-300"></span>
-                    <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 origin-left transition-transform duration-300 bg-white/10 rounded-full"></span>
-                  </button>
-                </Link>
-                <Link href="/features">
-                  <button 
-                    className="relative overflow-hidden group whitespace-nowrap ml-2 px-5 py-2.5 text-sm font-medium text-foreground rounded-full hover:text-primary transition-colors duration-300"
-                  >
-                    <span className="relative z-10">Learn More</span>
-                    <span className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-                  </button>
-                </Link>
-              </div>
+              <Link href="/signup">
+                <button 
+                  className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200"
+                >
+                  <span className="relative">Get Started</span>
+                </button>
+              </Link>
+              <Link href="/features">
+                <button 
+                  className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary border border-gray-200 dark:border-gray-700 rounded-md hover:border-primary/30 dark:hover:border-primary/30 bg-white/50 dark:bg-gray-800/50 transition-colors duration-200"
+                >
+                  <span className="relative">Learn More</span>
+                </button>
+              </Link>
             </motion.div>
 
             <motion.p
@@ -284,18 +279,14 @@ export function HomePage() {
                     </span>
                   </h2>
                 </div>
-                <div className="mt-8 flex justify-center">
-                  <div className="relative z-10 inline-block">
-                    <Link href="/signup">
-                      <button 
-                        className="relative overflow-hidden group whitespace-nowrap px-8 py-3.5 text-base font-semibold text-white rounded-full bg-gradient-to-r from-primary to-purple-500 shadow-lg shadow-primary/20"
-                      >
-                        <span className="relative z-10">Try for free</span>
-                        <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 group-active:opacity-90 transition-opacity duration-300"></span>
-                        <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 origin-left transition-transform duration-300 bg-white/10 rounded-full"></span>
-                      </button>
-                    </Link>
-                  </div>
+                <div className="mt-6 flex justify-center">
+                  <Link href="/signup">
+                    <button 
+                      className="relative overflow-hidden px-6 py-2.5 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200"
+                    >
+                      <span className="relative">Try for free</span>
+                    </button>
+                  </Link>
                 </div>
               </div>
 
