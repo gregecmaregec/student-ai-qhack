@@ -20,11 +20,7 @@ export function FeaturesPage() {
           <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             Features to Simplify Your Student Life
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
-            Our AI assistant platform offers a comprehensive suite of tools
-            designed specifically for students to help you excel in your
-            academic journey.
-          </p>
+          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
