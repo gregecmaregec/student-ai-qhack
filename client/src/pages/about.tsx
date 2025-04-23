@@ -36,7 +36,8 @@ export function AboutPage() {
             About us
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
-            We want to deliver the best studying, learning, i.e. getting to the point of it.
+            We want to deliver the best studying, learning, i.e. getting to the
+            point of it.
           </p>
         </div>
 
@@ -49,10 +50,8 @@ export function AboutPage() {
                   Our Story
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Want to learn something? We want to set in motion world's best publicly avilable AI to help you achieve this honorable goal.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Know thyself. It is the beginning of wisdom.
+                  Want to learn something? We want to set in motion world's best
+                  publicly avilable AI to help you achieve this honorable goal.
                 </p>
               </div>
               <div className="bg-gradient-to-r from-primary-500 to-purple-600 p-12 flex items-center justify-center">
@@ -73,12 +72,7 @@ export function AboutPage() {
         {/* Our Values section */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4">
-              Our Values
-            </h2>
-            <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-              These core principles guide everything we do at students-ai.com.
-            </p>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -121,9 +115,9 @@ export function AboutPage() {
                 <div className="aspect-w-3 aspect-h-2 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center p-8">
                   {member.image ? (
                     <div className="h-24 w-24 rounded-full overflow-hidden">
-                      <img 
-                        src={member.image} 
-                        alt={member.name} 
+                      <img
+                        src={member.image}
+                        alt={member.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -196,9 +190,9 @@ export function AboutPage() {
 // Data
 const values = [
   {
-    title: "Learn, Don't Cheat",
+    title: "Know thyself",
     description:
-      "We build tools that enhance learning and understanding, not shortcuts that bypass it. Our AI helps students develop skills, not replace them.",
+      "",
     icon: (
       <BookOpen className="h-6 w-6 text-primary-600 dark:text-primary-400" />
     ),
@@ -206,7 +200,7 @@ const values = [
   {
     title: "Accessible Education",
     description:
-      "We believe every student deserves access to high-quality educational support regardless of their background or circumstances.",
+      "AI as you need it",
     icon: (
       <LightbulbIcon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
     ),
@@ -230,12 +224,12 @@ const team: TeamMember[] = [
       {
         name: "LinkedIn",
         url: "#",
-        icon: <Linkedin className="h-5 w-5" />
+        icon: <Linkedin className="h-5 w-5" />,
       },
       {
         name: "GitHub",
         url: "#",
-        icon: <Github className="h-5 w-5" />
+        icon: <Github className="h-5 w-5" />,
       },
     ],
   },
@@ -248,12 +242,12 @@ const team: TeamMember[] = [
       {
         name: "LinkedIn",
         url: "#",
-        icon: <Linkedin className="h-5 w-5" />
+        icon: <Linkedin className="h-5 w-5" />,
       },
       {
         name: "GitHub",
         url: "#",
-        icon: <Github className="h-5 w-5" />
+        icon: <Github className="h-5 w-5" />,
       },
     ],
   },
@@ -266,12 +260,12 @@ const team: TeamMember[] = [
       {
         name: "LinkedIn",
         url: "#",
-        icon: <Linkedin className="h-5 w-5" />
+        icon: <Linkedin className="h-5 w-5" />,
       },
       {
         name: "GitHub",
         url: "#",
-        icon: <Github className="h-5 w-5" />
+        icon: <Github className="h-5 w-5" />,
       },
     ],
   },
@@ -284,12 +278,12 @@ const team: TeamMember[] = [
       {
         name: "LinkedIn",
         url: "#",
-        icon: <Linkedin className="h-5 w-5" />
+        icon: <Linkedin className="h-5 w-5" />,
       },
       {
         name: "GitHub",
         url: "#",
-        icon: <Github className="h-5 w-5" />
+        icon: <Github className="h-5 w-5" />,
       },
     ],
   },
@@ -302,12 +296,12 @@ const team: TeamMember[] = [
       {
         name: "LinkedIn",
         url: "#",
-        icon: <Linkedin className="h-5 w-5" />
+        icon: <Linkedin className="h-5 w-5" />,
       },
       {
         name: "GitHub",
         url: "#",
-        icon: <Github className="h-5 w-5" />
+        icon: <Github className="h-5 w-5" />,
       },
     ],
   },
