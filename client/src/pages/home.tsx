@@ -21,8 +21,34 @@ export function HomePage() {
     // Keep track of whether animation has been triggered
     const animationTriggered = { mobile: false, desktop: false };
 
+    // Global scroll handling for page position
+    const handlePageScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Calculate scroll percentage
+      const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+      
+      const smileyContainer = document.getElementById('smiley-container');
+      
+      // Activate smiley animation when scroll reaches halfway down the page
+      // or when near the bottom on mobile devices
+      if (smileyContainer) {
+        const isMobile = window.innerWidth < 640;
+        if ((isMobile && scrollPercentage > 70) || (!isMobile && scrollPercentage > 50)) {
+          smileyContainer.classList.add('smiley-active');
+        } else {
+          smileyContainer.classList.remove('smiley-active');
+        }
+      }
+    };
+    
+    // Add global scroll event listener
+    window.addEventListener('scroll', handlePageScroll);
+
     // Original scroll handling for mobile view
-    const handleScroll = () => {
+    const handleCarouselScroll = () => {
       // If animation already triggered in mobile, do nothing
       if (animationTriggered.mobile) return;
 
@@ -44,7 +70,7 @@ export function HomePage() {
             // Mark animation as triggered for mobile
             animationTriggered.mobile = true;
             // Remove the event listener since we only need to trigger once
-            featuresCarousel?.removeEventListener("scroll", handleScroll);
+            featuresCarousel?.removeEventListener("scroll", handleCarouselScroll);
           }
         }
       }
@@ -53,7 +79,7 @@ export function HomePage() {
     // Add scroll event listener to mobile features carousel
     const featuresCarousel = document.querySelector(".sm\\:hidden");
     if (featuresCarousel) {
-      featuresCarousel.addEventListener("scroll", handleScroll);
+      featuresCarousel.addEventListener("scroll", handleCarouselScroll);
     }
 
     // Set up intersection observer for desktop view
@@ -95,10 +121,13 @@ export function HomePage() {
     }
 
     return () => {
+      // Remove global scroll listener
+      window.removeEventListener('scroll', handlePageScroll);
+      
       // Clean up the mobile scroll event listener
       const featuresCarousel = document.querySelector(".sm\\:hidden");
       if (featuresCarousel) {
-        featuresCarousel.removeEventListener("scroll", handleScroll);
+        featuresCarousel.removeEventListener("scroll", handleCarouselScroll);
       }
 
       // Clean up the intersection observer
