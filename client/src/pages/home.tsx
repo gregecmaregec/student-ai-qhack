@@ -385,7 +385,7 @@ const features = [
 ];
 
 const benefits = [
-  "24/7 availability for late-night study sessions",
+  "Best available AI inference with ",
   "Personalized to your learning style and needs",
   "Integrates with your existing academic tools",
   "Constantly learning and improving from feedback",
