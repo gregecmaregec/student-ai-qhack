@@ -49,7 +49,7 @@ export function PricingPage() {
                   {plan.name}
                 </h2>
                 <div className="mb-3 flex items-baseline">
-                  <span className="text-3xl font-bold text-gray-900 dark:text-white">${plan.price}</span>
+                  <span className="text-3xl font-bold text-gray-900 dark:text-white font-['Tiro_Kannada']">${plan.price}</span>
                   {plan.period && (
                     <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">/{plan.period}</span>
                   )}
