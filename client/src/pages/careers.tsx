@@ -22,13 +22,6 @@ type JobPosition = {
 export function CareersPage() {
   const positions: JobPosition[] = [
     {
-      id: 'marketing',
-      title: 'Marketing',
-      description: 'Marketing and the best product make the best mix.',
-      icon: <BarChart className="h-10 w-10 text-primary" />,
-      emailSubject: 'Marketing Position Application'
-    },
-    {
       id: 'software',
       title: 'Software',
       description: 'Send us proof of exceptional ability.',
@@ -41,6 +34,13 @@ export function CareersPage() {
       description: 'Certified legal experts welcome.',
       icon: <GavelIcon className="h-10 w-10 text-primary" />,
       emailSubject: 'Legal Position Application'
+    },
+    {
+      id: 'marketing',
+      title: 'Marketing',
+      description: 'Marketing and the best product make the best mix.',
+      icon: <BarChart className="h-10 w-10 text-primary" />,
+      emailSubject: 'Marketing Position Application'
     }
   ];
 

@@ -20,7 +20,7 @@ export function HomePage() {
   useEffect(() => {
     // Keep track of whether animation has been triggered
     const animationTriggered = { mobile: false, desktop: false };
-    
+
     // Debounce function to limit how often animations are triggered
     const debounce = (func: Function, wait: number) => {
       let timeout: NodeJS.Timeout | null = null;
@@ -39,37 +39,41 @@ export function HomePage() {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
+
       // Calculate scroll percentage
-      const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
-      
-      const smileyContainer = document.getElementById('smiley-container');
-      
+      const scrollPercentage =
+        (scrollPosition / (documentHeight - windowHeight)) * 100;
+
+      const smileyContainer = document.getElementById("smiley-container");
+
       // Activate smiley animation only when actually viewing the mental wellness feature
       // Use different thresholds for mobile vs desktop
       if (smileyContainer) {
         const isMobile = window.innerWidth < 640;
-        
+
         // On mobile, only activate when very close to the bottom
         // On desktop, activate when at least 80% through the page
-        if ((isMobile && scrollPercentage > 90) || (!isMobile && scrollPercentage > 80)) {
-          smileyContainer.classList.add('smiley-active');
-          
+        if (
+          (isMobile && scrollPercentage > 90) ||
+          (!isMobile && scrollPercentage > 80)
+        ) {
+          smileyContainer.classList.add("smiley-active");
+
           // Auto-remove animation after 4 seconds on mobile to prevent battery drain
           if (isMobile) {
             setTimeout(() => {
-              smileyContainer.classList.remove('smiley-active');
+              smileyContainer.classList.remove("smiley-active");
             }, 4000);
           }
         } else if (!isMobile) {
           // Only actively remove on desktop - mobile will auto-expire
-          smileyContainer.classList.remove('smiley-active');
+          smileyContainer.classList.remove("smiley-active");
         }
       }
     }, 100); // Debounce by 100ms to improve performance
-    
+
     // Add global scroll event listener
-    window.addEventListener('scroll', handlePageScroll);
+    window.addEventListener("scroll", handlePageScroll);
 
     // Original scroll handling for mobile view
     const handleCarouselScroll = () => {
@@ -94,7 +98,10 @@ export function HomePage() {
             // Mark animation as triggered for mobile
             animationTriggered.mobile = true;
             // Remove the event listener since we only need to trigger once
-            featuresCarousel?.removeEventListener("scroll", handleCarouselScroll);
+            featuresCarousel?.removeEventListener(
+              "scroll",
+              handleCarouselScroll,
+            );
           }
         }
       }
@@ -146,8 +153,8 @@ export function HomePage() {
 
     return () => {
       // Remove global scroll listener
-      window.removeEventListener('scroll', handlePageScroll);
-      
+      window.removeEventListener("scroll", handlePageScroll);
+
       // Clean up the mobile scroll event listener
       const featuresCarousel = document.querySelector(".sm\\:hidden");
       if (featuresCarousel) {
@@ -187,16 +194,12 @@ export function HomePage() {
 
             <div className="mt-8 relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/signup">
-                <button 
-                  className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200"
-                >
+                <button className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200">
                   <span className="relative">Get Started</span>
                 </button>
               </Link>
               <Link href="/features">
-                <button 
-                  className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary border border-gray-200 dark:border-gray-700 rounded-md hover:border-primary/30 dark:hover:border-primary/30 bg-white/50 dark:bg-gray-800/50 transition-colors duration-200"
-                >
+                <button className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary border border-gray-200 dark:border-gray-700 rounded-md hover:border-primary/30 dark:hover:border-primary/30 bg-white/50 dark:bg-gray-800/50 transition-colors duration-200">
                   <span className="relative">Learn More</span>
                 </button>
               </Link>
@@ -324,10 +327,8 @@ export function HomePage() {
                 </div>
                 <div className="mt-6 flex justify-center">
                   <Link href="/signup">
-                    <button 
-                      className="relative overflow-hidden px-6 py-2.5 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200"
-                    >
-                      <span className="relative">Try for free</span>
+                    <button className="relative overflow-hidden px-6 py-2.5 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200">
+                      <span className="relative">Chat with Studie</span>
                     </button>
                   </Link>
                 </div>
@@ -394,7 +395,10 @@ const features = [
           strokeLinejoin="round"
         >
           <circle cx="12" cy="12" r="10" />
-          <path className="wellness-icon-smile wellness-icon-eyes" d="M8 14s1.5 2 4 2 4-2 4-2" />
+          <path
+            className="wellness-icon-smile wellness-icon-eyes"
+            d="M8 14s1.5 2 4 2 4-2 4-2"
+          />
           <path
             className="wellness-icon-eyes"
             d="M8.5 9C8.5 9 9 8.8 9.2 9C9.4 9.2 9.2 9.3 9 9.3C8.8 9.3 8.5 9 8.5 9"
@@ -412,10 +416,9 @@ const features = [
 ];
 
 const benefits = [
-  "Best AI models like OpenAI's GPT-4.5-Preview, Gemini 2.5-Pro Preview, Claude 3.7.-thinking. Simplify the AI selection process to the best AI has to offer " 
+  "Best AI models like OpenAI's GPT-4.5-Preview, Gemini 2.5-Pro Preview, Claude 3.7.-thinking. Simplify the AI selection process to the best AI has to offer ",
 ];
 
-const testimonials = [
-];
+const testimonials = [];
 
 export default HomePage;
