@@ -218,7 +218,7 @@ export function Navbar() {
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={scrollToTop}>
-                    <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-primary/90 hover:bg-primary text-white">
+                    <Button size="sm" className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 text-white">
                       Sign up
                     </Button>
                   </Link>
