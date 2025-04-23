@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import { colors } from '@/lib/colors';
 import { cn } from '@/lib/utils';
+import { ChatInterface } from '@/components/auth/chat-interface';
 
 // Define the tools with their icons, titles and descriptions
 const tools = [
@@ -203,50 +204,7 @@ export function AppPage() {
                 <CardContent className="p-0">
                   {activeTab === 'chat' && (
                     <div className="flex flex-col h-[65vh]">
-                      <ScrollArea className="flex-1 p-4">
-                        <div className="space-y-4">
-                          {chatMessages.map((msg, i) => (
-                            <div 
-                              key={i} 
-                              className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                            >
-                              <div 
-                                className={`max-w-[80%] rounded-lg px-4 py-2 ${
-                                  msg.sender === 'user' 
-                                    ? 'bg-gradient-to-r from-primary to-purple-500 text-white' 
-                                    : 'bg-muted text-foreground dark:bg-muted/60 dark:text-muted-foreground'
-                                }`}
-                              >
-                                <p>{msg.text}</p>
-                                <div className={`text-xs mt-1 ${
-                                  msg.sender === 'user' 
-                                    ? 'text-white/70' 
-                                    : 'text-muted-foreground'
-                                }`}>
-                                  {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </ScrollArea>
-                      
-                      <div className="p-4 border-t dark:border-border">
-                        <form onSubmit={handleSendMessage} className="flex items-center space-x-2">
-                          <Input
-                            placeholder="Type your message..."
-                            value={inputMessage}
-                            onChange={(e) => setInputMessage(e.target.value)}
-                            className="flex-1 border-primary/30 focus-visible:ring-primary/50"
-                          />
-                          <Button 
-                            type="submit"
-                            className="bg-gradient-to-r from-primary to-purple-500 hover:from-primary-600 hover:to-purple-600 text-white"
-                          >
-                            <Send className="h-4 w-4" />
-                          </Button>
-                        </form>
-                      </div>
+                      <ChatInterface />
                     </div>
                   )}
                   

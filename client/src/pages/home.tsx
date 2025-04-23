@@ -206,8 +206,9 @@ export function HomePage() {
               </Link>
             </div>
 
-
-            <div className="mt-8"></div>
+            <div className="mt-8">
+              <LandingChat />
+            </div>
           </div>
         </div>
       </section>
