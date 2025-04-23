@@ -21,7 +21,7 @@ export function LandingChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hi there! I can help with your study questions. Ask me anything about courses, study plans, or learning resources.',
+      content: 'Hi there! I can help with your academic questions. Ask me anything about university courses, study plans, or learning resources.',
       timestamp: new Date(),
     },
   ]);
