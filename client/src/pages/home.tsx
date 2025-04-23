@@ -133,27 +133,27 @@ export function HomePage() {
             </div>
 
             <motion.div
-              className="mt-6 sm:flex sm:justify-center gap-3"
+              className="mt-6 mx-auto max-w-xs sm:max-w-md flex flex-col sm:flex-row gap-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-0">
-                <Link href="/signup">
+              <div className="flex-1">
+                <Link href="/signup" className="block">
                   <Button
-                    size="sm"
-                    className="w-full px-5 py-2.5 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 active:scale-95 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-full"
+                    size="lg"
+                    className="w-full px-6 py-3 text-sm md:text-base bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 active:scale-95 text-white font-medium border-none rounded-full"
                   >
                     Get Started
                   </Button>
                 </Link>
               </div>
-              <div>
-                <Link href="/features">
+              <div className="flex-1">
+                <Link href="/features" className="block">
                   <Button
-                    size="sm"
+                    size="lg"
                     variant="outline"
-                    className="w-full px-5 py-2.5 text-sm bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none active:scale-95 hover:-translate-y-1 transition-all duration-300 rounded-full"
+                    className="w-full px-6 py-3 text-sm md:text-base bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none active:scale-95 rounded-full"
                   >
                     Learn More
                   </Button>
@@ -286,17 +286,15 @@ export function HomePage() {
                     </span>
                   </h2>
                 </div>
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  <Link href="/signup">
+                <div className="mt-6 mx-auto max-w-xs sm:max-w-md">
+                  <Link href="/signup" className="block">
                     <Button
-                      size="sm"
+                      size="lg"
                       variant="default"
-                      className="w-full sm:w-auto px-6 py-3 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 active:scale-95 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-full border-none"
+                      className="w-full px-8 py-4 text-base bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/30 active:scale-95 text-white hover:text-white/90 transition-all duration-300 font-semibold rounded-full border-none"
                     >
                       Try for free
                     </Button>
-                  </Link>
-                  <Link href="/features">
                   </Link>
                 </div>
               </div>
