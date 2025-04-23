@@ -1,7 +1,7 @@
-import { MainLayout } from '@/components/main-layout';
-import { Link } from 'wouter';
-import { Button } from '@/components/ui/button';
-import { CheckCircle, X, ArrowRight } from 'lucide-react';
+import { MainLayout } from "@/components/main-layout";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, X, ArrowRight } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useAuth } from '@/hooks/use-auth';
+import { useAuth } from "@/hooks/use-auth";
 
 export function PricingPage() {
   const { isAuthenticated } = useAuth();
@@ -31,14 +31,16 @@ export function PricingPage() {
             <div
               key={index}
               className={`bg-white dark:bg-[#1E1E1E] rounded-lg shadow-sm overflow-hidden transition-all duration-300 border ${
-                plan.popular 
-                  ? "border-primary/40 dark:border-primary/30 ring-1 ring-primary/20 relative" 
+                plan.popular
+                  ? "border-primary/40 dark:border-primary/30 ring-1 ring-primary/20 relative"
                   : "border-gray-200 dark:border-gray-800"
               } hover:shadow-md`}
             >
               {plan.popular && (
                 <div className="absolute top-0 right-0 bg-primary/10 dark:bg-primary/20 rounded-bl-lg px-2 py-1">
-                  <span className="text-xs font-medium text-primary dark:text-primary-foreground">Popular</span>
+                  <span className="text-xs font-medium text-primary dark:text-primary-foreground">
+                    Popular
+                  </span>
                 </div>
               )}
               <div className="p-3 sm:p-4">
@@ -49,10 +51,12 @@ export function PricingPage() {
                   {plan.price && (
                     <div className="text-right">
                       <span className="text-lg font-bold text-gray-900 dark:text-white">
-                        {plan.price === '0' ? 'Free' : `$${plan.price}`}
+                        {plan.price === "0" ? "Free" : `$${plan.price}`}
                       </span>
                       {plan.period && (
-                        <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">/{plan.period}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
+                          /{plan.period}
+                        </span>
                       )}
                     </div>
                   )}
@@ -66,7 +70,7 @@ export function PricingPage() {
                     variant={plan.popular ? "default" : "outline"}
                     size="sm"
                   >
-                    {plan.price === '0' ? 'Get Started' : 'Continue'}
+                    {plan.price === "0" ? "Get Started" : "Continue"}
                   </Button>
                 </Link>
                 <div>
@@ -74,7 +78,9 @@ export function PricingPage() {
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
                         <CheckCircle className="h-3.5 w-3.5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-gray-300 text-xs">{feature}</span>
+                        <span className="text-gray-700 dark:text-gray-300 text-xs">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -88,44 +94,73 @@ export function PricingPage() {
         <div className="mt-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
           <div className="inline-block min-w-full align-middle">
             <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-              <TableCaption className="mt-2 text-xs text-muted-foreground">
-                Compare features across different plans
-              </TableCaption>
               <TableHeader>
                 <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-                  <TableHead className="w-1/3 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">Feature</TableHead>
-                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">Free</TableHead>
-                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300 bg-primary/5 dark:bg-primary/10">Standard</TableHead>
-                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">Premium</TableHead>
+                  <TableHead className="w-1/3 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                    
+                  </TableHead>
+                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                    Free
+                  </TableHead>
+                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                    Standard
+                  </TableHead>
+                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                    Premium
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody className="divide-y divide-gray-200 dark:divide-gray-800">
                 {featureComparison.map((feature, index) => (
-                  <TableRow 
-                    key={index} 
-                    className={index % 2 === 0 
-                      ? "bg-white dark:bg-gray-950" 
-                      : "bg-gray-50/50 dark:bg-gray-900/50"
+                  <TableRow
+                    key={index}
+                    className={
+                      index % 2 === 0
+                        ? "bg-white dark:bg-gray-950"
+                        : "bg-gray-50/50 dark:bg-gray-900/50"
                     }
                   >
-                    <TableCell className="py-3 text-xs font-medium text-gray-700 dark:text-gray-300">{feature.name}</TableCell>
+                    <TableCell className="py-3 text-xs font-medium text-gray-700 dark:text-gray-300">
+                      {feature.name}
+                    </TableCell>
                     <TableCell className="py-3 text-xs text-center">
-                      {feature.free ? 
-                        feature.free === true ? <CheckCircle className="h-4 w-4 text-green-500 mx-auto" /> : 
-                        <span className="text-gray-700 dark:text-gray-300">{feature.free}</span>
-                        : <X className="h-4 w-4 text-red-400 mx-auto" />}
+                      {feature.free ? (
+                        feature.free === true ? (
+                          <CheckCircle className="h-4 w-4 text-green-500 mx-auto" />
+                        ) : (
+                          <span className="text-gray-700 dark:text-gray-300">
+                            {feature.free}
+                          </span>
+                        )
+                      ) : (
+                        <X className="h-4 w-4 text-red-400 mx-auto" />
+                      )}
                     </TableCell>
                     <TableCell className="py-3 text-xs text-center bg-primary/5 dark:bg-primary/10">
-                      {feature.pro ? 
-                        feature.pro === true ? <CheckCircle className="h-4 w-4 text-green-500 mx-auto" /> : 
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">{feature.pro}</span>
-                        : <X className="h-4 w-4 text-red-400 mx-auto" />}
+                      {feature.pro ? (
+                        feature.pro === true ? (
+                          <CheckCircle className="h-4 w-4 text-green-500 mx-auto" />
+                        ) : (
+                          <span className="text-gray-700 dark:text-gray-300 font-medium">
+                            {feature.pro}
+                          </span>
+                        )
+                      ) : (
+                        <X className="h-4 w-4 text-red-400 mx-auto" />
+                      )}
                     </TableCell>
                     <TableCell className="py-3 text-xs text-center">
-                      {feature.teams ? 
-                        feature.teams === true ? <CheckCircle className="h-4 w-4 text-green-500 mx-auto" /> : 
-                        <span className="text-gray-700 dark:text-gray-300">{feature.teams}</span>
-                        : <X className="h-4 w-4 text-red-400 mx-auto" />}
+                      {feature.teams ? (
+                        feature.teams === true ? (
+                          <CheckCircle className="h-4 w-4 text-green-500 mx-auto" />
+                        ) : (
+                          <span className="text-gray-700 dark:text-gray-300">
+                            {feature.teams}
+                          </span>
+                        )
+                      ) : (
+                        <X className="h-4 w-4 text-red-400 mx-auto" />
+                      )}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -133,7 +168,6 @@ export function PricingPage() {
             </Table>
           </div>
         </div>
-
 
         {/* CTA Section - simplified */}
         <div className="mt-12 text-center">
@@ -153,106 +187,74 @@ export function PricingPage() {
 // Data
 const plans = [
   {
-    name: 'Free',
-    price: '0',
+    name: "Free",
+    price: "0",
     features: [
-      'Up to 5 uses per day',
-      'All essential features',
-      'Access to all models',
+      "Up to 5 uses per day",
+      "All essential features",
+      "Access to all models",
     ],
-    popular: false
+    popular: false,
   },
   {
-    name: 'Standard',
-    price: '10',
-    period: 'month',
+    name: "Standard",
+    price: "10",
+    period: "month",
     features: [
-      '$10 worth of token credits',
-      'Access to all AI models',
-      'Unlimited uses (until credits depleted)',
-      'File uploads and analysis',
+      "$10 worth of token credits",
+      "Access to all AI models",
+      "Unlimited uses (until credits depleted)",
+      "File uploads and analysis",
     ],
-    popular: true
+    popular: true,
   },
   {
-    name: 'Premium',
-    price: '30',
-    period: 'month',
-    description: '$30 of credits',
+    name: "Premium",
+    price: "30",
+    period: "month",
     features: [
-      '$30 worth of processing credits',
-      'Higher priority in the queue',
-      'Collaboration tools for group projects',
-      'Dedicated support'
+      "$30 worth of processing credits",
+      "Higher priority in the queue",
+      "Collaboration tools for group projects",
+      "Dedicated support",
     ],
-    popular: false
-  }
+    popular: false,
+  },
 ];
 
 const featureComparison = [
-  { 
-    name: 'Uses per day', 
-    free: '5', 
-    pro: 'Until credits depleted', 
-    teams: 'Until credits depleted' 
+  {
+    name: "Uses per day",
+    free: "5",
+    pro: "Until credits depleted",
+    teams: "Until credits depleted",
   },
-  { 
-    name: 'Monthly Credits', 
-    free: '0', 
-    pro: '$10 worth', 
-    teams: '$50 worth' 
+  {
+    name: "Monthly Credits",
+    free: "0",
+    pro: "$10 worth",
+    teams: "$50 worth",
   },
-  { 
-    name: 'AI Models Access', 
-    free: 'Standard set', 
-    pro: 'All models', 
-    teams: 'All models' 
+  {
+    name: "AI Models Access",
+    free: "Standard set",
+    pro: "All models",
+    teams: "All models",
   },
-  { 
-    name: 'Processing Priority', 
-    free: 'Standard', 
-    pro: 'Higher', 
-    teams: 'Highest' 
+  {
+    name: "Processing Priority",
+    free: "Standard",
+    pro: "Higher",
+    teams: "Highest",
   },
-  { 
-    name: 'File Upload & Analysis', 
-    free: true, 
-    pro: true, 
-    teams: true 
+  {
+    name: "File Upload & Analysis",
+    free: true,
+    pro: true,
+    teams: true,
   },
-  { 
-    name: 'API Access', 
-    free: false, 
-    pro: true, 
-    teams: true 
-  },
-  { 
-    name: 'Collaboration Tools', 
-    free: false, 
-    pro: 'Basic', 
-    teams: 'Advanced' 
-  },
-  { 
-    name: 'Study Analytics', 
-    free: 'Basic', 
-    pro: 'Standard', 
-    teams: 'Advanced' 
-  },
-  { 
-    name: 'Support', 
-    free: 'Community', 
-    pro: 'Email', 
-    teams: 'Dedicated' 
-  },
-  { 
-    name: 'Additional API Markup', 
-    free: 'N/A', 
-    pro: '22%', 
-    teams: '22%' 
-  }
 ];
 
-const faqs = [
-];
+const faqs = [];
 
 export default PricingPage;
