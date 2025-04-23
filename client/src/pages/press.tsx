@@ -91,26 +91,7 @@ export function PressPage() {
         </div>
       </div>
 
-      {/* Press Contact */}
-      <div className="bg-primary/5 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-serif text-2xl font-medium text-gray-900 dark:text-white">Media Inquiries</h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              For press inquiries, interview requests, or additional information, please contact our press team.
-            </p>
-            <div className="mt-6 inline-flex items-center justify-center">
-              <Mail className="h-5 w-5 text-primary mr-2" />
-              <a href="mailto:press@students-ai.com" className="text-primary hover:text-primary-dark hover:underline">
-                press@students-ai.com
-              </a>
-            </div>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              Response time: within 24 hours (weekdays)
-            </p>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Press Kit */}
       <div className="bg-white dark:bg-gray-900 py-16">
