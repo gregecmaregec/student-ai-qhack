@@ -343,15 +343,9 @@ const features = [
     icon: <Book className="h-6 w-6 text-white" />,
   },
   {
-    title: "Flash Card Generator",
+    title: "Study Tools & Practice",
     description:
-      "Create effective study flash cards automatically from your notes and study materials.",
-    icon: <FileText className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Exam Practice",
-    description:
-      "Get AI-generated exam-like questions that match your course material and help you prepare effectively.",
+      "Generate flash cards and exam-like questions that match your course material for effective preparation.",
     icon: <FileText className="h-6 w-6 text-white" />,
   },
   {
