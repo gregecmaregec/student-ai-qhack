@@ -36,13 +36,20 @@ export function PricingPage() {
               className="bg-white dark:bg-[#1E1E1E] rounded-lg shadow-sm overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-800 hover:shadow-md"
             >
               <div className="p-4">
-                <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 text-center">
                   {plan.name}
                 </h2>
                 <div className="mb-3 flex items-baseline justify-center">
-                  <span className="text-3xl font-bold text-gray-900 dark:text-white tabular-nums">${Number(plan.price).toLocaleString()}</span>
-                  {plan.period && (
-                    <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">/{plan.period}</span>
+                  {plan.price === '0' ? (
+                    <span className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">Free Forever</span>
+                  ) : (
+                    <>
+                      <span className="text-2xl font-medium text-gray-500 dark:text-gray-400">$</span>
+                      <span className="text-4xl font-bold text-gray-900 dark:text-white tabular-nums tracking-tight">{Number(plan.price).toLocaleString()}</span>
+                      {plan.period && (
+                        <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">/{plan.period}</span>
+                      )}
+                    </>
                   )}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 h-12 text-center">
