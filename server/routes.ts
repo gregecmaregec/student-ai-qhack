@@ -295,7 +295,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Students-AI API endpoint for anonymous users (landing page)
+  // Students-AI API endpoint - this is the only endpoint we need
   app.post("/api/query", async (req, res) => {
     try {
       // Validate the request
@@ -305,10 +305,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const validatedRequest = requestSchema.parse(req.body);
       
-      // Get AI response
+      // Get AI response directly from the Students-AI API
       let response = await queryStudentsAI(validatedRequest.query);
-      
-      // No need to clean up the response here since we clean it in the frontend for this endpoint
       
       res.json({ response });
     } catch (error) {

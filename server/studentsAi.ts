@@ -11,7 +11,7 @@ interface StudentsAIResponse {
 // Function to query the StudentsAI API
 export async function queryStudentsAI(query: string): Promise<string> {
   try {
-    // Make the API call to Students-AI
+    // Make the API call directly to the Students-AI API
     const response = await axios.post<StudentsAIResponse>(
       'https://api.students-ai.com/api/query',
       { query }

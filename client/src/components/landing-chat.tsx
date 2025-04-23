@@ -2,12 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import axios from 'axios';
-import { Link } from 'wouter';
 import ReactMarkdown from 'react-markdown';
 
 interface Message {
@@ -26,7 +24,6 @@ export function LandingChat() {
     },
   ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -69,24 +66,17 @@ export function LandingChat() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
-    setHasInteracted(true);
 
     try {
       // Call the API to get a response
       const response = await axios.post('/api/query', {
         query: trimmedInput
       });
-
-      // Clean up the response to remove any "Search Agent Response:" prefix
-      let cleanedResponse = response.data.response;
-      if (cleanedResponse.startsWith("Search Agent Response:")) {
-        cleanedResponse = cleanedResponse.replace("Search Agent Response:", "").trim();
-      }
       
       // Add assistant response
       const assistantMessage: Message = {
         role: 'assistant',
-        content: cleanedResponse,
+        content: response.data.response,
         timestamp: new Date(),
       };
 
@@ -106,17 +96,14 @@ export function LandingChat() {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-md overflow-hidden border border-primary/20">
+    <Card className="w-full max-w-3xl mx-auto shadow-md overflow-hidden">
       <CardContent className="p-0">
-        <div className="flex flex-col h-[400px]">
-          <div className="flex items-center justify-between p-3 border-b bg-muted/50">
+        <div className="flex flex-col h-[600px]">
+          <div className="flex items-center p-3 border-b bg-muted/50">
             <div className="flex items-center">
               <Sparkles className="h-5 w-5 mr-2 text-primary" />
-              <span className="font-medium">Studie</span>
+              <span className="font-medium">Students AI Chat</span>
             </div>
-            <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20">
-              {hasInteracted ? 'Free Trial (1/1)' : 'Free Trial Available'}
-            </Badge>
           </div>
           
           <ScrollArea ref={scrollAreaRef} className="flex-1 p-4">
@@ -186,29 +173,16 @@ export function LandingChat() {
               onChange={handleInputChange}
               placeholder="Ask about courses, study plans, etc..."
               className="flex-1"
-              disabled={isLoading || hasInteracted}
+              disabled={isLoading}
             />
             <Button
               type="submit"
               size="icon"
-              disabled={!inputValue.trim() || isLoading || hasInteracted}
+              disabled={!inputValue.trim() || isLoading}
             >
               <Send className="h-4 w-4" />
             </Button>
           </form>
-          
-          {hasInteracted && (
-            <div className="p-3 bg-muted/30 text-center border-t">
-              <p className="text-sm text-muted-foreground mb-2">
-                You've used your free trial. Create an account to continue chatting.
-              </p>
-              <Link href="/signup">
-                <Button className="w-full sm:w-auto" size="sm">
-                  Sign Up Now
-                </Button>
-              </Link>
-            </div>
-          )}
         </div>
       </CardContent>
     </Card>
