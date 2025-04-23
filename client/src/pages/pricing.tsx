@@ -1,311 +1,173 @@
 import { MainLayout } from '@/components/main-layout';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { 
-  CheckCircle, 
-  CreditCard, 
-  Sparkles, 
-  Zap, 
-  PlusCircle,
-  ChevronLeft, 
-  ChevronRight
-} from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
+import { CheckCircle, X, ArrowRight } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useAuth } from '@/hooks/use-auth';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export function PricingPage() {
   const { isAuthenticated } = useAuth();
-  const [activeIndex, setActiveIndex] = useState(1); // Default to the middle (popular) plan
-  const [showDetails, setShowDetails] = useState(false);
-  const [cardWidth, setCardWidth] = useState(0);
-  const cardRef = useRef<HTMLDivElement>(null);
-  
-  // Get card width for responsive animations
-  useEffect(() => {
-    if (cardRef.current) {
-      setCardWidth(cardRef.current.offsetWidth);
-      
-      const handleResize = () => {
-        if (cardRef.current) {
-          setCardWidth(cardRef.current.offsetWidth);
-        }
-      };
-      
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
-  }, []);
-  
-  // Color scheme for cards
-  const cardColors = [
-    { bg: 'from-blue-400 to-blue-500', shadow: 'shadow-blue-400/20' },
-    { bg: 'from-purple-400 to-purple-600', shadow: 'shadow-purple-400/20' },
-    { bg: 'from-pink-400 to-pink-600', shadow: 'shadow-pink-400/20' }
-  ];
-  
-  const nextCard = () => {
-    setShowDetails(false);
-    setTimeout(() => {
-      setActiveIndex((prev) => (prev === plans.length - 1 ? 0 : prev + 1));
-    }, 150);
-  };
-  
-  const prevCard = () => {
-    setShowDetails(false);
-    setTimeout(() => {
-      setActiveIndex((prev) => (prev === 0 ? plans.length - 1 : prev - 1));
-    }, 150);
-  };
-  
-  const toggleDetails = () => {
-    setShowDetails(!showDetails);
-  };
 
   return (
     <MainLayout>
-      <div className="bg-white dark:bg-gray-900 min-h-screen">
-        <div className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
-          <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-              Simple, Transparent Pricing
-            </h1>
-            <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
-              Choose the plan that works best for your academic needs.
-            </p>
-          </div>
+      <div className="bg-white dark:bg-gray-900 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="text-center mb-16">
+          <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            Simple, Transparent Pricing
+          </h1>
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
+            Choose the plan that works best for your academic needs. All plans include our core AI assistance features.
+          </p>
+        </div>
 
-          {/* Card Stack - Apple Wallet style */}
-          <div className="relative h-[460px] sm:h-[500px] w-full max-w-md mx-auto mb-8">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
-              {plans.map((plan, index) => {
-                // Calculate distance from active card
-                const distance = index - activeIndex;
-                
-                // We'll show at most 3 cards in the stack - the active one and one on each side
-                const isVisible = Math.abs(distance) <= 1;
-                
-                // Cards other than active are scaled down
-                const scale = distance === 0 ? 1 : 0.85;
-                
-                // Offset each card in the stack
-                const yOffset = distance === 0 ? 0 : distance < 0 ? -28 : 28;
-                
-                // Calculate horizontal offset (creates a fan effect)
-                const xOffset = distance * 10;
-                
-                // Calculate z-index to make sure active card is on top
-                const zIndex = 10 - Math.abs(distance);
-                
-                // Rotate slightly based on distance
-                const rotate = distance * 3;
-
-                return (
-                  <AnimatePresence key={index}>
-                    {isVisible && (
-                      <motion.div
-                        ref={index === 1 ? cardRef : null}
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ 
-                          opacity: 1,
-                          scale,
-                          y: yOffset,
-                          x: xOffset,
-                          rotate: rotate,
-                          zIndex
-                        }}
-                        exit={{ opacity: 0, y: 100 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                        className={`absolute w-full sm:w-96 rounded-xl overflow-hidden ${
-                          distance === 0 
-                            ? `shadow-xl ${cardColors[index].shadow}`
-                            : 'shadow-lg'
-                        }`}
-                        style={{ cursor: distance === 0 ? 'default' : 'pointer' }}
-                        onClick={() => {
-                          if (distance !== 0) {
-                            setActiveIndex(index);
-                          }
-                        }}
-                      >
-                        <motion.div
-                          layout
-                          className={`p-6 bg-gradient-to-br ${cardColors[index].bg} text-white h-full`}
-                        >
-                          {/* Card Badge */}
-                          {plan.popular && distance === 0 && (
-                            <motion.div
-                              initial={{ opacity: 0, scale: 0.5 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium"
-                            >
-                              Most Popular
-                            </motion.div>
-                          )}
-                          
-                          {/* Card Icon */}
-                          <div className="mb-4">
-                            {index === 0 ? (
-                              <Zap className="h-10 w-10 text-white/90" />
-                            ) : index === 1 ? (
-                              <CreditCard className="h-10 w-10 text-white/90" />
-                            ) : (
-                              <Sparkles className="h-10 w-10 text-white/90" />
-                            )}
-                          </div>
-                          
-                          {/* Plan Name */}
-                          <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
-                          
-                          {/* Price */}
-                          <div className="flex items-baseline mb-4">
-                            <span className="text-4xl font-bold">${plan.price}</span>
-                            {plan.period && (
-                              <span className="ml-1 text-xl opacity-80">/{plan.period}</span>
-                            )}
-                          </div>
-                          
-                          {/* Description */}
-                          <p className="text-white/90 mb-6">{plan.description}</p>
-                          
-                          {/* Key Features */}
-                          <AnimatePresence>
-                            {(distance === 0 && showDetails) && (
-                              <motion.ul
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="space-y-2 mb-6"
-                              >
-                                {plan.features.map((feature, idx) => (
-                                  <motion.li
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="flex items-start"
-                                  >
-                                    <CheckCircle className="h-5 w-5 text-white mr-2 flex-shrink-0 mt-0.5" />
-                                    <span className="text-white/90">{feature}</span>
-                                  </motion.li>
-                                ))}
-                              </motion.ul>
-                            )}
-                          </AnimatePresence>
-                          
-                          {/* Action Buttons */}
-                          {distance === 0 && (
-                            <div className="flex flex-col gap-3">
-                              <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
-                                <Button 
-                                  className="w-full bg-white hover:bg-white/90 text-gray-900"
-                                >
-                                  {plan.price === '0' ? 'Get Started' : 'Subscribe'}
-                                </Button>
-                              </Link>
-                              <Button
-                                variant="outline"
-                                className="w-full border-white/30 hover:bg-white/10 text-white"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  toggleDetails();
-                                }}
-                              >
-                                {showDetails ? 'Show Less' : 'Show Features'}
-                              </Button>
-                            </div>
-                          )}
-                        </motion.div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                );
-              })}
-            </div>
-          </div>
-          
-          {/* Navigation Controls */}
-          <div className="flex justify-center items-center gap-4 mb-16">
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full"
-              onClick={prevCard}
-              aria-label="Previous plan"
+        {/* Main pricing cards */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className={`bg-white dark:bg-[#1E1E1E] rounded-lg shadow-lg overflow-hidden transition-all duration-300 border ${
+                plan.popular
+                  ? 'border-primary-500 dark:border-primary-400 ring-2 ring-primary-500 dark:ring-primary-400 relative'
+                  : 'border-gray-200 dark:border-gray-800'
+              }`}
             >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
-            
-            <div className="flex gap-2">
-              {plans.map((_, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  size="icon"
-                  className={`h-3 w-3 rounded-full p-0 ${
-                    index === activeIndex
-                      ? 'bg-primary-500'
-                      : 'bg-gray-300 dark:bg-gray-700'
-                  }`}
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`Go to plan ${index + 1}`}
-                />
-              ))}
+              {plan.popular && (
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-primary-600 text-white text-sm font-medium rounded-full">
+                  Most Popular
+                </div>
+              )}
+              <div className="p-6">
+                <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+                  {plan.name}
+                </h2>
+                <div className="mb-4 flex items-baseline">
+                  <span className="text-4xl font-bold text-gray-900 dark:text-white">${plan.price}</span>
+                  {plan.period && (
+                    <span className="ml-1 text-xl text-gray-500 dark:text-gray-400">/{plan.period}</span>
+                  )}
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 mb-8 h-16">
+                  {plan.description}
+                </p>
+                <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
+                  <Button
+                    className={`w-full mb-6 ${
+                      plan.popular
+                        ? 'bg-primary-600 hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700'
+                        : ''
+                    }`}
+                    variant={plan.popular ? 'default' : 'outline'}
+                  >
+                    {plan.price === '0' ? 'Get Started' : 'Subscribe'}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <div className="space-y-4">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">Plan includes:</p>
+                  <ul className="space-y-3">
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full"
-              onClick={nextCard}
-              aria-label="Next plan"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
+          ))}
+        </div>
+
+        {/* Feature comparison table */}
+        <div className="mt-20 mb-16">
+          <h2 className="text-3xl font-serif font-bold text-center text-gray-900 dark:text-white mb-10">
+            Compare All Features
+          </h2>
+
+          <div className="overflow-x-auto">
+            <Table>
+              <TableCaption>A comparison of all available features by plan</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-1/3">Feature</TableHead>
+                  <TableHead>Free</TableHead>
+                  <TableHead>Standard ($10)</TableHead>
+                  <TableHead>Premium ($30)</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {featureComparison.map((feature, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="font-medium">{feature.name}</TableCell>
+                    <TableCell>
+                      {feature.free ? 
+                        feature.free === true ? <CheckCircle className="h-5 w-5 text-green-500" /> : feature.free
+                        : <X className="h-5 w-5 text-red-500" />}
+                    </TableCell>
+                    <TableCell>
+                      {feature.pro ? 
+                        feature.pro === true ? <CheckCircle className="h-5 w-5 text-green-500" /> : feature.pro
+                        : <X className="h-5 w-5 text-red-500" />}
+                    </TableCell>
+                    <TableCell>
+                      {feature.teams ? 
+                        feature.teams === true ? <CheckCircle className="h-5 w-5 text-green-500" /> : feature.teams
+                        : <X className="h-5 w-5 text-red-500" />}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </div>
+        </div>
 
-          {/* FAQ Section */}
-          <div className="max-w-3xl mx-auto mt-20">
-            <h2 className="text-3xl font-serif font-bold text-center text-gray-900 dark:text-white mb-10">
-              Frequently Asked Questions
-            </h2>
+        {/* FAQ Section */}
+        <div className="mt-20">
+          <h2 className="text-3xl font-serif font-bold text-center text-gray-900 dark:text-white mb-10">
+            Frequently Asked Questions
+          </h2>
 
-            <div className="space-y-6">
-              {faqs.map((faq, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white dark:bg-[#121212] rounded-lg p-6 border border-gray-200 dark:border-gray-800 transition-colors duration-300"
-                >
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white dark:bg-[#121212] rounded-lg p-6 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* CTA Section */}
-          <div className="mt-20 text-center">
-            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4">
-              Ready to get started?
-            </h2>
-            <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-8">
-              Join thousands of students who are already using our AI assistants to improve their academic performance.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
-                <Button size="lg" className="px-8">
-                  <PlusCircle className="mr-2 h-5 w-5" />
-                  Start Free Trial
-                </Button>
-              </Link>
-            </div>
+        {/* CTA Section */}
+        <div className="mt-20 text-center">
+          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+            Ready to get started?
+          </h2>
+          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-8">
+            Join thousands of students who are already using our AI assistants to improve their academic performance.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
+              <Button size="lg" className="px-8">
+                Start Free Trial
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button size="lg" variant="outline" className="px-8">
+                Contact Sales
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -357,6 +219,69 @@ const plans = [
       'Dedicated support'
     ],
     popular: false
+  }
+];
+
+const featureComparison = [
+  { 
+    name: 'Uses per day', 
+    free: '5', 
+    pro: 'Until credits depleted', 
+    teams: 'Until credits depleted' 
+  },
+  { 
+    name: 'Monthly Credits', 
+    free: '0', 
+    pro: '$10 worth', 
+    teams: '$50 worth' 
+  },
+  { 
+    name: 'AI Models Access', 
+    free: 'Standard only', 
+    pro: 'All models', 
+    teams: 'All + Premium models' 
+  },
+  { 
+    name: 'Processing Priority', 
+    free: 'Standard', 
+    pro: 'Higher', 
+    teams: 'Highest' 
+  },
+  { 
+    name: 'File Upload & Analysis', 
+    free: false, 
+    pro: true, 
+    teams: true 
+  },
+  { 
+    name: 'API Access', 
+    free: false, 
+    pro: true, 
+    teams: true 
+  },
+  { 
+    name: 'Collaboration Tools', 
+    free: false, 
+    pro: 'Basic', 
+    teams: 'Advanced' 
+  },
+  { 
+    name: 'Study Analytics', 
+    free: 'Basic', 
+    pro: 'Standard', 
+    teams: 'Advanced' 
+  },
+  { 
+    name: 'Support', 
+    free: 'Community', 
+    pro: 'Email', 
+    teams: 'Dedicated' 
+  },
+  { 
+    name: 'Additional API Markup', 
+    free: 'N/A', 
+    pro: '22%', 
+    teams: '22%' 
   }
 ];
 
