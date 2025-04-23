@@ -158,13 +158,7 @@ export function Navbar() {
                 <div className="absolute w-0.5 h-0.5 bg-transparent bottom-0 left-1/2 transform -translate-x-1/2" id="logo-center-indicator"></div>
               </div>
               <div className="flex ml-4 space-x-2 items-center">
-                <div className="flex flex-col items-center">
-                  <Link href="/" onClick={scrollToTop}>
-                    <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                      <span className="relative">Home</span>
-                    </Button>
-                  </Link>
-                </div>
+                
                 {isAuthenticated && (
                   <>
                     <div className="flex flex-col items-center">
