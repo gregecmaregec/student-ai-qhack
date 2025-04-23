@@ -20,9 +20,22 @@ export function HomePage() {
   useEffect(() => {
     // Keep track of whether animation has been triggered
     const animationTriggered = { mobile: false, desktop: false };
+    
+    // Debounce function to limit how often animations are triggered
+    const debounce = (func: Function, wait: number) => {
+      let timeout: NodeJS.Timeout | null = null;
+      return function executedFunction(...args: any[]) {
+        const later = () => {
+          if (timeout) clearTimeout(timeout);
+          func(...args);
+        };
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    };
 
     // Global scroll handling for page position
-    const handlePageScroll = () => {
+    const handlePageScroll = debounce(() => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
@@ -32,17 +45,28 @@ export function HomePage() {
       
       const smileyContainer = document.getElementById('smiley-container');
       
-      // Activate smiley animation when scroll reaches halfway down the page
-      // or when near the bottom on mobile devices
+      // Activate smiley animation only when actually viewing the mental wellness feature
+      // Use different thresholds for mobile vs desktop
       if (smileyContainer) {
         const isMobile = window.innerWidth < 640;
-        if ((isMobile && scrollPercentage > 70) || (!isMobile && scrollPercentage > 50)) {
+        
+        // On mobile, only activate when very close to the bottom
+        // On desktop, activate when at least 80% through the page
+        if ((isMobile && scrollPercentage > 90) || (!isMobile && scrollPercentage > 80)) {
           smileyContainer.classList.add('smiley-active');
-        } else {
+          
+          // Auto-remove animation after 4 seconds on mobile to prevent battery drain
+          if (isMobile) {
+            setTimeout(() => {
+              smileyContainer.classList.remove('smiley-active');
+            }, 4000);
+          }
+        } else if (!isMobile) {
+          // Only actively remove on desktop - mobile will auto-expire
           smileyContainer.classList.remove('smiley-active');
         }
       }
-    };
+    }, 100); // Debounce by 100ms to improve performance
     
     // Add global scroll event listener
     window.addEventListener('scroll', handlePageScroll);
@@ -161,12 +185,7 @@ export function HomePage() {
               </h1>
             </div>
 
-            <motion.div
-              className="mt-8 relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="mt-8 relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/signup">
                 <button 
                   className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200"
@@ -181,16 +200,11 @@ export function HomePage() {
                   <span className="relative">Learn More</span>
                 </button>
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.p
-              className="mt-5 max-w-lg mx-auto text-base text-muted-foreground"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
+            <p className="mt-5 max-w-lg mx-auto text-base text-muted-foreground">
               Meet Studie, the studying AI agent.
-            </motion.p>
+            </p>
             <div className="mt-8"></div>
           </div>
         </div>

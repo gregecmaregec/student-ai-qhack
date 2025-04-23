@@ -189,17 +189,14 @@
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  20% { opacity: 1; }
-  25% { opacity: 0.1; }
-  30% { opacity: 1; }
-  70% { opacity: 1; }
-  75% { opacity: 0.1; }
-  80% { opacity: 1; }
+  45% { opacity: 1; }
+  50% { opacity: 0.7; }
+  55% { opacity: 1; }
 }
 
 @keyframes smile {
   0% { d: path("M8 14s1.5 2 4 2 4-2 4-2"); }
-  50% { d: path("M8 13s1.5 3.5 4 3.5 4-3.5 4-3.5"); }
+  50% { d: path("M8 13.5s1.5 2.5 4 2.5 4-2.5 4-2.5"); }
   100% { d: path("M8 14s1.5 2 4 2 4-2 4-2"); }
 }
 
