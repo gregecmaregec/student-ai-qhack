@@ -238,17 +238,15 @@ export function Navbar() {
           id="sub-navbar">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-start gap-3">
-              <div className={`${location === '/' ? 'hidden' : 'block'}`}>
-                <Link href="/" onClick={scrollToTop}>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="px-4 py-1 text-xs rounded-full text-primary border-none bg-primary/10 active:bg-primary/20"
-                  >
-                    Home
-                  </Button>
-                </Link>
-              </div>
+              <Link href="/" onClick={scrollToTop}>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
+                >
+                  Home
+                </Button>
+              </Link>
               <Link href="/about" onClick={scrollToTop}>
                 <Button 
                   variant="outline" 
