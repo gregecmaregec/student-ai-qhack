@@ -77,10 +77,16 @@ export function LandingChat() {
         query: trimmedInput
       });
 
+      // Clean up the response to remove any "Search Agent Response:" prefix
+      let cleanedResponse = response.data.response;
+      if (cleanedResponse.startsWith("Search Agent Response:")) {
+        cleanedResponse = cleanedResponse.replace("Search Agent Response:", "").trim();
+      }
+      
       // Add assistant response
       const assistantMessage: Message = {
         role: 'assistant',
-        content: response.data.response,
+        content: cleanedResponse,
         timestamp: new Date(),
       };
 

@@ -306,7 +306,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedRequest = requestSchema.parse(req.body);
       
       // Get AI response
-      const response = await queryStudentsAI(validatedRequest.query);
+      let response = await queryStudentsAI(validatedRequest.query);
+      
+      // No need to clean up the response here since we clean it in the frontend for this endpoint
       
       res.json({ response });
     } catch (error) {
@@ -485,7 +487,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (validated.role === 'user') {
         try {
           // Get AI response
-          const aiResponse = await queryStudentsAI(validated.content);
+          let aiResponse = await queryStudentsAI(validated.content);
+          
+          // Clean up the response to remove the "Search Agent Response:" prefix if present
+          if (aiResponse.startsWith("Search Agent Response:")) {
+            aiResponse = aiResponse.replace("Search Agent Response:", "").trim();
+          }
           
           // Create the AI response message
           const aiMessage = await storage.createChatMessage({
@@ -536,7 +543,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
       
       // Get AI response
-      const aiResponse = await queryStudentsAI(validated.content);
+      let aiResponse = await queryStudentsAI(validated.content);
+      
+      // Clean up the response to remove the "Search Agent Response:" prefix if present
+      if (aiResponse.startsWith("Search Agent Response:")) {
+        aiResponse = aiResponse.replace("Search Agent Response:", "").trim();
+      }
       
       // Create AI message
       const aiMessage = await storage.createChatMessage({
