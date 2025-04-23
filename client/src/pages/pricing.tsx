@@ -36,13 +36,7 @@ export function PricingPage() {
                   : "border-gray-200 dark:border-gray-800"
               } hover:shadow-md`}
             >
-              {plan.popular && (
-                <div className="absolute top-0 right-0 bg-primary/10 dark:bg-primary/20 rounded-bl-lg px-2 py-1">
-                  <span className="text-xs font-medium text-primary dark:text-primary-foreground">
-                    Popular
-                  </span>
-                </div>
-              )}
+              
               <div className="p-3 sm:p-4">
                 <div className="flex justify-between items-center mb-1 sm:mb-2">
                   <h2 className="text-lg sm:text-xl font-serif font-bold text-gray-900 dark:text-white text-left">
