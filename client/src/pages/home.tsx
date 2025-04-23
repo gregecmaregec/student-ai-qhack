@@ -217,7 +217,7 @@ export function HomePage() {
       >
         <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
+            <h2 className="text-xl font-serif text-foreground sm:text-2xl md:text-3xl leading-relaxed">
               Essential Features
             </h2>
             <p className="max-w-lg mt-2 mx-auto text-sm text-muted-foreground">
@@ -237,7 +237,7 @@ export function HomePage() {
                           {feature.icon}
                         </span>
                       </div>
-                      <h3 className="mt-4 text-base font-medium text-foreground tracking-tight">
+                      <h3 className="mt-4 text-base md:text-lg font-medium text-foreground tracking-tight leading-snug">
                         {feature.title}
                       </h3>
                       <p className="mt-2 text-sm text-muted-foreground">
@@ -264,7 +264,7 @@ export function HomePage() {
                             {feature.icon}
                           </span>
                         </div>
-                        <h3 className="mt-4 text-base font-medium text-foreground tracking-tight">
+                        <h3 className="mt-4 text-base font-medium text-foreground tracking-tight leading-snug">
                           {feature.title}
                         </h3>
                         <p className="mt-2 text-xs text-muted-foreground">
@@ -285,7 +285,7 @@ export function HomePage() {
         <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
           <div>
             <div className="w-full">
-              <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
+              <h2 className="text-xl font-serif text-foreground sm:text-2xl md:text-3xl leading-relaxed">
                 <i>"We do not learn for school, but for life"</i>
               </h2>
               <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
@@ -316,8 +316,8 @@ export function HomePage() {
             <div className="pt-8 pb-8 px-4 sm:pt-10 sm:px-10 relative">
               <div className="relative z-10">
                 <div className="flex justify-center">
-                  <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
-                    <span className="block">
+                  <h2 className="text-xl font-serif text-foreground sm:text-2xl md:text-3xl leading-relaxed">
+                    <span className="block px-2">
                       Ready to supercharge your studies?
                     </span>
                   </h2>
