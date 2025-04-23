@@ -23,9 +23,6 @@ export function PricingPage() {
           <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
             Simple Pricing
           </h1>
-          <p className="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-300">
-            Choose the plan that fits your needs
-          </p>
         </div>
 
         {/* Main pricing cards */}
@@ -39,19 +36,6 @@ export function PricingPage() {
                 <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 text-center">
                   {plan.name}
                 </h2>
-                <div className="mb-3 flex items-baseline justify-center">
-                  {plan.price === '0' ? (
-                    <span className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">Free Forever</span>
-                  ) : (
-                    <>
-                      <span className="text-2xl font-medium text-gray-500 dark:text-gray-400">$</span>
-                      <span className="text-4xl font-bold text-gray-900 dark:text-white tabular-nums tracking-tight">{Number(plan.price).toLocaleString()}</span>
-                      {plan.period && (
-                        <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">/{plan.period}</span>
-                      )}
-                    </>
-                  )}
-                </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 h-12 text-center">
                   {plan.description}
                 </p>
@@ -61,7 +45,7 @@ export function PricingPage() {
                     variant="outline"
                     size="sm"
                   >
-                    {plan.price === '0' ? 'Get Started' : 'Subscribe'}
+                    {plan.price === '0' ? 'Get Started' : 'Continue'}
                   </Button>
                 </Link>
                 <div>
@@ -138,7 +122,6 @@ const plans = [
   {
     name: 'Free',
     price: '0',
-    description: 'Limited free plan with basic features to get started.',
     features: [
       'Up to 5 uses per day',
       'All essential features',
