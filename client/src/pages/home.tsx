@@ -123,26 +123,16 @@ export function HomePage() {
           <div className="text-center">
             <div className="text-center">
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
-                <span className="block">
-                  Your studies
-                </span>
+                <span className="block">Your studies</span>
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
                 <span className="block inline-flex items-center justify-center">
-                  <motion.div
-                    className="mr-2 inline-flex"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.4, type: "spring" }}
-                  >
-                    <Zap className="h-7 w-2 sm:h-8 sm:w-2 md:h-10 md:w-2.5 text-primary fill-primary" strokeWidth={1} />
-                  </motion.div>
-                  Supercharged
+                  Simplified
                 </span>
               </h1>
             </div>
-            
-            <motion.div 
+
+            <motion.div
               className="mt-10 sm:flex sm:justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -170,14 +160,14 @@ export function HomePage() {
                 </Link>
               </div>
             </motion.div>
-            
-            <motion.p 
+
+            <motion.p
               className="mt-8 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              Meet Studie, world's best studying-focused AI agent.
+              Meet Studie, the studying AI agent.
             </motion.p>
             <div className="mt-16"></div>
           </div>
@@ -263,7 +253,7 @@ export function HomePage() {
                 <i>"We do not learn for school, but for life"</i>
               </h2>
               <p className="mt-3 max-w-3xl text-muted-foreground">
-                students-ai is built for academic success
+                Still, students-ai is built for academic performance.
               </p>
               <div className="mt-8 space-y-5">
                 {benefits.map((benefit, index) => (
@@ -294,9 +284,6 @@ export function HomePage() {
                     Ready to transform your studying?
                   </span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-muted-foreground">
-                  Join students-ai.com today for free
-                </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-5">
                   <Link href="/signup">
                     <Button

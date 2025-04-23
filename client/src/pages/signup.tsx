@@ -15,7 +15,8 @@ export function SignupPage() {
                 Your AI study companion
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Join thousands of students simplifying their academic life with students-ai.com
+                Excellerate your learning trajectory <br></br>
+                with students-ai.com
               </p>
             </div>
             
@@ -25,8 +26,8 @@ export function SignupPage() {
                   <Sparkles className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Smart AI Assistance</h3>
-                  <p className="text-muted-foreground">Get personalized help with any academic challenge</p>
+                  <h3 className="font-medium text-foreground">Top AI Assistance</h3>
+                  <p className="text-muted-foreground">From available AI models</p>
                 </div>
               </div>
               

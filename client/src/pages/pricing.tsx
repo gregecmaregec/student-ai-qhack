@@ -99,8 +99,8 @@ export function PricingPage() {
                 <TableRow>
                   <TableHead className="w-1/3">Feature</TableHead>
                   <TableHead>Free</TableHead>
-                  <TableHead>Pro</TableHead>
-                  <TableHead>Teams</TableHead>
+                  <TableHead>Standard ($10)</TableHead>
+                  <TableHead>Premium ($30)</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -180,43 +180,43 @@ const plans = [
   {
     name: 'Free',
     price: '0',
-    description: 'Free account with all essential features to get started.',
+    description: 'Limited free plan with basic features to get started.',
     features: [
-      'Basic AI study assistant',
-      'Limited research queries (10/day)',
-      'Basic study planner',
-      '24/7 availability',
-      'Single user only'
-    ],
-    popular: true
-  },
-  {
-    name: 'Pro',
-    price: '9.99',
-    period: 'month',
-    description: 'Everything you need for serious academic success.',
-    features: [
-      'Advanced AI assistant with all features',
-      'Unlimited research queries',
-      'Priority response times',
-      'Advanced study analytics',
-      'Collaboration tools for group projects',
-      'File uploads and analysis'
+      'Up to 5 uses per day',
+      'Basic AI study assistance',
+      'Access to standard models',
+      'No credit card required',
+      'Web access only'
     ],
     popular: false
   },
   {
-    name: 'Teams',
-    price: '19.99',
+    name: 'Standard',
+    price: '10',
     period: 'month',
-    description: 'Perfect for study groups and collaborative projects.',
+    description: '$10 of credits per month for token usage across all models.',
     features: [
-      'Everything in Pro plan',
-      'Up to 5 team members',
-      'Shared resources and notes',
-      'Team progress tracking',
-      'Integrated group chat',
-      'Integration with learning management systems'
+      '$10 worth of processing credits',
+      'Access to all AI models',
+      'Unlimited uses (until credits depleted)',
+      'Higher priority in the queue',
+      'File uploads and analysis',
+      'API access for developers'
+    ],
+    popular: true
+  },
+  {
+    name: 'Premium',
+    price: '30',
+    period: 'month',
+    description: '$50 of credits per month for intensive research and larger projects.',
+    features: [
+      '$50 worth of processing credits',
+      'Access to all AI models including premium',
+      'Priority processing',
+      'Advanced study analytics',
+      'Collaboration tools for group projects',
+      'Dedicated support'
     ],
     popular: false
   }
@@ -224,40 +224,28 @@ const plans = [
 
 const featureComparison = [
   { 
-    name: 'AI Study Assistant', 
-    free: 'Basic', 
-    pro: 'Advanced', 
-    teams: 'Advanced' 
+    name: 'Uses per day', 
+    free: '5', 
+    pro: 'Until credits depleted', 
+    teams: 'Until credits depleted' 
   },
   { 
-    name: 'Research Queries', 
-    free: '10/day', 
-    pro: 'Unlimited', 
-    teams: 'Unlimited' 
+    name: 'Monthly Credits', 
+    free: '0', 
+    pro: '$10 worth', 
+    teams: '$50 worth' 
   },
   { 
-    name: 'Study Planning', 
-    free: 'Basic', 
-    pro: 'Advanced', 
-    teams: 'Advanced' 
+    name: 'AI Models Access', 
+    free: 'Standard only', 
+    pro: 'All models', 
+    teams: 'All + Premium models' 
   },
   { 
-    name: 'Assignment Helper', 
-    free: 'Basic', 
-    pro: 'Advanced', 
-    teams: 'Advanced' 
-  },
-  { 
-    name: 'Concept Explainer', 
-    free: true, 
-    pro: true, 
-    teams: true 
-  },
-  { 
-    name: 'Citation Generator', 
-    free: true, 
-    pro: true, 
-    teams: true 
+    name: 'Processing Priority', 
+    free: 'Standard', 
+    pro: 'Higher', 
+    teams: 'Highest' 
   },
   { 
     name: 'File Upload & Analysis', 
@@ -266,61 +254,61 @@ const featureComparison = [
     teams: true 
   },
   { 
-    name: 'Group Collaboration', 
+    name: 'API Access', 
     free: false, 
-    pro: 'Limited', 
-    teams: 'Full' 
+    pro: true, 
+    teams: true 
   },
   { 
-    name: 'Response Priority', 
-    free: 'Standard', 
-    pro: 'Priority', 
-    teams: 'Priority' 
+    name: 'Collaboration Tools', 
+    free: false, 
+    pro: 'Basic', 
+    teams: 'Advanced' 
   },
   { 
     name: 'Study Analytics', 
     free: 'Basic', 
-    pro: 'Advanced', 
-    teams: 'Advanced + Team' 
+    pro: 'Standard', 
+    teams: 'Advanced' 
   },
   { 
-    name: 'Team Members', 
-    free: '1', 
-    pro: '1', 
-    teams: 'Up to 5' 
+    name: 'Support', 
+    free: 'Community', 
+    pro: 'Email', 
+    teams: 'Dedicated' 
   },
   { 
-    name: 'LMS Integration', 
-    free: false, 
-    pro: false, 
-    teams: true 
+    name: 'Additional API Markup', 
+    free: 'N/A', 
+    pro: '22%', 
+    teams: '22%' 
   }
 ];
 
 const faqs = [
   {
+    question: 'How do credits work?',
+    answer: 'Monthly credits can be used for any AI model offered. Different models cost different amounts of credits based on their processing power and capabilities.'
+  },
+  {
+    question: 'What happens when I run out of credits?',
+    answer: 'When you run out of credits, you can either wait until your next billing cycle or purchase additional credits separately. Free users are limited to 5 uses per day regardless of credits.'
+  },
+  {
+    question: 'What is the 22% API markup?',
+    answer: 'For developers using our API, there is a 22% markup on the base token price. This covers our infrastructure, API maintenance, and support costs for developers.'
+  },
+  {
     question: 'Can I switch between plans?',
     answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes to your billing will be prorated based on the time remaining in your current billing cycle.'
   },
   {
-    question: 'Is there a student discount?',
-    answer: 'Yes! Students with a valid .edu email address can get 20% off any paid plan. Contact our support team after signing up to apply for the discount.'
-  },
-  {
-    question: 'What does "limited research queries" mean?',
-    answer: 'Research queries are in-depth searches for academic resources and information. Free users can make 10 such queries per day, while paid plans have unlimited access.'
+    question: 'Do unused credits roll over?',
+    answer: 'No, credits do not roll over to the next month. Each billing cycle provides a fresh allocation of credits as specified in your plan.'
   },
   {
     question: 'Can I cancel my subscription?',
     answer: 'Yes, you can cancel your subscription at any time. You\'ll continue to have access to your paid features until the end of your current billing period.'
-  },
-  {
-    question: 'How do team accounts work?',
-    answer: 'With the Teams plan, one person serves as the admin and can invite up to 4 additional members. All members share resources and collaborate within a shared workspace.'
-  },
-  {
-    question: 'Do you support international students?',
-    answer: 'Absolutely! Our platform is available worldwide, and our AI assistants can help with academic systems from different countries. We also support multiple languages.'
   }
 ];
 

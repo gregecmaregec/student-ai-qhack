@@ -238,7 +238,7 @@ export function Navbar() {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none"
+                    className="px-4 py-1 text-xs rounded-full text-primary border-none bg-primary/10 active:bg-primary/20"
                   >
                     Home
                   </Button>
@@ -248,7 +248,7 @@ export function Navbar() {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/about' ? 'bg-primary/30' : ''}`}
+                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/about' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
                 >
                   About
                 </Button>
@@ -257,7 +257,7 @@ export function Navbar() {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/features' ? 'bg-primary/30' : ''}`}
+                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/features' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
                 >
                   Features
                 </Button>
@@ -266,7 +266,7 @@ export function Navbar() {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className={`px-4 py-1 text-xs rounded-full bg-primary/10 hover:bg-primary/20 text-primary border-none ${location === '/pricing' ? 'bg-primary/30' : ''}`}
+                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/pricing' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
                 >
                   Pricing
                 </Button>
