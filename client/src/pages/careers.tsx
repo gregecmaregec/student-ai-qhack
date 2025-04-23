@@ -31,14 +31,14 @@ export function CareersPage() {
     {
       id: 'software',
       title: 'Software',
-      description: 'Send us proof of exceptional ability.',
+      description: 'Are you keen on real life problem solving?',
       icon: <Code className="h-10 w-10 text-primary" />,
       emailSubject: 'Software Position Application'
     },
     {
       id: 'legal',
       title: 'Legal',
-      description: 'Certified legal experts welcome.',
+      description: 'Legal experts welcome. Escpecially students.',
       icon: <GavelIcon className="h-10 w-10 text-primary" />,
       emailSubject: 'Legal Position Application'
     }

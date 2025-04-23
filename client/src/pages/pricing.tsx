@@ -36,7 +36,6 @@ export function PricingPage() {
                   : "border-gray-200 dark:border-gray-800"
               } hover:shadow-md`}
             >
-              
               <div className="p-3 sm:p-4">
                 <div className="flex justify-between items-center mb-1 sm:mb-2">
                   <h2 className="text-lg sm:text-xl font-serif font-bold text-gray-900 dark:text-white text-left">
@@ -90,9 +89,7 @@ export function PricingPage() {
             <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
               <TableHeader>
                 <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-                  <TableHead className="w-1/3 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
-                    
-                  </TableHead>
+                  <TableHead className="w-1/3 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300"></TableHead>
                   <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
                     Free
                   </TableHead>
@@ -195,7 +192,7 @@ const plans = [
     price: "10",
     period: "month",
     features: [
-      "$10 worth of token credits",
+      "$10 worth of credits",
       "Access to all AI models",
       "Unlimited uses (until credits depleted)",
       "File uploads and analysis",
@@ -207,9 +204,9 @@ const plans = [
     price: "30",
     period: "month",
     features: [
-      "$30 worth of processing credits",
+      "$30 worth of credits",
       "Higher priority in the queue",
-      "Collaboration tools for group projects",
+      "early access to new features market experimental",
       "Dedicated support",
     ],
     popular: false,
