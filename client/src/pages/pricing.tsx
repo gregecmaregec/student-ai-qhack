@@ -88,41 +88,40 @@ export function PricingPage() {
           ))}
         </div>
 
-        {/* Feature comparison table */}
-        <div className="mt-20 mb-16">
-          <h2 className="text-3xl font-serif font-bold text-center text-gray-900 dark:text-white mb-10">
-            Compare All Features
+        {/* Feature comparison - mobile friendly */}
+        <div className="mt-12 overflow-x-auto -mx-3 sm:-mx-6 lg:mx-0">
+          <h2 className="text-2xl font-serif font-bold text-center text-gray-900 dark:text-white mb-6">
+            Key Features
           </h2>
-
-          <div className="overflow-x-auto">
-            <Table>
-              <TableCaption>A comparison of all available features by plan</TableCaption>
+          <div className="inline-block min-w-full align-middle">
+            <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+              <TableCaption className="text-xs">Feature comparison by plan</TableCaption>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-1/3">Feature</TableHead>
-                  <TableHead>Free</TableHead>
-                  <TableHead>Standard ($10)</TableHead>
-                  <TableHead>Premium ($30)</TableHead>
+                  <TableHead className="w-1/3 text-xs">Feature</TableHead>
+                  <TableHead className="text-xs">Free</TableHead>
+                  <TableHead className="text-xs">Standard</TableHead>
+                  <TableHead className="text-xs">Premium</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {featureComparison.map((feature, index) => (
+                {featureComparison.slice(0, 5).map((feature, index) => (
                   <TableRow key={index}>
-                    <TableCell className="font-medium">{feature.name}</TableCell>
-                    <TableCell>
+                    <TableCell className="text-xs font-medium">{feature.name}</TableCell>
+                    <TableCell className="text-xs">
                       {feature.free ? 
-                        feature.free === true ? <CheckCircle className="h-5 w-5 text-green-500" /> : feature.free
-                        : <X className="h-5 w-5 text-red-500" />}
+                        feature.free === true ? <CheckCircle className="h-4 w-4 text-green-500" /> : feature.free
+                        : <X className="h-4 w-4 text-red-500" />}
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="text-xs">
                       {feature.pro ? 
-                        feature.pro === true ? <CheckCircle className="h-5 w-5 text-green-500" /> : feature.pro
-                        : <X className="h-5 w-5 text-red-500" />}
+                        feature.pro === true ? <CheckCircle className="h-4 w-4 text-green-500" /> : feature.pro
+                        : <X className="h-4 w-4 text-red-500" />}
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="text-xs">
                       {feature.teams ? 
-                        feature.teams === true ? <CheckCircle className="h-5 w-5 text-green-500" /> : feature.teams
-                        : <X className="h-5 w-5 text-red-500" />}
+                        feature.teams === true ? <CheckCircle className="h-4 w-4 text-green-500" /> : feature.teams
+                        : <X className="h-4 w-4 text-red-500" />}
                     </TableCell>
                   </TableRow>
                 ))}
