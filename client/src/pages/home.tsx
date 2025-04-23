@@ -349,6 +349,12 @@ const features = [
     icon: <FileText className="h-6 w-6 text-white" />,
   },
   {
+    title: "Exam Practice",
+    description:
+      "Get AI-generated exam-like questions that match your course material and help you prepare effectively.",
+    icon: <FileText className="h-6 w-6 text-white" />,
+  },
+  {
     title: "Mental Wellness",
     description:
       "Get support managing stress, maintaining focus, and balancing your academic and personal life.",
