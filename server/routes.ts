@@ -295,6 +295,283 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Students-AI API endpoint for anonymous users (landing page)
+  app.post("/api/query", async (req, res) => {
+    try {
+      // Validate the request
+      const requestSchema = z.object({
+        query: z.string().min(2).max(500)
+      });
+      
+      const validatedRequest = requestSchema.parse(req.body);
+      
+      // Get AI response
+      const response = await queryStudentsAI(validatedRequest.query);
+      
+      res.json({ response });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ 
+          message: "Invalid input", 
+          errors: error.errors 
+        });
+      }
+      
+      console.error("Students-AI query error:", error);
+      res.status(500).json({ message: "Failed to get answer" });
+    }
+  });
+
+  // Chat routes for authenticated users
+  app.get("/api/chats", authMiddleware, async (req, res) => {
+    try {
+      const chats = await storage.getChats(req.user.id);
+      res.json(chats);
+    } catch (error) {
+      console.error("Get chats error:", error);
+      res.status(500).json({ message: "Failed to fetch chats" });
+    }
+  });
+
+  app.get("/api/chats/:id", authMiddleware, async (req, res) => {
+    try {
+      const chatId = parseInt(req.params.id);
+      const chat = await storage.getChat(chatId);
+      
+      if (!chat) {
+        return res.status(404).json({ message: "Chat not found" });
+      }
+      
+      // Make sure the user owns this chat
+      if (chat.userId !== req.user.id) {
+        return res.status(403).json({ message: "Unauthorized access" });
+      }
+      
+      res.json(chat);
+    } catch (error) {
+      console.error("Get chat error:", error);
+      res.status(500).json({ message: "Failed to fetch chat" });
+    }
+  });
+
+  app.post("/api/chats", authMiddleware, async (req, res) => {
+    try {
+      // Validate input
+      const validated = insertChatSchema.parse({
+        ...req.body,
+        userId: req.user.id
+      });
+      
+      // Create chat
+      const chat = await storage.createChat(validated);
+      
+      res.status(201).json(chat);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid input", errors: error.errors });
+      }
+      
+      console.error("Create chat error:", error);
+      res.status(500).json({ message: "Failed to create chat" });
+    }
+  });
+
+  app.patch("/api/chats/:id", authMiddleware, async (req, res) => {
+    try {
+      const chatId = parseInt(req.params.id);
+      
+      // Verify the chat exists and belongs to the user
+      const existingChat = await storage.getChat(chatId);
+      if (!existingChat) {
+        return res.status(404).json({ message: "Chat not found" });
+      }
+      
+      if (existingChat.userId !== req.user.id) {
+        return res.status(403).json({ message: "Unauthorized access" });
+      }
+      
+      // Validate input
+      const updateSchema = insertChatSchema.omit({ userId: true }).partial();
+      const validated = updateSchema.parse(req.body);
+      
+      // Update chat
+      const chat = await storage.updateChat(chatId, validated);
+      
+      res.json(chat);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid input", errors: error.errors });
+      }
+      
+      console.error("Update chat error:", error);
+      res.status(500).json({ message: "Failed to update chat" });
+    }
+  });
+
+  app.delete("/api/chats/:id", authMiddleware, async (req, res) => {
+    try {
+      const chatId = parseInt(req.params.id);
+      
+      // Verify the chat exists and belongs to the user
+      const existingChat = await storage.getChat(chatId);
+      if (!existingChat) {
+        return res.status(404).json({ message: "Chat not found" });
+      }
+      
+      if (existingChat.userId !== req.user.id) {
+        return res.status(403).json({ message: "Unauthorized access" });
+      }
+      
+      const deleted = await storage.deleteChat(chatId);
+      
+      if (!deleted) {
+        return res.status(404).json({ message: "Chat not found" });
+      }
+      
+      res.status(204).send();
+    } catch (error) {
+      console.error("Delete chat error:", error);
+      res.status(500).json({ message: "Failed to delete chat" });
+    }
+  });
+
+  // Chat messages routes
+  app.get("/api/chats/:id/messages", authMiddleware, async (req, res) => {
+    try {
+      const chatId = parseInt(req.params.id);
+      
+      // Verify the chat exists and belongs to the user
+      const existingChat = await storage.getChat(chatId);
+      if (!existingChat) {
+        return res.status(404).json({ message: "Chat not found" });
+      }
+      
+      if (existingChat.userId !== req.user.id) {
+        return res.status(403).json({ message: "Unauthorized access" });
+      }
+      
+      const messages = await storage.getChatMessages(chatId);
+      res.json(messages);
+    } catch (error) {
+      console.error("Get chat messages error:", error);
+      res.status(500).json({ message: "Failed to fetch chat messages" });
+    }
+  });
+
+  app.post("/api/chats/:id/messages", authMiddleware, async (req, res) => {
+    try {
+      const chatId = parseInt(req.params.id);
+      
+      // Verify the chat exists and belongs to the user
+      const existingChat = await storage.getChat(chatId);
+      if (!existingChat) {
+        return res.status(404).json({ message: "Chat not found" });
+      }
+      
+      if (existingChat.userId !== req.user.id) {
+        return res.status(403).json({ message: "Unauthorized access" });
+      }
+      
+      // Validate input
+      const validated = insertChatMessageSchema.parse({
+        ...req.body,
+        chatId
+      });
+      
+      // Create message
+      const message = await storage.createChatMessage(validated);
+      
+      // If it's a user message, automatically create an AI response
+      if (validated.role === 'user') {
+        try {
+          // Get AI response
+          const aiResponse = await queryStudentsAI(validated.content);
+          
+          // Create the AI response message
+          const aiMessage = await storage.createChatMessage({
+            chatId,
+            role: 'assistant',
+            content: aiResponse
+          });
+          
+          // Return both the user message and AI response
+          res.status(201).json({ userMessage: message, aiResponse: aiMessage });
+        } catch (error) {
+          console.error("AI response error:", error);
+          // Still return the user message even if AI response fails
+          res.status(201).json({ userMessage: message, aiResponseError: "Failed to get AI response" });
+        }
+      } else {
+        // Just return the created message
+        res.status(201).json(message);
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid input", errors: error.errors });
+      }
+      
+      console.error("Create chat message error:", error);
+      res.status(500).json({ message: "Failed to create chat message" });
+    }
+  });
+
+  // Anonymous chat for landing page
+  app.post("/api/anonymous-chat", async (req, res) => {
+    try {
+      // Create an anonymous chat
+      const chat = await storage.createAnonymousChat();
+      
+      // Validate input
+      const messageSchema = z.object({
+        content: z.string().min(2).max(500)
+      });
+      
+      const validated = messageSchema.parse(req.body);
+      
+      // Create user message
+      const userMessage = await storage.createChatMessage({
+        chatId: chat.id,
+        role: 'user',
+        content: validated.content
+      });
+      
+      // Get AI response
+      const aiResponse = await queryStudentsAI(validated.content);
+      
+      // Create AI message
+      const aiMessage = await storage.createChatMessage({
+        chatId: chat.id,
+        role: 'assistant',
+        content: aiResponse
+      });
+      
+      // Return the chat ID and messages
+      res.status(201).json({
+        chatId: chat.id,
+        userMessage,
+        aiResponse: aiMessage
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid input", errors: error.errors });
+      }
+      
+      console.error("Anonymous chat error:", error);
+      res.status(500).json({ message: "Failed to create anonymous chat" });
+    }
+  });
+
+  app.get("/api/anonymous-chat/:id", async (req, res) => {
+    try {
+      const chatId = parseInt(req.params.id);
+      const messages = await storage.getAnonymousChatMessages(chatId);
+      res.json(messages);
+    } catch (error) {
+      console.error("Get anonymous chat messages error:", error);
+      res.status(500).json({ message: "Failed to fetch anonymous chat messages" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

@@ -13,6 +13,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { LandingChat } from "@/components/landing-chat";
 
 export function HomePage() {
   const mentalWellnessFeatureRef = useRef(null);
@@ -205,9 +206,7 @@ export function HomePage() {
               </Link>
             </div>
 
-            <p className="mt-5 max-w-lg mx-auto text-base text-muted-foreground">
-              Meet Studie, the studying AI agent.
-            </p>
+
             <div className="mt-8"></div>
           </div>
         </div>
