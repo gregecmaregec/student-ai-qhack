@@ -18,67 +18,69 @@ export function PricingPage() {
 
   return (
     <MainLayout>
-      <div className="bg-white dark:bg-gray-900 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="text-center mb-16">
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            Simple, Transparent Pricing
+      <div className="bg-white dark:bg-gray-900 max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="text-center mb-10">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
+            Simple Pricing
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
-            Choose the plan that works best for your academic needs. All plans include our core AI assistance features.
+          <p className="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-300">
+            Choose the plan that fits your needs
           </p>
         </div>
 
         {/* Main pricing cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-12">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-white dark:bg-[#1E1E1E] rounded-lg shadow-lg overflow-hidden transition-all duration-300 border ${
+              className={`bg-white dark:bg-[#1E1E1E] rounded-lg shadow-md overflow-hidden transition-all duration-300 border ${
                 plan.popular
-                  ? 'border-primary-500 dark:border-primary-400 ring-2 ring-primary-500 dark:ring-primary-400 relative'
+                  ? 'border-primary-500 dark:border-primary-400 ring-1 ring-primary-500 dark:ring-primary-400 relative'
                   : 'border-gray-200 dark:border-gray-800'
               }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-primary-600 text-white text-sm font-medium rounded-full">
-                  Most Popular
+                <div className="absolute top-0 right-0 -mt-2 -mr-2 px-3 py-1 bg-primary-600 text-white text-xs font-medium rounded-full">
+                  Popular
                 </div>
               )}
-              <div className="p-6">
-                <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+              <div className="p-4 sm:p-5">
+                <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2">
                   {plan.name}
                 </h2>
-                <div className="mb-4 flex items-baseline">
-                  <span className="text-4xl font-bold text-gray-900 dark:text-white">${plan.price}</span>
+                <div className="mb-3 flex items-baseline">
+                  <span className="text-3xl font-bold text-gray-900 dark:text-white">${plan.price}</span>
                   {plan.period && (
-                    <span className="ml-1 text-xl text-gray-500 dark:text-gray-400">/{plan.period}</span>
+                    <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">/{plan.period}</span>
                   )}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-8 h-16">
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 h-12">
                   {plan.description}
                 </p>
                 <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
                   <Button
-                    className={`w-full mb-6 ${
+                    className={`w-full mb-4 text-sm py-2 ${
                       plan.popular
                         ? 'bg-primary-600 hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700'
                         : ''
                     }`}
                     variant={plan.popular ? 'default' : 'outline'}
+                    size="sm"
                   >
                     {plan.price === '0' ? 'Get Started' : 'Subscribe'}
-                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <div className="space-y-4">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Plan includes:</p>
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, idx) => (
+                <div>
+                  <ul className="space-y-2">
+                    {plan.features.slice(0, 3).map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-gray-700 dark:text-gray-300 text-xs">{feature}</span>
                       </li>
                     ))}
+                    {plan.features.length > 3 && (
+                      <li className="text-xs text-primary-600 pt-1">+ {plan.features.length - 3} more features</li>
+                    )}
                   </ul>
                 </div>
               </div>
