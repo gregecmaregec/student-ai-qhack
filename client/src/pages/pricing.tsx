@@ -196,7 +196,7 @@ const plans = [
     period: "month",
     features: [
       "$10 worth of token credits",
-      "Access to all AI models",
+      "Access to all AI models, e.g. Gemini 2.5 Pro Preview,  ",
       "Unlimited uses (until credits depleted)",
       "File uploads and analysis",
     ],

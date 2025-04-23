@@ -133,30 +133,28 @@ export function HomePage() {
             </div>
 
             <motion.div
-              className="mt-6 mx-auto max-w-xs sm:max-w-md flex flex-col sm:flex-row gap-3"
+              className="mt-8 relative z-10 flex justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex-1">
-                <Link href="/signup" className="block">
-                  <Button
-                    size="lg"
-                    className="w-full px-6 py-3 text-sm md:text-base bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 active:scale-95 text-white font-medium border-none rounded-full"
+              <div className="inline-flex items-center bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-lg shadow-primary/10 dark:shadow-primary/5">
+                <Link href="/signup">
+                  <button 
+                    className="relative overflow-hidden group whitespace-nowrap px-5 py-2.5 text-sm font-medium text-white rounded-full bg-gradient-to-r from-primary to-purple-500"
                   >
-                    Get Started
-                  </Button>
+                    <span className="relative z-10">Get Started</span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 group-active:opacity-90 transition-opacity duration-300"></span>
+                    <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 origin-left transition-transform duration-300 bg-white/10 rounded-full"></span>
+                  </button>
                 </Link>
-              </div>
-              <div className="flex-1">
-                <Link href="/features" className="block">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full px-6 py-3 text-sm md:text-base bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none active:scale-95 rounded-full"
+                <Link href="/features">
+                  <button 
+                    className="relative overflow-hidden group whitespace-nowrap ml-2 px-5 py-2.5 text-sm font-medium text-foreground rounded-full hover:text-primary transition-colors duration-300"
                   >
-                    Learn More
-                  </Button>
+                    <span className="relative z-10">Learn More</span>
+                    <span className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+                  </button>
                 </Link>
               </div>
             </motion.div>
@@ -286,16 +284,18 @@ export function HomePage() {
                     </span>
                   </h2>
                 </div>
-                <div className="mt-6 mx-auto max-w-xs sm:max-w-md">
-                  <Link href="/signup" className="block">
-                    <Button
-                      size="lg"
-                      variant="default"
-                      className="w-full px-8 py-4 text-base bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/30 active:scale-95 text-white hover:text-white/90 transition-all duration-300 font-semibold rounded-full border-none"
-                    >
-                      Try for free
-                    </Button>
-                  </Link>
+                <div className="mt-8 flex justify-center">
+                  <div className="relative z-10 inline-block">
+                    <Link href="/signup">
+                      <button 
+                        className="relative overflow-hidden group whitespace-nowrap px-8 py-3.5 text-base font-semibold text-white rounded-full bg-gradient-to-r from-primary to-purple-500 shadow-lg shadow-primary/20"
+                      >
+                        <span className="relative z-10">Try for free</span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 group-active:opacity-90 transition-opacity duration-300"></span>
+                        <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 origin-left transition-transform duration-300 bg-white/10 rounded-full"></span>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
