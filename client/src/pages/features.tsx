@@ -130,6 +130,30 @@ const features = [
       "Practice problems with step-by-step solutions",
     ],
   },
+  {
+    title: "Flashcard Generation",
+    description:
+      "Create effective flashcards automatically from your study materials and notes.",
+    icon: <FileText className="h-6 w-6" />,
+    benefits: [
+      "AI-powered extraction of key concepts",
+      "Smart spacing for optimal retention",
+      "Custom card templates for different subjects",
+      "Progress tracking and review suggestions",
+    ],
+  },
+  {
+    title: "Exam-like Quizzes",
+    description:
+      "Practice with AI-generated quizzes that mirror real exam formats and difficulty.",
+    icon: <Book className="h-6 w-6" />,
+    benefits: [
+      "Questions based on your study materials",
+      "Multiple question formats (MCQ, short answer, etc.)",
+      "Difficulty adaptation based on performance",
+      "Detailed explanations for each answer",
+    ],
+  },
 ];
 
 const plans = [
