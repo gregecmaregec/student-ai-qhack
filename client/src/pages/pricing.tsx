@@ -184,7 +184,7 @@ const plans = [
     name: "Free",
     price: "0",
     features: [
-      "Up to 5 uses per day",
+      "Up to 5 uses per week",
       "All essential features",
       "Access to all models",
     ],
@@ -218,7 +218,7 @@ const plans = [
 
 const featureComparison = [
   {
-    name: "Uses per day",
+    name: "Uses per week",
     free: "5",
     pro: "Until credits depleted",
     teams: "Until credits depleted",
@@ -227,7 +227,7 @@ const featureComparison = [
     name: "Monthly Credits",
     free: "0",
     pro: "$10 worth",
-    teams: "$50 worth",
+    teams: "$30 worth",
   },
   {
     name: "AI Models Access",
