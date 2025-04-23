@@ -337,7 +337,7 @@ const features = [
     description:
       "Get support managing stress, maintaining focus, and balancing your academic and personal life.",
     icon: (
-      <div className="wellness-icon-container">
+      <div id="smiley-container" className="wellness-icon-container">
         <svg
           className="h-6 w-6 wellness-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -351,7 +351,7 @@ const features = [
           strokeLinejoin="round"
         >
           <circle cx="12" cy="12" r="10" />
-          <path className="wellness-icon-eyes" d="M8 14s1.5 2 4 2 4-2 4-2" />
+          <path className="wellness-icon-smile wellness-icon-eyes" d="M8 14s1.5 2 4 2 4-2 4-2" />
           <path
             className="wellness-icon-eyes"
             d="M8.5 9C8.5 9 9 8.8 9.2 9C9.4 9.2 9.2 9.3 9 9.3C8.8 9.3 8.5 9 8.5 9"
@@ -369,31 +369,10 @@ const features = [
 ];
 
 const benefits = [
-  "Best available AI inference with ",
-  "Personalized to your learning style and needs",
-  "Integrates with your existing academic tools",
-  "Constantly learning and improving from feedback",
+  "Best AI models like OpenAI's GPT-4.5-Preview, Gemini 2.5-Pro Preview, Claude 3.7.-thinking. Simplify the AI selection process to the best AI has to offer " 
 ];
 
 const testimonials = [
-  {
-    name: "Alex Kim",
-    initials: "AK",
-    role: "Computer Science, Stanford",
-    text: '"This AI assistant helped me debug my code at 2 AM when I was stuck on a project. It explained the concepts I was missing and saved my assignment!"',
-  },
-  {
-    name: "Sophie Martinez",
-    initials: "SM",
-    role: "Biology, UC Berkeley",
-    text: '"The study scheduling feature adapted to my learning style. It knew when I needed breaks and when I could push through difficult material. My grades improved dramatically!"',
-  },
-  {
-    name: "Jordan Williams",
-    initials: "JW",
-    role: "English Literature, NYU",
-    text: '"The research assistant helped me find obscure sources for my thesis and organized them perfectly. It suggested connections between texts I hadn\'t considered before."',
-  },
 ];
 
 export default HomePage;

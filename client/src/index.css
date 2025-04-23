@@ -187,6 +187,22 @@
   75% { transform: translateY(0) rotate(-8deg); }
 }
 
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  20% { opacity: 1; }
+  25% { opacity: 0.1; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  75% { opacity: 0.1; }
+  80% { opacity: 1; }
+}
+
+@keyframes smile {
+  0% { d: path("M8 14s1.5 2 4 2 4-2 4-2"); }
+  50% { d: path("M8 13s1.5 3.5 4 3.5 4-3.5 4-3.5"); }
+  100% { d: path("M8 14s1.5 2 4 2 4-2 4-2"); }
+}
+
 .wellness-icon {
   animation: nod 3s ease-in-out 0.5s;
   transform-origin: center;
@@ -207,6 +223,19 @@
 
 .animate-nod {
   animation: nod 1.5s ease-in-out forwards !important;
+}
+
+/* Scroll-activated smiley animations */
+.smiley-active .wellness-icon {
+  animation: nod 2s ease-in-out infinite;
+}
+
+.smiley-active .wellness-icon-eyes {
+  animation: blink 4s ease-in-out infinite;
+}
+
+.smiley-active .wellness-icon-smile {
+  animation: smile 3s ease-in-out infinite;
 }
 
 /* Custom input styles to hide placeholder on focus */
