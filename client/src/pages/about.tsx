@@ -12,9 +12,7 @@ import {
   Linkedin,
 } from "lucide-react";
 
-// Import founder images - if available
-import founder1Image from "../assets/1.jpeg";
-
+// No founder images available yet
 export function AboutPage() {
   return (
     <MainLayout>
@@ -212,7 +210,7 @@ const team = [
   {
     name: "Gregor Mihelač",
     initials: "GM",
-    image: founder1Image,
+    image: null,
     role: "Co-Founder",
     bio: "AI and education specialist with a vision to transform how students learn through technology.",
     social: [
