@@ -119,30 +119,30 @@ export function HomePage() {
     <MainLayout>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
-        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-16 md:pb-20">
           <div className="text-center">
-            <div className="text-center">
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
+            <div className="text-center mb-2">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground">
                 <span className="block">Your studies</span>
               </h1>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
+              <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight text-primary">
                 <span className="block inline-flex items-center justify-center">
-                  Simplified
+                  Supercharged
                 </span>
               </h1>
             </div>
 
             <motion.div
-              className="mt-10 sm:flex sm:justify-center gap-4"
+              className="mt-6 sm:flex sm:justify-center gap-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-3 sm:mb-0">
+              <div className="mb-2 sm:mb-0">
                 <Link href="/signup">
                   <Button
                     size="default"
-                    className="w-full px-6 py-3 text-base bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
+                    className="w-full px-5 py-2 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-md hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 text-white font-medium border-none rounded-md"
                   >
                     Get Started
                   </Button>
@@ -153,7 +153,7 @@ export function HomePage() {
                   <Button
                     size="default"
                     variant="outline"
-                    className="w-full px-6 py-3 text-base bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
+                    className="w-full px-5 py-2 text-sm bg-primary/10 hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 border-none hover:-translate-y-1 transition-all duration-300 rounded-md"
                   >
                     Learn More
                   </Button>
@@ -162,14 +162,14 @@ export function HomePage() {
             </motion.div>
 
             <motion.p
-              className="mt-8 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground"
+              className="mt-5 max-w-lg mx-auto text-base text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               Meet Studie, the studying AI agent.
             </motion.p>
-            <div className="mt-16"></div>
+            <div className="mt-8"></div>
           </div>
         </div>
       </section>
@@ -177,34 +177,34 @@ export function HomePage() {
       {/* Features Section */}
       <section
         id="features"
-        className="py-16 sm:py-20 bg-background transition-colors duration-300"
+        className="py-10 sm:py-14 bg-background transition-colors duration-300"
       >
-        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
+            <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
               Essential Features
             </h2>
-            <p className="max-w-xl mt-4 mx-auto text-muted-foreground">
+            <p className="max-w-lg mt-2 mx-auto text-sm text-muted-foreground">
               Built by students, for students
             </p>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-8">
             {/* Desktop grid - hidden on mobile */}
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="pt-6">
-                  <div className="flow-root rounded-xl bg-card px-6 pb-8 h-full border-none shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
-                    <div className="-mt-6">
+                <div key={index} className="pt-5">
+                  <div className="flow-root rounded-lg bg-card px-4 pb-6 h-full border-none shadow-sm transition-all duration-300 hover:shadow hover:shadow-primary/10 hover:-translate-y-1 bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
+                    <div className="-mt-5">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-primary to-purple-500 rounded-xl shadow-lg transform transition-transform hover:scale-110">
+                        <span className="inline-flex items-center justify-center p-2 bg-gradient-to-br from-primary to-purple-500 rounded-lg shadow transform transition-transform hover:scale-105">
                           {feature.icon}
                         </span>
                       </div>
-                      <h3 className="mt-6 text-lg font-medium text-foreground tracking-tight">
+                      <h3 className="mt-4 text-base font-medium text-foreground tracking-tight">
                         {feature.title}
                       </h3>
-                      <p className="mt-4 text-base text-muted-foreground">
+                      <p className="mt-2 text-sm text-muted-foreground">
                         {feature.description}
                       </p>
                     </div>
@@ -214,24 +214,24 @@ export function HomePage() {
             </div>
 
             {/* Mobile swipeable carousel - hidden on tablet and up */}
-            <div className="sm:hidden overflow-x-auto pb-6 no-scrollbar">
-              <div className="flex space-x-4 w-max px-1">
+            <div className="sm:hidden overflow-x-auto pb-4 no-scrollbar">
+              <div className="flex space-x-3 w-max px-1">
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className="pt-6 w-[280px] shrink-0 snap-center"
+                    className="pt-5 w-[240px] shrink-0 snap-center"
                   >
-                    <div className="flow-root rounded-xl bg-card px-6 pb-8 h-full border-none shadow-md bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
-                      <div className="-mt-6">
+                    <div className="flow-root rounded-lg bg-card px-4 pb-6 h-full border-none shadow-sm bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/90">
+                      <div className="-mt-5">
                         <div>
-                          <span className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-primary to-purple-500 rounded-xl shadow-lg">
+                          <span className="inline-flex items-center justify-center p-2 bg-gradient-to-br from-primary to-purple-500 rounded-lg shadow">
                             {feature.icon}
                           </span>
                         </div>
-                        <h3 className="mt-6 text-lg font-medium text-foreground tracking-tight">
+                        <h3 className="mt-4 text-base font-medium text-foreground tracking-tight">
                           {feature.title}
                         </h3>
-                        <p className="mt-4 text-base text-muted-foreground">
+                        <p className="mt-2 text-xs text-muted-foreground">
                           {feature.description}
                         </p>
                       </div>
@@ -245,26 +245,26 @@ export function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
-        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-1 lg:gap-8 lg:items-center">
+      <section className="py-10 sm:py-14 transition-colors duration-300 bg-background">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div>
             <div className="w-full">
-              <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
+              <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
                 <i>"We do not learn for school, but for life"</i>
               </h2>
-              <p className="mt-3 max-w-3xl text-muted-foreground">
+              <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
                 Still, students-ai is built for academic performance.
               </p>
-              <div className="mt-8 space-y-5">
+              <div className="mt-6 space-y-3">
                 {benefits.map((benefit, index) => (
                   <div
                     key={index}
-                    className="flex items-center p-3 rounded-lg hover:bg-primary/5 transition-colors duration-200"
+                    className="flex items-center p-2 rounded-lg hover:bg-primary/5 transition-colors duration-200"
                   >
                     <div className="flex-shrink-0">
-                      <CheckCircle className="h-6 w-6 text-primary" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                     </div>
-                    <p className="ml-3 text-base text-foreground">{benefit}</p>
+                    <p className="ml-2 text-sm text-foreground">{benefit}</p>
                   </div>
                 ))}
               </div>
@@ -274,31 +274,31 @@ export function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 transition-colors duration-300 bg-background">
-        <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-xl shadow-md overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
-            <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20 relative">
-              <div className="lg:self-center relative z-10">
-                <h2 className="text-3xl font-serif text-foreground sm:text-4xl">
+      <section className="py-10 sm:py-14 transition-colors duration-300 bg-background">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="rounded-lg shadow-sm overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10 hover:shadow hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+            <div className="pt-8 pb-8 px-4 sm:pt-10 sm:px-10 relative">
+              <div className="relative z-10">
+                <h2 className="text-2xl font-serif text-foreground sm:text-3xl">
                   <span className="block">
-                    Ready to transform your studying?
+                    Ready to improve your studies?
                   </span>
                 </h2>
-                <div className="mt-8 flex flex-col sm:flex-row gap-5">
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <Link href="/signup">
                     <Button
-                      size="lg"
+                      size="default"
                       variant="default"
-                      className="w-full sm:w-auto px-8 py-6 text-base sm:text-lg bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-lg hover:shadow-primary/20 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
+                      className="w-full sm:w-auto px-5 py-2 text-sm bg-gradient-to-r from-primary via-primary-600 to-purple-500 hover:shadow-sm hover:shadow-primary/10 text-white hover:text-white/90 transition-all duration-300 hover:-translate-y-1 rounded-md border-none"
                     >
-                      Get started for free
+                      Get started free
                     </Button>
                   </Link>
                   <Link href="/features">
                     <Button
-                      size="lg"
+                      size="default"
                       variant="outline"
-                      className="w-full sm:w-auto px-8 py-6 text-base sm:text-lg border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
+                      className="w-full sm:w-auto px-5 py-2 text-sm border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 rounded-md"
                     >
                       Learn more
                     </Button>
@@ -307,7 +307,7 @@ export function HomePage() {
               </div>
 
               {/* Blur effect in the background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-xl blur-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-lg blur-md"></div>
             </div>
           </div>
         </div>

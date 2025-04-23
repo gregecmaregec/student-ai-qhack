@@ -130,19 +130,19 @@ export function PricingPage() {
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-serif font-bold text-center text-gray-900 dark:text-white mb-10">
-            Frequently Asked Questions
+        {/* FAQ Section - simplified */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-serif font-bold text-center text-gray-900 dark:text-white mb-6">
+            FAQs
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white dark:bg-[#121212] rounded-lg p-6 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">
+          <div className="grid sm:grid-cols-2 gap-4">
+            {faqs.slice(0, 4).map((faq, index) => (
+              <div key={index} className="bg-white dark:bg-[#121212] rounded-lg p-4 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
+                <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-xs text-gray-600 dark:text-gray-300">
                   {faq.answer}
                 </p>
               </div>
@@ -150,22 +150,19 @@ export function PricingPage() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-20 text-center">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4">
-            Ready to get started?
+        {/* CTA Section - simplified */}
+        <div className="mt-12 text-center">
+          <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-3">
+            Ready to start?
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-8">
-            Join thousands of students who are already using our AI assistants to improve their academic performance.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mt-4">
             <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
-              <Button size="lg" className="px-8">
-                Start Free Trial
+              <Button className="px-5 py-2">
+                Try for Free
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="px-8">
+              <Button variant="outline" className="px-5 py-2">
                 Contact Sales
               </Button>
             </Link>
