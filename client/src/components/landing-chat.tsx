@@ -1,12 +1,35 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+  classification?: string;
+  model?: string;
 }
+
+// Map classification codes to human-readable names and colors
+const classificationMap: Record<string, { name: string, color: string }> = {
+  "3-Assignment Helper": { 
+    name: "Assignment Helper", 
+    color: "from-orange-500 to-amber-500" 
+  },
+  "4-Concept Explainer": { 
+    name: "Concept Explainer", 
+    color: "from-blue-500 to-indigo-600" 
+  },
+  "5-Study Tools": { 
+    name: "Study Tools", 
+    color: "from-green-500 to-emerald-500" 
+  },
+  "6-Mental Wellness": { 
+    name: "Mental Wellness", 
+    color: "from-purple-500 to-fuchsia-500" 
+  }
+};
 
 export function LandingChat() {
   const [inputValue, setInputValue] = useState("");
@@ -22,12 +45,12 @@ export function LandingChat() {
     }
   }, [messages, isLoading]);
 
-  // Sample questions to suggest to the user
+  // Sample questions to showcase different features
   const sampleQuestions = [
-    "How can AI help with my studies?",
-    "What features do you offer for research?",
-    "Can you explain a difficult concept to me?",
-    "How do I create a study plan?",
+    "Can you help me improve my essay introduction?", // Assignment Helper
+    "Explain the concept of quantum entanglement simply", // Concept Explainer
+    "Create flashcards for photosynthesis process", // Study Tools
+    "I'm feeling stressed about my exams next week", // Mental Wellness
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,10 +87,12 @@ export function LandingChat() {
         query: userMessage.content
       });
       
-      // Add the assistant response to the messages array
+      // Add the assistant response to the messages array with additional metadata
       const assistantMessage: Message = {
         role: "assistant",
-        content: response.data.response || "Sorry, I couldn't process your request at the moment."
+        content: response.data.response || "Sorry, I couldn't process your request at the moment.",
+        classification: response.data.classification,
+        model: response.data.model
       };
       
       setMessages((prev) => [...prev, assistantMessage]);
@@ -138,6 +163,21 @@ export function LandingChat() {
                       : "bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-sm"
                   }`}
                 >
+                  {/* Show classification and model info for assistant messages */}
+                  {message.role === "assistant" && message.classification && (
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <Badge 
+                        className={`bg-gradient-to-r ${classificationMap[message.classification]?.color || "from-gray-500 to-gray-600"} text-[10px] py-0.5 px-1.5`}
+                      >
+                        {classificationMap[message.classification]?.name || message.classification}
+                      </Badge>
+                      {message.model && (
+                        <span className="text-[9px] text-gray-500 dark:text-gray-400 truncate">
+                          {message.model.split('/').pop()}
+                        </span>
+                      )}
+                    </div>
+                  )}
                   <div className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</div>
                 </div>
                 {message.role === "user" && (

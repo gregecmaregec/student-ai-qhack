@@ -263,21 +263,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedRequest = requestSchema.parse(req.body);
       
       // Forward to the students-ai API with proper headers
-      const response = await axios.post("https://api.students-ai.com/api/search", {
-        query: validatedRequest.query
+      const response = await axios.post("https://api.students-ai.com/", {
+        prompt: validatedRequest.query
       }, {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'User-Agent': 'StudentsAI-Proxy/1.0'
         },
-        timeout: 15000 // 15 second timeout
+        timeout: 20000 // 20 second timeout
       });
       
       // Return the response with proper headers for caching
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
+      
+      // Return the full response data including classification and model info
       res.json(response.data);
     } catch (error) {
       if (error instanceof z.ZodError) {
