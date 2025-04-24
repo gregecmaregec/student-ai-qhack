@@ -365,10 +365,9 @@ export function HomePage() {
                 </div>
                 <div className="mt-6 flex justify-center">
                   <Link href="/signup" className="inline-block">
-                    <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-5 py-2 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10">
-                      <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/30 to-indigo-600/30 transition-transform duration-300 ease-in-out group-hover:translate-y-[0%] rounded-full"></div>
-                      <div className="relative flex items-center gap-2 text-sm font-medium text-purple-100 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <Zap className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
+                    <div className="rounded-full bg-purple-500/90 px-5 py-2 shadow-sm">
+                      <div className="flex items-center gap-2 text-sm font-medium text-white">
+                        <Zap className="h-4 w-4" />
                         <span>Chat with Studie</span>
                       </div>
                     </div>
