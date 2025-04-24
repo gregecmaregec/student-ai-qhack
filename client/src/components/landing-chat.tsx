@@ -35,14 +35,14 @@ export function LandingChat() {
     
     try {
       // Make the API request
-      const response = await axios.post("https://api.students-ai.net/api/query", {
+      const response = await axios.post("https://api.students-ai.com/api/query", {
         query: userMessage.content
       });
       
       // Add the assistant response to the messages array
       const assistantMessage: Message = {
         role: "assistant",
-        content: response.data.answer || "Sorry, I couldn't process your request at the moment."
+        content: response.data.response || "Sorry, I couldn't process your request at the moment."
       };
       
       setMessages((prev) => [...prev, assistantMessage]);
