@@ -6,18 +6,26 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Add header to prevent redirect loops
+// Middleware for Cloudflare and CDN compatibility
 app.use((req, res, next) => {
-  // Add Cache-Control header to prevent caching issues
+  // Set caching headers to prevent issues with CDNs
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
   
-  // Additional headers to help with redirection issues
-  res.setHeader('X-Redirect-Protection', 'true');
+  // Handle Cloudflare and other proxies correctly
+  const proto = req.headers['cf-visitor'] 
+    ? JSON.parse(req.headers['cf-visitor'] as string)?.scheme
+    : req.headers['x-forwarded-proto'] || req.protocol;
   
-  // Track original URL to prevent redirect loops
-  req.headers['x-forwarded-proto'] = req.headers['x-forwarded-proto'] || 'http';
+  // Make sure we're recognizing the right protocol
+  req.headers['x-forwarded-proto'] = proto;
+  
+  // Set headers to improve proxy and CDN handling
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('X-Forwarded-Protocol', proto);
+  res.setHeader('X-Redirect-Protection', 'true');
   
   next();
 });

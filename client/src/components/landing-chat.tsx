@@ -87,40 +87,22 @@ export function LandingChat() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden bg-white/5 shadow-lg dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
-      {/* Chat header */}
-      <div className="bg-gradient-to-r from-purple-600/90 to-indigo-600/90 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center">
-          <svg className="w-5 h-5 text-white mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <h2 className="text-white font-medium">Studie AI Assistant</h2>
-        </div>
-        <div className="text-xs text-white/70">Powered by AI</div>
-      </div>
-      
+    <div className="w-full max-w-3xl mx-auto rounded-lg overflow-hidden bg-white/5 shadow-sm dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
       {/* Chat messages container */}
       <div 
         ref={chatContainerRef}
         className="px-4 py-4 h-56 sm:h-64 md:h-72 overflow-y-auto flex flex-col space-y-3 scrollbar-thin scrollbar-thumb-purple-200 dark:scrollbar-thumb-purple-800 scrollbar-track-transparent"
       >
         {messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full space-y-4">
-            <div className="text-center">
-              <div className="flex justify-center mb-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+          <div className="flex flex-col h-full">
+            <div className="flex-grow flex items-center justify-center">
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-medium text-purple-800 dark:text-purple-200">Ask me anything</h3>
+                <p className="text-sm text-purple-600/80 dark:text-purple-300/80 mt-1">about your studies!</p>
               </div>
-              <h3 className="text-base font-medium text-purple-800 dark:text-purple-200">Welcome to Studie AI</h3>
-              <p className="text-sm text-purple-600/80 dark:text-purple-300/80 mt-1">Ask me anything about your studies!</p>
             </div>
             
-            <div className="w-full max-w-md grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
               {sampleQuestions.map((question, index) => (
                 <button
                   key={index}
@@ -142,42 +124,42 @@ export function LandingChat() {
                 }`}
               >
                 {message.role === "assistant" && (
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
-                    <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-1.5 flex-shrink-0 mt-1">
+                    <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 )}
                 <div
-                  className={`max-w-[85%] px-4 py-2.5 ${
+                  className={`max-w-[90%] px-3 py-2 ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl rounded-br-sm shadow-sm"
-                      : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-2xl rounded-bl-sm shadow-sm border border-purple-100/50 dark:border-purple-800/20"
+                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg rounded-br-sm"
+                      : "bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-sm"
                   }`}
                 >
                   <div className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</div>
                 </div>
                 {message.role === "user" && (
-                  <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-800 text-purple-600 dark:text-purple-200 flex items-center justify-center ml-2 flex-shrink-0 mt-1">
-                    <span className="text-xs">You</span>
+                  <div className="w-5 h-5 rounded-full bg-purple-100 dark:bg-purple-800 text-purple-600 dark:text-purple-200 flex items-center justify-center ml-1.5 flex-shrink-0 mt-1">
+                    <span className="text-[10px]">You</span>
                   </div>
                 )}
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
-                  <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-1.5 flex-shrink-0 mt-1">
+                  <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <div className="max-w-[85%] px-4 py-3 bg-white dark:bg-gray-800 rounded-2xl rounded-bl-sm shadow-sm border border-purple-100/50 dark:border-purple-800/20">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse"></div>
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
+                <div className="max-w-[90%] px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg rounded-bl-sm">
+                  <div className="flex space-x-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
                   </div>
                 </div>
               </div>
@@ -188,22 +170,22 @@ export function LandingChat() {
       </div>
       
       {/* Chat input */}
-      <div className="border-t border-purple-100/20 dark:border-purple-800/20 p-3 bg-white/30 dark:bg-gray-800/30">
+      <div className="border-t border-purple-100/20 dark:border-purple-800/20 px-3 py-2 bg-white/20 dark:bg-gray-800/20">
         <form onSubmit={handleSubmit} className="flex items-center relative">
           <Input
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Type your question here..."
-            className="flex-1 bg-white dark:bg-gray-700 border border-purple-200/50 dark:border-purple-700/30 rounded-full py-2 pl-4 pr-12 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:border-purple-500"
+            placeholder="Talk to Studie..."
+            className="flex-1 bg-white/50 dark:bg-gray-700/50 border-none shadow-sm rounded-full py-1.5 pl-4 pr-10 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-purple-400 focus-visible:ring-offset-0"
             disabled={isLoading}
           />
           <Button 
             type="submit" 
             size="icon" 
             disabled={isLoading}
-            className="absolute right-1 rounded-full h-8 w-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 transition-all duration-200"
+            className="absolute right-1 rounded-full h-7 w-7 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="stroke-current">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="stroke-current">
               <path d="M22 2L11 13" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M22 2L15 22L11 13L2 9L22 2Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

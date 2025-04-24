@@ -257,17 +257,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       // Validate the request
       const requestSchema = z.object({
-        query: z.string().min(2).max(500)
+        query: z.string().min(1).max(1000)
       });
       
       const validatedRequest = requestSchema.parse(req.body);
       
-      // Forward to the students-ai API
+      // Forward to the students-ai API with proper headers
       const response = await axios.post("https://api.students-ai.com/api/search", {
         query: validatedRequest.query
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'StudentsAI-Proxy/1.0'
+        },
+        timeout: 15000 // 15 second timeout
       });
       
-      // Return the response
+      // Return the response with proper headers for caching
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
       res.json(response.data);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -278,7 +288,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       console.error("Search API error:", error);
-      res.status(500).json({ message: "Failed to search" });
+      
+      // Handle different error types more gracefully
+      if (axios.isAxiosError(error)) {
+        if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
+          return res.status(503).json({ 
+            message: "Unable to connect to students-ai service. Please try again later."
+          });
+        }
+        
+        if (error.response) {
+          // The request was made and the server responded with a status code outside of 2xx
+          return res.status(error.response.status).json({
+            message: "Error from students-ai API",
+            details: error.response.data
+          });
+        }
+      }
+      
+      res.status(500).json({ message: "Failed to process your request. Please try again." });
     }
   });
 
