@@ -187,56 +187,57 @@ export function HomePage() {
                 <span className="block">Your studies</span>
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
-                <span className="block inline-flex items-center justify-center gap-2">
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    whileHover={{ rotate: [0, -5, 5, -5, 0] }}
-                    transition={{ 
-                      type: "spring", 
-                      stiffness: 200, 
-                      damping: 20,
-                      delay: 0.2 
-                    }}
-                    className="relative mr-1"
-                  >
-                    <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-primary/80" />
-                    <motion.div
-                      animate={{ 
-                        opacity: [0, 0.4, 0],
-                        scale: [0.8, 1.1, 0.8]
-                      }}
-                      transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut"
-                      }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-primary/10 blur-sm"
-                    />
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ 
-                        opacity: [0, 0.2, 0],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        repeatDelay: 3,
-                        ease: "easeOut"
-                      }}
-                      className="absolute -inset-2 rounded-full bg-primary/10 blur-md scale-75"
-                    />
-                  </motion.div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    Supercharged
-                  </motion.span>
-                </span>
+                <div className="flex justify-center items-center">
+                  <div className="inline-flex items-center justify-center">
+                    <div className="w-8 sm:w-12 md:w-14 flex items-center justify-center">
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+                        transition={{ 
+                          type: "spring", 
+                          stiffness: 200, 
+                          damping: 20,
+                          delay: 0.2 
+                        }}
+                        className="relative"
+                      >
+                        <Zap className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-transparent" style={{ 
+                          stroke: 'url(#bolt-gradient)',
+                          strokeWidth: 1.5
+                        }} />
+                        <svg width="0" height="0">
+                          <linearGradient id="bolt-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop stopColor="#10b981" offset="0%" />
+                            <stop stopColor="#8b5cf6" offset="100%" />
+                          </linearGradient>
+                        </svg>
+                        <motion.div
+                          animate={{ 
+                            opacity: [0, 0.3, 0],
+                            scale: [0.8, 1.1, 0.8]
+                          }}
+                          transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut"
+                          }}
+                          className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-purple-500/20 blur-sm"
+                        />
+                      </motion.div>
+                    </div>
+                    <motion.span
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500"
+                    >
+                      SUPERCHARGED
+                    </motion.span>
+                    <div className="w-8 sm:w-12 md:w-14"></div>
+                  </div>
+                </div>
               </h1>
             </div>
 
