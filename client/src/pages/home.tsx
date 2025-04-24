@@ -238,7 +238,7 @@ export function HomePage() {
                       transition={{ duration: 0.5 }}
                       className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 mx-1 pb-1"
                     >
-                      SUPERCHARGED
+                      Supercharged
                     </motion.span>
                     <div className="w-8 sm:w-12 md:w-14"></div>
                   </div>

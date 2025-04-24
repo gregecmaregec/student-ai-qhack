@@ -136,7 +136,7 @@ export function AboutPage() {
                     height: '180px'
                   }}
                 >
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                     {member.image ? (
                       <div className="h-24 w-24 rounded-full overflow-hidden border-2 border-white">
                         <img
@@ -240,32 +240,12 @@ const values = [
 
 const team: TeamMember[] = [
   {
-    name: "Gregor Mihelač",
-    initials: "GM",
+    name: "Xuefei Yang",
+    initials: "XY",
     image: photo1,
     headerImage: bg1,
     role: "Co-Founder",
-    bio: "AI and education specialist with a vision to transform how students learn through technology.",
-    social: [
-      {
-        name: "LinkedIn",
-        url: "#",
-        icon: <Linkedin className="h-5 w-5" />,
-      },
-      {
-        name: "GitHub",
-        url: "#",
-        icon: <Github className="h-5 w-5" />,
-      },
-    ],
-  },
-  {
-    name: "Xuefei Yang",
-    initials: "XY",
-    image: photo2,
-    headerImage: bg2,
-    role: "Co-Founder",
-    bio: "Machine learning expert focused on natural language processing and educational applications of AI.",
+    bio: "ML expert focused on NLP and educational AI",
     social: [
       {
         name: "LinkedIn",
@@ -282,10 +262,10 @@ const team: TeamMember[] = [
   {
     name: "Shivam Suchak",
     initials: "SS",
-    image: photo3,
-    headerImage: bg3,
+    image: photo2,
+    headerImage: bg2,
     role: "Co-Founder",
-    bio: "Software engineer with experience in building educational platforms and AI-driven applications.",
+    bio: "Software engineer for AI-driven education platforms",
     social: [
       {
         name: "LinkedIn",
@@ -302,10 +282,10 @@ const team: TeamMember[] = [
   {
     name: "Andrei Prioteasa",
     initials: "AP",
-    image: photo4,
-    headerImage: bg4,
+    image: photo3,
+    headerImage: bg3,
     role: "Co-Founder",
-    bio: "Education technology specialist with a passion for making learning accessible through AI.",
+    bio: "EdTech specialist making AI learning accessible",
     social: [
       {
         name: "LinkedIn",
@@ -322,10 +302,30 @@ const team: TeamMember[] = [
   {
     name: "Tim Hirndorf",
     initials: "TH",
+    image: photo4,
+    headerImage: bg4,
+    role: "Co-Founder",
+    bio: "UX designer for intuitive learning experiences",
+    social: [
+      {
+        name: "LinkedIn",
+        url: "#",
+        icon: <Linkedin className="h-5 w-5" />,
+      },
+      {
+        name: "GitHub",
+        url: "#",
+        icon: <Github className="h-5 w-5" />,
+      },
+    ],
+  },
+  {
+    name: "Gregor Mihelač",
+    initials: "GM",
     image: photo5,
     headerImage: bg5,
     role: "Co-Founder",
-    bio: "Product designer and UX specialist focused on creating intuitive educational experiences.",
+    bio: "AI and education visionary",
     social: [
       {
         name: "LinkedIn",
