@@ -244,7 +244,7 @@ export function HomePage() {
               </h1>
             </div>
 
-            <div className="mt-12 md:mt-14 relative z-10">
+            <div className="mt-6 md:mt-8 relative z-10">
               <LandingChat />
             </div>
           </div>

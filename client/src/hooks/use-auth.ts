@@ -18,7 +18,7 @@ export function useAuth() {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   
-  const { user, loading } = context;
+  const { user, loading, hasUsedFreeChat, markFreeChat, resetFreeChat } = context;
   const [token, setToken] = useState<string | null>(null);
   
   // Get the Firebase token when the user changes
@@ -66,12 +66,19 @@ export function useAuth() {
     enabled: !!user && !!token
   });
   
+  // Check if the user can use chat (is authenticated or hasn't used free chat yet)
+  const canUseChat = !!user || !hasUsedFreeChat;
+  
   return {
     user,
     profile,
     token,
     isAuthenticated: !!user,
     isLoading: loading || (!!user && profileLoading),
-    error
+    error,
+    hasUsedFreeChat,
+    markFreeChat,
+    resetFreeChat,
+    canUseChat
   };
 }

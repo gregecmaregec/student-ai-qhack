@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { useAuth } from "@/hooks/use-auth";
+import { Link } from 'wouter';
 import axios from "axios";
 
 interface Message {
@@ -35,8 +37,10 @@ export function LandingChat() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const { isAuthenticated, hasUsedFreeChat, markFreeChat, canUseChat } = useAuth();
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -122,8 +126,7 @@ export function LandingChat() {
           <div className="flex flex-col h-full">
             <div className="flex-grow flex items-center justify-center">
               <div className="text-center mb-3">
-                <h3 className="text-base font-medium text-purple-800 dark:text-purple-200">Ask me anything</h3>
-                <p className="text-xs text-purple-600/80 dark:text-purple-300/80 mt-0.5">about your studies!</p>
+                <h3 className="text-base font-medium text-purple-800 dark:text-purple-200">How may Studie help you?</h3>
               </div>
             </div>
             
