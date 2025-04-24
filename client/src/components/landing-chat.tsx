@@ -19,12 +19,11 @@ export function LandingChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hi there! I can help with your academic questions. Ask me anything about university courses, study plans, or learning resources.\n\n**You have one chance to ask a question, so make it count!**',
+      content: 'Hi there! I can help with your academic questions. Ask me anything about university courses, study plans, or learning resources.',
       timestamp: new Date(),
     },
   ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -55,8 +54,8 @@ export function LandingChat() {
     }
 
     const trimmedInput = inputValue.trim();
-    // Prevent sending if input is empty, loading, or user has already interacted
-    if (!trimmedInput || isLoading || hasInteracted) return;
+    // Prevent sending if input is empty or loading
+    if (!trimmedInput || isLoading) return;
 
     // Add user message
     const userMessage: Message = {
@@ -68,8 +67,6 @@ export function LandingChat() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
-    // Mark that user has used their one interaction
-    setHasInteracted(true);
 
     try {
       // Call the API to get a response
@@ -175,14 +172,14 @@ export function LandingChat() {
               ref={inputRef}
               value={inputValue}
               onChange={handleInputChange}
-              placeholder={hasInteracted ? "You've used your one question" : "Ask about courses, study plans, etc..."}
+              placeholder="Ask about courses, study plans, etc..."
               className="flex-1"
-              disabled={isLoading || hasInteracted}
+              disabled={isLoading}
             />
             <Button
               type="submit"
               size="icon"
-              disabled={!inputValue.trim() || isLoading || hasInteracted}
+              disabled={!inputValue.trim() || isLoading}
             >
               <Send className="h-4 w-4" />
             </Button>
