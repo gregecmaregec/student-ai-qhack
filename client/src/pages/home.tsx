@@ -199,7 +199,7 @@ export function HomePage() {
                     }}
                     className="relative mr-1"
                   >
-                    <Zap className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-primary/80" />
+                    <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-primary/70" />
                     <motion.div
                       animate={{ 
                         opacity: [0, 0.3, 0],
@@ -209,7 +209,7 @@ export function HomePage() {
                         repeat: Infinity,
                         repeatType: "loop"
                       }}
-                      className="absolute inset-0 rounded-full bg-primary/20 blur-sm"
+                      className="absolute inset-0 rounded-full bg-primary/15 blur-sm scale-75"
                     />
                   </motion.div>
                   <motion.span
