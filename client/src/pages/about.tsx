@@ -50,10 +50,6 @@ export function AboutPage() {
           <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             About us
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300">
-            We want to deliver the best studying, learning, i.e. getting to the
-            point of it.
-          </p>
         </div>
 
         {/* Our Story section */}
@@ -61,13 +57,6 @@ export function AboutPage() {
           <div className="bg-white dark:bg-[#1E1E1E] rounded-xl overflow-hidden shadow-lg transition-colors duration-300">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-8 md:p-12 flex flex-col justify-center">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-6">
-                  Our Story
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Want to learn something? We want to set in motion world's best
-                  publicly avilable AI to help you achieve this honorable goal.
-                </p>
               </div>
               <div className="bg-gradient-to-r from-primary-500 to-purple-600 p-12 flex items-center justify-center">
                 <div className="text-center">
@@ -164,22 +153,18 @@ export function AboutPage() {
               Join Our Mission
             </h2>
             <p className="max-w-2xl mx-auto text-primary-100 mb-8">
-              We're always looking for passionate people who want to help
-              transform education through AI.
+              We're looking for passionate people who want to help
+              transform studying through AI.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/careers" className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300 group-hover:duration-200"></div>
+            <div className="flex justify-center mt-4">
+              <Link href="/careers">
                 <Button 
-                  size="lg" 
-                  variant="default" 
-                  className="relative bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-700 transition-all duration-300 transform group-hover:scale-105 group-hover:shadow-xl"
+                  size="default" 
+                  variant="outline" 
+                  className="bg-white/5 hover:bg-white/10 border-purple-300/20 hover:border-purple-400/30 text-purple-50 px-4 py-2 rounded-md transition-all duration-150 hover:shadow-sm hover:translate-y-[-1px]"
                 >
-                  <UserPlus className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                  <span className="relative">
-                    <span className="block transition-all duration-300 group-hover:translate-y-[-2px]">View Open Positions</span>
-                    <span className="absolute bottom-0 left-0 h-[2px] bg-white/40 w-0 group-hover:w-full transition-all duration-300"></span>
-                  </span>
+                  <UserPlus className="mr-2 h-4 w-4" />
+                  View Open Positions
                 </Button>
               </Link>
             </div>

@@ -240,17 +240,14 @@ export function HomePage() {
                     >
                       Supercharged
                     </motion.span>
-                    <div className="w-8 sm:w-12 md:w-14"></div>
                   </div>
                 </div>
               </h1>
             </div>
 
-            <div className="mt-10 md:mt-12 relative z-10">
+            <div className="mt-8 md:mt-10 relative z-10">
               <LandingChat />
             </div>
-            
-            <div className="mt-16"></div>
           </div>
         </div>
       </section>
@@ -258,7 +255,7 @@ export function HomePage() {
       {/* Features Section */}
       <section
         id="features"
-        className="py-10 sm:py-14 bg-background transition-colors duration-300"
+        className="py-8 sm:py-12 bg-background transition-colors duration-300"
       >
         <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="text-center">
