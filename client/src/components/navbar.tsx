@@ -159,24 +159,7 @@ export function Navbar() {
               </div>
               <div className="flex ml-4 space-x-2 items-center">
                 
-                {isAuthenticated && (
-                  <>
-                    <div className="flex flex-col items-center">
-                      <Link href="/about" onClick={scrollToTop}>
-                        <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                          <span className="relative">About</span>
-                        </Button>
-                      </Link>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <Link href="/app" onClick={scrollToTop}>
-                        <Button variant="ghost" size="sm" className="px-2 py-1 text-xs rounded-full hover:bg-primary/10">
-                          <span className="relative">Dashboard</span>
-                        </Button>
-                      </Link>
-                    </div>
-                  </>
-                )}
+                {/* Authenticated user navigation items would go here */}
               </div>
             </div>
             <div className="flex items-center space-x-2">
@@ -245,15 +228,6 @@ export function Navbar() {
                   className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
                 >
                   Home
-                </Button>
-              </Link>
-              <Link href="/about" onClick={scrollToTop}>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/about' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
-                >
-                  About
                 </Button>
               </Link>
               <Link href="/features" onClick={scrollToTop}>
