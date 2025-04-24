@@ -62,28 +62,21 @@ export function LandingChat() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-card rounded-xl shadow-lg overflow-hidden border border-primary/20 backdrop-blur-sm transition-all duration-300 hover:shadow-xl">
+    <div className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden backdrop-blur-sm transition-all">
       <div className="relative">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-full blur-xl -mr-8 -mt-8"></div>
         <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-purple-500/5 rounded-full blur-xl -ml-8 -mb-8"></div>
         
         {/* Chat messages container */}
-        <div className="p-5 h-64 md:h-80 overflow-y-auto flex flex-col space-y-4 relative scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+        <div className="px-2 py-4 h-64 md:h-80 overflow-y-auto flex flex-col space-y-3 relative scrollbar-none">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full">
-              <div className="p-3 bg-primary/5 rounded-full mb-3">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
-                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M8 10.5H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  <path d="M8 14H13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
-              </div>
               <p className="text-center text-muted-foreground text-sm font-medium">
                 I'm Studie
               </p>
-              <p className="text-xs text-center text-muted-foreground/70 max-w-xs mt-2">
-                I can help with research, writing, study plans, and more.
+              <p className="text-xs text-center text-muted-foreground/70 max-w-xs mt-1">
+                Ask me anything about your studies
               </p>
             </div>
           ) : (
@@ -95,10 +88,10 @@ export function LandingChat() {
                 }`}
               >
                 <div
-                  className={`max-w-[85%] px-4 py-3 rounded-2xl shadow-sm ${
+                  className={`max-w-[85%] px-3 py-2 ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground"
-                      : "bg-card border border-muted/50"
+                      ? "bg-gradient-to-r from-primary/90 to-primary/80 text-primary-foreground rounded-2xl rounded-br-sm"
+                      : "bg-muted/40 text-foreground rounded-2xl rounded-bl-sm"
                   }`}
                 >
                   <div className="text-sm">{message.content}</div>
@@ -108,11 +101,11 @@ export function LandingChat() {
           )}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="max-w-[85%] px-5 py-4 rounded-2xl shadow-sm bg-card border border-muted/50">
-                <div className="flex space-x-2">
-                  <div className="w-2 h-2 rounded-full bg-primary/60 animate-pulse"></div>
-                  <div className="w-2 h-2 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
-                  <div className="w-2 h-2 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
+              <div className="max-w-[85%] px-3 py-2 bg-muted/40 rounded-2xl rounded-bl-sm">
+                <div className="flex space-x-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
                 </div>
               </div>
             </div>
@@ -120,24 +113,24 @@ export function LandingChat() {
         </div>
       </div>
       
-      <div className="border-t border-primary/10 p-4 bg-gradient-to-r from-background to-background/95">
-        <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+      <div className="mt-2">
+        <form onSubmit={handleSubmit} className="flex items-center">
           <Input
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Chat with Studie..."
-            className="flex-1 border-primary/20 focus-visible:ring-primary/30 rounded-full py-5 pl-4 pr-10 bg-card/80"
+            placeholder="Type your message..."
+            className="flex-1 border-none bg-transparent focus-visible:ring-0 py-3 px-1 text-sm"
             disabled={isLoading}
           />
           <Button 
             type="submit" 
             size="icon" 
             disabled={isLoading}
-            className="rounded-full h-10 w-10 bg-primary hover:bg-primary/90 text-white shadow-sm transition-all duration-200"
+            className="rounded-full h-8 w-8 -ml-8 bg-transparent hover:bg-transparent text-primary hover:text-primary/90 transition-all duration-200"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Button>
         </form>
