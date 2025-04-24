@@ -193,28 +193,27 @@ export function HomePage() {
                 <span className="block">Your studies</span>
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
-                <div className="flex justify-center items-center">
-                  <div className="flex items-center justify-center">
-                    <motion.span
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 inline-block pb-1"
-                    >
-                      Supercharged
-                    </motion.span>
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      whileHover={{ rotate: [0, -5, 5, -5, 0] }}
-                      transition={{ 
-                        type: "spring", 
-                        stiffness: 200, 
-                        damping: 20,
-                        delay: 0.2 
-                      }}
-                      className="relative ml-2"
-                    >
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <motion.span
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 inline-block"
+                  >
+                    Supercharged
+                  </motion.span>
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 200, 
+                      damping: 20,
+                      delay: 0.2 
+                    }}
+                    className="relative"
+                  >
                       <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-transparent" style={{ 
                         stroke: 'url(#bolt-gradient)',
                         strokeWidth: 1.5
