@@ -246,11 +246,11 @@ export function HomePage() {
               </h1>
             </div>
 
-            <div className="mt-10 md:mt-12 relative z-10">
+            <div className="mt-4 md:mt-6 relative z-10">
               <LandingChat />
             </div>
             
-            <div className="mt-16"></div>
+            <div className="mt-8"></div>
           </div>
         </div>
       </section>
