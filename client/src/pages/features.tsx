@@ -64,14 +64,9 @@ export function FeaturesPage() {
             Join thousands of students who are already using our AI assistants
             to improve their grades and reduce stress.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex justify-center">
             <Link href="/signup">
-              <Button size="lg">Get Started for Free</Button>
-            </Link>
-            <Link href="/demo">
-              <Button size="lg" variant="outline">
-                Schedule a Demo
-              </Button>
+              <Button size="lg" className="px-8">Get Started for Free</Button>
             </Link>
           </div>
         </div>
