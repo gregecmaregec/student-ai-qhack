@@ -100,10 +100,16 @@ export function LandingChat() {
       <div className="mt-0">
         <form onSubmit={handleSubmit} className="flex items-center relative">
           {!inputValue ? (
-            <div onClick={() => document.querySelector('input')?.focus()} className="absolute left-3 cursor-pointer flex items-center z-10">
-              <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-3 py-1 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10">
+            <div onClick={() => document.querySelector('input')?.focus()} className="absolute left-3 cursor-pointer flex items-center z-10 w-[85%]">
+              <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-4 py-1.5 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10 w-full flex justify-center">
                 <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/30 to-indigo-600/30 transition-transform duration-300 ease-in-out group-hover:translate-y-[0%] rounded-full"></div>
-                <div className="relative text-sm text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-purple-400 dark:to-indigo-400 group-hover:text-white transition-all duration-300 group-hover:scale-105">Talk to Studie</div>
+                <div className="relative text-sm text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-purple-400 dark:to-indigo-400 group-hover:text-white transition-all duration-300 group-hover:scale-105 flex items-center">
+                  <svg className="w-3.5 h-3.5 mr-1.5 transition-all duration-300 group-hover:rotate-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 2L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  Talk to Studie
+                </div>
               </div>
             </div>
           ) : null}

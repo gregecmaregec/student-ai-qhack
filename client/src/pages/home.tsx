@@ -194,50 +194,48 @@ export function HomePage() {
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
                 <div className="flex justify-center items-center">
-                  <div className="inline-flex items-center justify-center">
-                    <div className="w-8 sm:w-12 md:w-14 flex items-center justify-center">
+                  <div className="flex items-center justify-center">
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 200, 
+                        damping: 20,
+                        delay: 0.2 
+                      }}
+                      className="relative mr-2"
+                    >
+                      <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-transparent" style={{ 
+                        stroke: 'url(#bolt-gradient)',
+                        strokeWidth: 1.5
+                      }} />
+                      <svg width="0" height="0">
+                        <linearGradient id="bolt-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop stopColor="#10b981" offset="0%" />
+                          <stop stopColor="#8b5cf6" offset="100%" />
+                        </linearGradient>
+                      </svg>
                       <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        whileHover={{ rotate: [0, -5, 5, -5, 0] }}
-                        transition={{ 
-                          type: "spring", 
-                          stiffness: 200, 
-                          damping: 20,
-                          delay: 0.2 
+                        animate={{ 
+                          opacity: [0, 0.3, 0],
+                          scale: [0.8, 1.1, 0.8]
                         }}
-                        className="relative"
-                      >
-                        <Zap className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-transparent" style={{ 
-                          stroke: 'url(#bolt-gradient)',
-                          strokeWidth: 1.5
-                        }} />
-                        <svg width="0" height="0">
-                          <linearGradient id="bolt-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop stopColor="#10b981" offset="0%" />
-                            <stop stopColor="#8b5cf6" offset="100%" />
-                          </linearGradient>
-                        </svg>
-                        <motion.div
-                          animate={{ 
-                            opacity: [0, 0.3, 0],
-                            scale: [0.8, 1.1, 0.8]
-                          }}
-                          transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            ease: "easeInOut"
-                          }}
-                          className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-purple-500/20 blur-sm"
-                        />
-                      </motion.div>
-                    </div>
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          repeatType: "loop",
+                          ease: "easeInOut"
+                        }}
+                        className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-purple-500/20 blur-sm"
+                      />
+                    </motion.div>
                     <motion.span
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 mx-1 pb-1"
+                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500"
                     >
                       Supercharged
                     </motion.span>
@@ -370,7 +368,7 @@ export function HomePage() {
                     <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-5 py-2 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10">
                       <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/30 to-indigo-600/30 transition-transform duration-300 ease-in-out group-hover:translate-y-[0%] rounded-full"></div>
                       <div className="relative flex items-center gap-2 text-sm font-medium text-purple-100 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <MessageCircle className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
+                        <Zap className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
                         <span>Chat with Studie</span>
                       </div>
                     </div>
