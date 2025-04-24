@@ -13,6 +13,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { LandingChat } from "@/components/landing-chat";
 
 export function HomePage() {
   const mentalWellnessFeatureRef = useRef(null);
@@ -192,22 +193,10 @@ export function HomePage() {
               </h1>
             </div>
 
-            <div className="mt-8 relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/signup">
-                <button className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200">
-                  <span className="relative">Get Started</span>
-                </button>
-              </Link>
-              <Link href="/features">
-                <button className="relative overflow-hidden group px-6 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary border border-gray-200 dark:border-gray-700 rounded-md hover:border-primary/30 dark:hover:border-primary/30 bg-white/50 dark:bg-gray-800/50 transition-colors duration-200">
-                  <span className="relative">Learn More</span>
-                </button>
-              </Link>
+            <div className="mt-8 relative z-10">
+              <LandingChat />
             </div>
-
-            <p className="mt-5 max-w-lg mx-auto text-base text-muted-foreground">
-              Meet Studie, the studying AI agent.
-            </p>
+            
             <div className="mt-8"></div>
           </div>
         </div>
