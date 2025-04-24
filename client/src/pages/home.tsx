@@ -235,7 +235,7 @@ export function HomePage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500"
+                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 inline-block pb-1"
                     >
                       Supercharged
                     </motion.span>
