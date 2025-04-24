@@ -23,7 +23,7 @@ import photo5 from "../assets/5.jpeg";
 import bg1 from "../assets/1.1.jpeg";
 import bg2 from "../assets/2.1.jpeg";
 import bg3 from "../assets/3.1.jpeg";
-import bg4 from "../assets/4.1.jpeg";
+import bg4 from "../assets/1.1.jpeg";
 import bg5 from "../assets/5.1.jpeg";
 
 // Define types for team members
@@ -60,7 +60,8 @@ export function AboutPage() {
                 <div className="text-center">
                   <BookOpen className="h-20 w-20 text-primary mx-auto mb-4" />
                   <p className="text-lg text-gray-800 dark:text-gray-200 font-medium">
-                    Your study sidekick.<br />
+                    Your study sidekick.
+                    <br />
                     Built by students, for students.
                   </p>
                 </div>
@@ -80,8 +81,6 @@ export function AboutPage() {
           </div>
         </div>
 
-        
-
         {/* Team section */}
         <div className="mb-20">
           <div className="text-center mb-12">
@@ -99,13 +98,13 @@ export function AboutPage() {
                 key={index}
                 className="bg-white dark:bg-[#1E1E1E] rounded-lg overflow-hidden shadow-md transition-colors duration-300"
               >
-                <div 
+                <div
                   className="aspect-w-3 aspect-h-2 relative overflow-hidden"
                   style={{
                     backgroundImage: `url(${member.headerImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    height: '180px'
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: "180px",
                   }}
                 >
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -160,8 +159,8 @@ export function AboutPage() {
               Join Our Mission
             </h2>
             <p className="max-w-2xl mx-auto text-primary-100 mb-8">
-              We're looking for passionate people who want to help
-              transform studying through AI.
+              We're looking for passionate people who want to help transform
+              studying through AI.
             </p>
             <div className="flex justify-center mt-4">
               <Link href="/careers" className="inline-block">
@@ -180,8 +179,6 @@ export function AboutPage() {
     </MainLayout>
   );
 }
-
-
 
 const team: TeamMember[] = [
   {
