@@ -195,6 +195,14 @@ export function HomePage() {
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
                 <div className="flex justify-center items-center">
                   <div className="flex items-center justify-center">
+                    <motion.span
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 inline-block pb-1"
+                    >
+                      Supercharged
+                    </motion.span>
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
@@ -205,7 +213,7 @@ export function HomePage() {
                         damping: 20,
                         delay: 0.2 
                       }}
-                      className="relative mr-2"
+                      className="relative ml-2"
                     >
                       <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-transparent" style={{ 
                         stroke: 'url(#bolt-gradient)',
@@ -231,14 +239,6 @@ export function HomePage() {
                         className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-purple-500/20 blur-sm"
                       />
                     </motion.div>
-                    <motion.span
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 inline-block pb-1"
-                    >
-                      Supercharged
-                    </motion.span>
                   </div>
                 </div>
               </h1>
