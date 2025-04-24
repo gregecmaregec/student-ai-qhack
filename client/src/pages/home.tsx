@@ -191,6 +191,7 @@ export function HomePage() {
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
+                    whileHover={{ rotate: [0, -5, 5, -5, 0] }}
                     transition={{ 
                       type: "spring", 
                       stiffness: 200, 
@@ -199,17 +200,33 @@ export function HomePage() {
                     }}
                     className="relative mr-1"
                   >
-                    <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-primary/70" />
+                    <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-primary/80" />
                     <motion.div
                       animate={{ 
-                        opacity: [0, 0.3, 0],
+                        opacity: [0, 0.4, 0],
+                        scale: [0.8, 1.1, 0.8]
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 2.5,
                         repeat: Infinity,
-                        repeatType: "loop"
+                        repeatType: "loop",
+                        ease: "easeInOut"
                       }}
-                      className="absolute inset-0 rounded-full bg-primary/15 blur-sm scale-75"
+                      className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-primary/10 blur-sm"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ 
+                        opacity: [0, 0.2, 0],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        repeatDelay: 3,
+                        ease: "easeOut"
+                      }}
+                      className="absolute -inset-2 rounded-full bg-primary/10 blur-md scale-75"
                     />
                   </motion.div>
                   <motion.span

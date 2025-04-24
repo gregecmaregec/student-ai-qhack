@@ -52,7 +52,7 @@ export function LandingChat() {
       // Add an error message
       const errorMessage: Message = {
         role: "assistant",
-        content: "Sorry, there was an error processing your request. Please try again."
+        content: "Sorry, there was an error connecting to our AI service. Please try again later."
       };
       
       setMessages((prev) => [...prev, errorMessage]);
