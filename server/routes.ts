@@ -269,7 +269,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'User-Agent': 'StudentsAI-Proxy/1.0'
+          'User-Agent': 'StudentsAI-Proxy/1.0',
+          'Authorization': 'qhack-ms'
         },
         timeout: 20000 // 20 second timeout
       });

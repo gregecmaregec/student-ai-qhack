@@ -193,8 +193,7 @@ export function HomePage() {
                 <span className="block">Your studies</span>
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
-                <div className="flex justify-center items-center">
-                  <div className="flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center">
                     <motion.span
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -203,6 +202,8 @@ export function HomePage() {
                     >
                       Supercharged
                     </motion.span>
+                    
+                    {/* Zap icon placed below the text instead of beside it */}
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
@@ -213,9 +214,9 @@ export function HomePage() {
                         damping: 20,
                         delay: 0.2 
                       }}
-                      className="relative ml-2"
+                      className="relative mt-2"
                     >
-                      <Zap className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-transparent" style={{ 
+                      <Zap className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-transparent" style={{ 
                         stroke: 'url(#bolt-gradient)',
                         strokeWidth: 1.5
                       }} />
@@ -239,7 +240,6 @@ export function HomePage() {
                         className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 to-purple-500/20 blur-sm"
                       />
                     </motion.div>
-                  </div>
                 </div>
               </h1>
             </div>
