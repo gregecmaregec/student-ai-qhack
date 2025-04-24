@@ -262,7 +262,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const validatedRequest = requestSchema.parse(req.body);
       
-      // Forward to the students-ai API with proper headers
+      // Forward to the correct students-ai API endpoint (root path)
       const response = await axios.post("https://api.students-ai.com/", {
         prompt: validatedRequest.query
       }, {
