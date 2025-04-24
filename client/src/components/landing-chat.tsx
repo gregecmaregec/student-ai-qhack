@@ -112,11 +112,11 @@ export function LandingChat() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-lg overflow-hidden bg-white/5 shadow-sm dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
+    <div className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden bg-white/5 shadow-md dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
       {/* Chat messages container */}
       <div 
         ref={chatContainerRef}
-        className="px-4 py-4 h-56 sm:h-64 md:h-72 overflow-y-auto flex flex-col space-y-3 scrollbar-thin scrollbar-thumb-purple-200 dark:scrollbar-thumb-purple-800 scrollbar-track-transparent"
+        className="px-5 py-5 h-[450px] overflow-y-auto flex flex-col space-y-4 scrollbar-thin scrollbar-thumb-purple-200 dark:scrollbar-thumb-purple-800 scrollbar-track-transparent"
       >
         {messages.length === 0 ? (
           <div className="flex flex-col h-full">
@@ -148,54 +148,32 @@ export function LandingChat() {
                   message.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
-                {message.role === "assistant" && (
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-1.5 flex-shrink-0 mt-1">
-                    <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                )}
+
                 <div
-                  className={`max-w-[90%] px-3 py-2 ${
+                  className={`max-w-[90%] px-4 py-3 shadow-sm ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg rounded-br-sm"
-                      : "bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-sm"
+                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl rounded-br-sm"
+                      : "bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 rounded-xl rounded-bl-sm"
                   }`}
                 >
-                  {/* Show classification and model info for assistant messages */}
+                  {/* Show only classification for assistant messages, no model info */}
                   {message.role === "assistant" && message.classification && (
-                    <div className="flex items-center gap-1.5 mb-1.5">
+                    <div className="mb-1">
                       <Badge 
-                        className={`bg-gradient-to-r ${classificationMap[message.classification]?.color || "from-gray-500 to-gray-600"} text-[10px] py-0.5 px-1.5`}
+                        className={`bg-gradient-to-r ${classificationMap[message.classification]?.color || "from-gray-500 to-gray-600"} text-[10px] py-0.5 px-1.5 font-medium`}
                       >
                         {classificationMap[message.classification]?.name || message.classification}
                       </Badge>
-                      {message.model && (
-                        <span className="text-[9px] text-gray-500 dark:text-gray-400 truncate">
-                          {message.model.split('/').pop()}
-                        </span>
-                      )}
                     </div>
                   )}
                   <div className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</div>
                 </div>
-                {message.role === "user" && (
-                  <div className="w-5 h-5 rounded-full bg-purple-100 dark:bg-purple-800 text-purple-600 dark:text-purple-200 flex items-center justify-center ml-1.5 flex-shrink-0 mt-1">
-                    <span className="text-[10px]">You</span>
-                  </div>
-                )}
+
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-1.5 flex-shrink-0 mt-1">
-                  <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <div className="max-w-[90%] px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg rounded-bl-sm">
+                <div className="max-w-[90%] px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg">
                   <div className="flex space-x-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse"></div>
                     <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
@@ -210,20 +188,20 @@ export function LandingChat() {
       </div>
       
       {/* Chat input */}
-      <div className="border-t border-purple-100/20 dark:border-purple-800/20 px-3 py-2 bg-white/20 dark:bg-gray-800/20">
+      <div className="border-t border-purple-100/20 dark:border-purple-800/20 px-5 py-4 bg-white/30 dark:bg-gray-800/30">
         <form onSubmit={handleSubmit} className="flex items-center relative">
           <Input
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Talk to Studie..."
-            className="flex-1 bg-white/50 dark:bg-gray-700/50 border-none shadow-sm rounded-full py-1.5 pl-4 pr-10 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-purple-400 focus-visible:ring-offset-0"
+            placeholder="Ask anything about your studies..."
+            className="flex-1 bg-white/70 dark:bg-gray-700/50 border-none shadow-sm rounded-full py-2 pl-5 pr-12 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-purple-400 focus-visible:ring-offset-0"
             disabled={isLoading}
           />
           <Button 
             type="submit" 
             size="icon" 
             disabled={isLoading}
-            className="absolute right-1 rounded-full h-7 w-7 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity"
+            className="absolute right-1.5 rounded-full h-8 w-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="stroke-current">
               <path d="M22 2L11 13" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
