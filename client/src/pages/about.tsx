@@ -157,15 +157,14 @@ export function AboutPage() {
               transform studying through AI.
             </p>
             <div className="flex justify-center mt-4">
-              <Link href="/careers">
-                <Button 
-                  size="default" 
-                  variant="outline" 
-                  className="bg-white/5 hover:bg-white/10 border-purple-300/20 hover:border-purple-400/30 text-purple-50 px-4 py-2 rounded-md transition-all duration-150 hover:shadow-sm hover:translate-y-[-1px]"
-                >
-                  <UserPlus className="mr-2 h-4 w-4" />
-                  View Open Positions
-                </Button>
+              <Link href="/careers" className="inline-block">
+                <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-5 py-2 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10">
+                  <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/30 to-indigo-600/30 transition-transform duration-300 ease-in-out group-hover:translate-y-[0%] rounded-full"></div>
+                  <div className="relative flex items-center gap-2 text-sm font-medium text-purple-100 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                    <UserPlus className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
+                    <span>View Positions</span>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>

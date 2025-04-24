@@ -101,7 +101,10 @@ export function LandingChat() {
         <form onSubmit={handleSubmit} className="flex items-center relative">
           {!inputValue ? (
             <div onClick={() => document.querySelector('input')?.focus()} className="absolute left-3 cursor-pointer flex items-center z-10">
-              <span className="text-sm px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/10 to-indigo-500/10 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 hover:from-purple-700 hover:to-indigo-700 dark:hover:from-purple-300 dark:hover:to-indigo-300 border border-purple-300/20 hover:border-purple-500/30 hover:shadow-sm transition-all duration-200 transform hover:scale-105">Talk to Studie</span>
+              <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-3 py-1 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10">
+                <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/30 to-indigo-600/30 transition-transform duration-300 ease-in-out group-hover:translate-y-[0%] rounded-full"></div>
+                <div className="relative text-sm text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-purple-400 dark:to-indigo-400 group-hover:text-white transition-all duration-300 group-hover:scale-105">Talk to Studie</div>
+              </div>
             </div>
           ) : null}
           <Input

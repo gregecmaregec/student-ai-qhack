@@ -11,6 +11,7 @@ import {
   Users,
   Smile,
   ChevronDown,
+  MessageCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { LandingChat } from "@/components/landing-chat";
@@ -365,10 +366,14 @@ export function HomePage() {
                   </h2>
                 </div>
                 <div className="mt-6 flex justify-center">
-                  <Link href="/signup">
-                    <button className="relative overflow-hidden px-6 py-2.5 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary/90 transition-colors duration-200">
-                      <span className="relative">Chat with Studie</span>
-                    </button>
+                  <Link href="/signup" className="inline-block">
+                    <div className="group relative overflow-hidden rounded-full bg-white/5 border border-purple-400/20 hover:border-purple-500/40 px-5 py-2 shadow-sm hover:shadow transition-all duration-300 hover:bg-white/10">
+                      <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/30 to-indigo-600/30 transition-transform duration-300 ease-in-out group-hover:translate-y-[0%] rounded-full"></div>
+                      <div className="relative flex items-center gap-2 text-sm font-medium text-purple-100 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                        <MessageCircle className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
+                        <span>Chat with Studie</span>
+                      </div>
+                    </div>
                   </Link>
                 </div>
               </div>
