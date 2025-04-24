@@ -84,31 +84,7 @@ export function AboutPage() {
           </div>
         </div>
 
-        {/* Our Values section */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-[#121212] rounded-lg p-8 shadow-md transition-colors duration-300 border border-gray-200 dark:border-gray-800"
-              >
-                <div className="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg inline-flex mb-5">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Team section */}
         <div className="mb-20">
@@ -212,31 +188,7 @@ export function AboutPage() {
   );
 }
 
-// Data
-const values = [
-  {
-    title: "Know thyself",
-    description:
-      "",
-    icon: (
-      <BookOpen className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-    ),
-  },
-  {
-    title: "Accessible Education",
-    description:
-      "AI as you need it",
-    icon: (
-      <LightbulbIcon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-    ),
-  },
-  {
-    title: "Student Success",
-    description:
-      "Everything we do is measured by one standard: does it help students succeed? Not just in grades, but in developing lifelong learning skills.",
-    icon: <Trophy className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-  },
-];
+
 
 const team: TeamMember[] = [
   {
