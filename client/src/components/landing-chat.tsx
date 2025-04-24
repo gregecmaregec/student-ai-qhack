@@ -82,7 +82,7 @@ export function LandingChat() {
     setInputValue("");
     
     try {
-      // Make the API request using relative URL to prevent cross-origin issues
+      // Make the API request using backend proxy to the students-ai API
       const response = await axios.post("/api/search", {
         query: userMessage.content
       });
@@ -150,34 +150,34 @@ export function LandingChat() {
               >
 
                 <div
-                  className={`max-w-[90%] px-4 py-3 shadow-sm ${
+                  className={`max-w-[90%] px-4 py-2.5 ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl rounded-br-sm"
-                      : "bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 rounded-xl rounded-bl-sm"
+                      ? "bg-gradient-to-r from-purple-500/80 to-indigo-500/80 text-white rounded-md"
+                      : "bg-white/60 dark:bg-gray-800/60 text-gray-800 dark:text-gray-100 rounded-md"
                   }`}
                 >
                   {/* Show only classification for assistant messages, no model info */}
                   {message.role === "assistant" && message.classification && (
-                    <div className="mb-1">
+                    <div className="mb-1.5">
                       <Badge 
-                        className={`bg-gradient-to-r ${classificationMap[message.classification]?.color || "from-gray-500 to-gray-600"} text-[10px] py-0.5 px-1.5 font-medium`}
+                        className={`bg-gradient-to-r ${classificationMap[message.classification]?.color || "from-gray-500 to-gray-600"} text-[9px] py-0 px-1.5`}
                       >
                         {classificationMap[message.classification]?.name || message.classification}
                       </Badge>
                     </div>
                   )}
-                  <div className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</div>
+                  <div className="text-sm leading-relaxed whitespace-pre-wrap font-normal" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>{message.content}</div>
                 </div>
 
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="max-w-[90%] px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg">
-                  <div className="flex space-x-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse"></div>
-                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
-                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
+                <div className="max-w-[90%] px-3 py-2 bg-white/60 dark:bg-gray-800/60 rounded-md">
+                  <div className="flex space-x-2">
+                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-purple-500/80 to-indigo-500/80 animate-pulse"></div>
+                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-purple-500/80 to-indigo-500/80 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
+                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-purple-500/80 to-indigo-500/80 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
                   </div>
                 </div>
               </div>
