@@ -193,8 +193,8 @@ export function HomePage() {
                 <span className="block">Your studies</span>
               </h1>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-primary">
-                <div className="flex justify-center items-center">
-                  <div className="flex items-center justify-center">
+                <div className="flex justify-start items-center">
+                  <div className="flex items-center justify-start">
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
