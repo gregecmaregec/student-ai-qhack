@@ -34,7 +34,7 @@ export function LandingChat() {
     
     try {
       // Make the API request
-      const response = await axios.post("https://api.students-ai.com/api/query", {
+      const response = await axios.post("https://api.students-ai.com/api/search", {
         query: userMessage.content
       });
       
@@ -46,7 +46,7 @@ export function LandingChat() {
       
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
-      console.error("Error querying AI API:", error);
+      console.error("Error searching AI API:", error);
       
       // Add an error message
       const errorMessage: Message = {
