@@ -127,11 +127,8 @@ export function AboutPage() {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {member.name}
                   </h3>
-                  <p className="text-primary-600 dark:text-primary-400 mb-3">
+                  <p className="text-primary-600 dark:text-primary-400 mb-4">
                     {member.role}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {member.bio}
                   </p>
                   <div className="flex space-x-3">
                     {member.social.map((item, idx) => (
