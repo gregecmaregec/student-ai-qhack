@@ -75,8 +75,8 @@ export function LandingChat() {
               <div
                 className={`max-w-[85%] px-3 py-2 ${
                   message.role === "user"
-                    ? "bg-gradient-to-r from-primary/90 to-primary/80 text-primary-foreground rounded-2xl rounded-br-sm"
-                    : "bg-muted/40 text-foreground rounded-2xl rounded-bl-sm"
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl rounded-br-sm shadow-sm"
+                    : "bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/30 dark:to-indigo-900/30 text-purple-800 dark:text-purple-100 rounded-2xl rounded-bl-sm border border-purple-100/50 dark:border-purple-800/20"
                 }`}
               >
                 <div className="text-sm">{message.content}</div>
@@ -86,11 +86,11 @@ export function LandingChat() {
         )}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="max-w-[85%] px-3 py-2 bg-muted/40 rounded-2xl rounded-bl-sm">
+            <div className="max-w-[85%] px-3 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/30 dark:to-indigo-900/30 rounded-2xl rounded-bl-sm border border-purple-100/50 dark:border-purple-800/20">
               <div className="flex space-x-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse"></div>
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
               </div>
             </div>
           </div>
@@ -99,16 +99,16 @@ export function LandingChat() {
       
       <div className="mt-0">
         <form onSubmit={handleSubmit} className="flex items-center relative">
-          {!inputValue && (
-            <div className="absolute left-0 pointer-events-none flex items-center pl-3 text-muted-foreground/50">
-              <span className="text-sm font-light">Talk to Studie</span>
+          {!inputValue ? (
+            <div onClick={() => document.querySelector('input')?.focus()} className="absolute left-3 cursor-pointer flex items-center z-10">
+              <span className="text-sm px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/10 to-indigo-500/10 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 hover:from-purple-700 hover:to-indigo-700 dark:hover:from-purple-300 dark:hover:to-indigo-300 border border-purple-300/20 hover:border-purple-500/30 hover:shadow-sm transition-all duration-200 transform hover:scale-105">Talk to Studie</span>
             </div>
-          )}
+          ) : null}
           <Input
             value={inputValue}
             onChange={handleInputChange}
             placeholder=""
-            className="flex-1 border-none bg-transparent focus-visible:ring-0 py-2 px-3 text-sm"
+            className={`flex-1 border-none bg-transparent focus-visible:ring-0 py-2 ${!inputValue ? 'pl-28' : 'pl-3'} pr-3 text-sm transition-all duration-300 ease-in-out text-purple-800 dark:text-purple-200 placeholder:text-purple-400`}
             disabled={isLoading}
             autoFocus
           />
@@ -116,11 +116,11 @@ export function LandingChat() {
             type="submit" 
             size="icon" 
             disabled={isLoading}
-            className="rounded-full h-8 w-8 -ml-8 bg-transparent hover:bg-transparent text-primary hover:text-primary/90 transition-all duration-200"
+            className="rounded-full h-8 w-8 -ml-8 bg-transparent hover:bg-transparent text-purple-600 dark:text-purple-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-200 transform hover:scale-110"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 2L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="stroke-current">
+              <path d="M22 2L11 13" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Button>
         </form>
