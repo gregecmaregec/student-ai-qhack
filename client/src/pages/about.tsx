@@ -127,20 +127,30 @@ export function AboutPage() {
                 key={index}
                 className="bg-white dark:bg-[#1E1E1E] rounded-lg overflow-hidden shadow-md transition-colors duration-300"
               >
-                <div className="aspect-w-3 aspect-h-2 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center p-8">
-                  {member.image ? (
-                    <div className="h-24 w-24 rounded-full overflow-hidden">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="h-24 w-24 rounded-full bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 flex items-center justify-center text-3xl font-bold">
-                      {member.initials}
-                    </div>
-                  )}
+                <div 
+                  className="aspect-w-3 aspect-h-2 relative overflow-hidden"
+                  style={{
+                    backgroundImage: `url(${member.headerImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    height: '180px'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    {member.image ? (
+                      <div className="h-24 w-24 rounded-full overflow-hidden border-2 border-white">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="h-24 w-24 rounded-full bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 flex items-center justify-center text-3xl font-bold border-2 border-white">
+                        {member.initials}
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
