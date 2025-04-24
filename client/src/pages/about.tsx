@@ -168,16 +168,18 @@ export function AboutPage() {
               transform education through AI.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/careers">
-                <Button size="lg" variant="secondary">
-                  <UserPlus className="mr-2 h-5 w-5" />
-                  View Open Positions
-                </Button>
-              </Link>
-              <Link href="/signup">
-                <Button size="lg" variant="secondary">
-                  <GraduationCap className="mr-2 h-5 w-5" />
-                  Try students-ai.com
+              <Link href="/careers" className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300 group-hover:duration-200"></div>
+                <Button 
+                  size="lg" 
+                  variant="default" 
+                  className="relative bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-700 transition-all duration-300 transform group-hover:scale-105 group-hover:shadow-xl"
+                >
+                  <UserPlus className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                  <span className="relative">
+                    <span className="block transition-all duration-300 group-hover:translate-y-[-2px]">View Open Positions</span>
+                    <span className="absolute bottom-0 left-0 h-[2px] bg-white/40 w-0 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Button>
               </Link>
             </div>
