@@ -180,7 +180,12 @@ export function HomePage() {
     <MainLayout>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-16 md:pb-20">
+        {/* Decorative backgrounds */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-50 pointer-events-none">
+          <div className="absolute top-10 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-16 md:pb-20 relative z-10">
           <div className="text-center">
             <div className="text-center mb-2">
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground">
@@ -233,7 +238,7 @@ export function HomePage() {
                       transition={{ duration: 0.5 }}
                       className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500"
                     >
-                      SUPERCHARGED
+                      Supercharged
                     </motion.span>
                     <div className="w-8 sm:w-12 md:w-14"></div>
                   </div>
@@ -241,11 +246,11 @@ export function HomePage() {
               </h1>
             </div>
 
-            <div className="mt-8 relative z-10">
+            <div className="mt-10 md:mt-12 relative z-10">
               <LandingChat />
             </div>
             
-            <div className="mt-8"></div>
+            <div className="mt-16"></div>
           </div>
         </div>
       </section>
