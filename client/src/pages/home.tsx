@@ -246,11 +246,11 @@ export function HomePage() {
               </h1>
             </div>
 
-            <div className="mt-4 md:mt-6 relative z-10">
+            <div className="mt-10 md:mt-12 relative z-10">
               <LandingChat />
             </div>
             
-            <div className="mt-8"></div>
+            <div className="mt-16"></div>
           </div>
         </div>
       </section>
@@ -458,7 +458,7 @@ const features = [
 ];
 
 const benefits = [
-  "Latest AI models powering your academic success",
+  "Best available AI models, like ChatGPT 4.1 and Gemini ",
 ];
 
 const testimonials = [];

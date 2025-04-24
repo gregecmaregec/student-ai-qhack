@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
@@ -64,15 +63,9 @@ export function LandingChat() {
   return (
     <div className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden backdrop-blur-sm transition-all">
       <div className="relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-full blur-xl -mr-8 -mt-8"></div>
-        <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-purple-500/5 rounded-full blur-xl -ml-8 -mb-8"></div>
-        
         {/* Chat messages container */}
-        <div className="px-2 py-4 h-64 md:h-80 overflow-y-auto flex flex-col space-y-3 relative scrollbar-none">
-          {messages.length === 0 ? (
-            <div className="flex-1"></div>
-          ) : (
+        <div className="px-1 py-2 h-56 md:h-64 overflow-y-auto flex flex-col space-y-2 relative scrollbar-none">
+          {messages.length === 0 ? null : (
             messages.map((message, index) => (
               <div
                 key={index}
@@ -106,10 +99,10 @@ export function LandingChat() {
         </div>
       </div>
       
-      <div className="mt-1">
+      <div className="mt-0">
         <form onSubmit={handleSubmit} className="flex items-center relative">
           {!inputValue && (
-            <div className="absolute left-0 pointer-events-none flex items-center pl-3 text-muted-foreground/60">
+            <div className="absolute left-0 pointer-events-none flex items-center pl-2 text-muted-foreground/50">
               <span className="text-sm font-light">Talk to Studie</span>
             </div>
           )}
@@ -117,7 +110,7 @@ export function LandingChat() {
             value={inputValue}
             onChange={handleInputChange}
             placeholder=""
-            className="flex-1 border-none bg-transparent focus-visible:ring-0 py-3 px-3 text-sm"
+            className="flex-1 border-none bg-transparent focus-visible:ring-0 py-2 px-2 text-sm"
             disabled={isLoading}
             autoFocus
           />
