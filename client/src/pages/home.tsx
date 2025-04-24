@@ -331,10 +331,10 @@ export function HomePage() {
           <div>
             <div className="w-full">
               <h2 className="text-xl font-serif text-foreground sm:text-2xl md:text-3xl leading-relaxed">
-                <i>"We do not learn for school, but for life"</i>
+                <i>"We do not learn for school; for life"</i>
               </h2>
               <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-                Still, students-ai is built for academic performance.
+                students-ai is built for academic performance.
               </p>
               <div className="mt-6 space-y-3">
                 {benefits.map((benefit, index) => (
@@ -458,7 +458,7 @@ const features = [
 ];
 
 const benefits = [
-  "Best available AI models, like ChatGPT 4.1 and Gemini ",
+  "Best available AI models, like ChatGPT 4.5 and Gemini 2.5Pro Preview ",
 ];
 
 const testimonials = [];
