@@ -31,7 +31,7 @@ export function CareersPage() {
     {
       id: 'legal',
       title: 'Legal',
-      description: 'Certified legal experts welcome.',
+      description: 'Want to help this enterprise navigate the high seas of legalese?',
       icon: <GavelIcon className="h-10 w-10 text-primary" />,
       emailSubject: 'Legal Position Application'
     },
