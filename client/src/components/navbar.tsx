@@ -239,6 +239,15 @@ export function Navbar() {
                   Features
                 </Button>
               </Link>
+              <Link href="/about" onClick={scrollToTop}>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className={`px-4 py-1 text-xs rounded-full text-primary border-none ${location === '/about' ? 'bg-primary/30' : 'bg-primary/10 active:bg-primary/20'}`}
+                >
+                  About
+                </Button>
+              </Link>
               <Link href="/pricing" onClick={scrollToTop}>
                 <Button 
                   variant="outline" 
