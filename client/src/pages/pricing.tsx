@@ -90,16 +90,16 @@ export function PricingPage() {
             <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
               <TableHeader>
                 <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-                  <TableHead className="w-1/3 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                  <TableHead className="w-1/3 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300 text-center">
                     
                   </TableHead>
-                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300 text-center">
                     Free
                   </TableHead>
-                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300 text-center">
                     Standard
                   </TableHead>
-                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+                  <TableHead className="py-3 text-xs font-semibold text-gray-600 dark:text-gray-300 text-center">
                     Premium
                   </TableHead>
                 </TableRow>
