@@ -71,14 +71,7 @@ export function LandingChat() {
         {/* Chat messages container */}
         <div className="px-2 py-4 h-64 md:h-80 overflow-y-auto flex flex-col space-y-3 relative scrollbar-none">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full">
-              <p className="text-center text-muted-foreground text-sm font-medium">
-                I'm Studie
-              </p>
-              <p className="text-xs text-center text-muted-foreground/70 max-w-xs mt-1">
-                Ask me anything about your studies
-              </p>
-            </div>
+            <div className="flex-1"></div>
           ) : (
             messages.map((message, index) => (
               <div
@@ -113,14 +106,20 @@ export function LandingChat() {
         </div>
       </div>
       
-      <div className="mt-2">
-        <form onSubmit={handleSubmit} className="flex items-center">
+      <div className="mt-1">
+        <form onSubmit={handleSubmit} className="flex items-center relative">
+          {!inputValue && (
+            <div className="absolute left-0 pointer-events-none flex items-center pl-3 text-muted-foreground/60">
+              <span className="text-sm font-light">Talk to Studie</span>
+            </div>
+          )}
           <Input
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Type your message..."
-            className="flex-1 border-none bg-transparent focus-visible:ring-0 py-3 px-1 text-sm"
+            placeholder=""
+            className="flex-1 border-none bg-transparent focus-visible:ring-0 py-3 px-3 text-sm"
             disabled={isLoading}
+            autoFocus
           />
           <Button 
             type="submit" 
