@@ -75,6 +75,12 @@ export function LandingChat() {
     
     if (!inputValue.trim()) return;
     
+    // Check if user can use chat (is authenticated or hasn't used free chat yet)
+    if (!canUseChat) {
+      setShowLoginPrompt(true);
+      return;
+    }
+    
     // Add the user message to the messages array
     const userMessage: Message = {
       role: "user",
@@ -88,7 +94,7 @@ export function LandingChat() {
     try {
       // Make the API request using backend proxy to the students-ai API
       const response = await axios.post("/api/search", {
-        query: userMessage.content
+        prompt: userMessage.content
       });
       
       // Add the assistant response to the messages array with additional metadata
@@ -100,6 +106,11 @@ export function LandingChat() {
       };
       
       setMessages((prev) => [...prev, assistantMessage]);
+      
+      // If user is not authenticated, mark that they've used their free chat
+      if (!isAuthenticated) {
+        markFreeChat();
+      }
     } catch (error) {
       console.error("Error searching AI API:", error);
       
@@ -114,6 +125,36 @@ export function LandingChat() {
       setIsLoading(false);
     }
   };
+
+  // When user has used their free chat or tries to use it again after using it
+  if (showLoginPrompt || (!canUseChat && messages.length > 0)) {
+    return (
+      <div className="w-full max-w-2xl mx-auto rounded-lg overflow-hidden bg-white/5 shadow-sm dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
+        <div className="px-5 py-8 flex flex-col items-center justify-center text-center h-[300px]">
+          <div className="bg-gradient-to-r from-purple-500/20 to-indigo-500/20 p-5 rounded-xl mb-5">
+            <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                <path d="M12 15V17M12 7V13M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-purple-800 dark:text-purple-200 mb-2">Free Trial Completed</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+              You've used your free chat. Sign up to continue using Studie AI for all your study needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/login" className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-purple-600 font-medium py-2 px-4 rounded-md border border-purple-300 text-sm transition-colors duration-200">
+                Log In
+              </Link>
+              <Link href="/signup" className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-2 px-4 rounded-md text-sm transition-colors duration-200">
+                Sign Up Free
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-2xl mx-auto rounded-lg overflow-hidden bg-white/5 shadow-sm dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">

@@ -257,14 +257,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       // Validate the request
       const requestSchema = z.object({
-        query: z.string().min(1).max(1000)
+        prompt: z.string().min(1).max(1000)
       });
       
       const validatedRequest = requestSchema.parse(req.body);
       
       // Forward to the correct students-ai API endpoint (root path)
       const response = await axios.post("https://api.students-ai.com/", {
-        prompt: validatedRequest.query
+        prompt: validatedRequest.prompt
       }, {
         headers: {
           'Content-Type': 'application/json',
