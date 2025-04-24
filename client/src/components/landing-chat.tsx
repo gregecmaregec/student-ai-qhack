@@ -33,8 +33,8 @@ export function LandingChat() {
     setInputValue("");
     
     try {
-      // Make the API request
-      const response = await axios.post("https://api.students-ai.com/api/search", {
+      // Make the API request using relative URL to prevent cross-origin issues
+      const response = await axios.post("/api/search", {
         query: userMessage.content
       });
       
