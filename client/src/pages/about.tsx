@@ -60,7 +60,8 @@ export function AboutPage() {
                 <div className="text-center">
                   <BookOpen className="h-20 w-20 text-primary mx-auto mb-4" />
                   <p className="text-lg text-gray-800 dark:text-gray-200 font-medium">
-                    Your study sidekick. Built by students, for students.
+                    Your study sidekick.<br />
+                    Built by students, for students.
                   </p>
                 </div>
               </div>
