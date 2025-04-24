@@ -6,6 +6,22 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Add header to prevent redirect loops
+app.use((req, res, next) => {
+  // Add Cache-Control header to prevent caching issues
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  
+  // Additional headers to help with redirection issues
+  res.setHeader('X-Redirect-Protection', 'true');
+  
+  // Track original URL to prevent redirect loops
+  req.headers['x-forwarded-proto'] = req.headers['x-forwarded-proto'] || 'http';
+  
+  next();
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
