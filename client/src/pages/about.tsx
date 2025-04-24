@@ -57,6 +57,12 @@ export function AboutPage() {
           <div className="bg-white dark:bg-[#1E1E1E] rounded-xl overflow-hidden shadow-lg transition-colors duration-300">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-8 md:p-12 flex flex-col justify-center">
+                <div className="text-center">
+                  <BookOpen className="h-20 w-20 text-primary mx-auto mb-4" />
+                  <p className="text-lg text-gray-800 dark:text-gray-200 font-medium">
+                    Your study sidekick. Built by students, for students.
+                  </p>
+                </div>
               </div>
               <div className="bg-gradient-to-r from-primary-500 to-purple-600 p-12 flex items-center justify-center">
                 <div className="text-center">
