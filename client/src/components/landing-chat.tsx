@@ -112,27 +112,27 @@ export function LandingChat() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden bg-white/5 shadow-md dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
+    <div className="w-full max-w-2xl mx-auto rounded-lg overflow-hidden bg-white/5 shadow-sm dark:bg-gray-900/20 border border-purple-100/10 dark:border-purple-800/10 backdrop-blur-sm transition-all">
       {/* Chat messages container */}
       <div 
         ref={chatContainerRef}
-        className="px-5 py-5 h-[450px] overflow-y-auto flex flex-col space-y-4 scrollbar-thin scrollbar-thumb-purple-200 dark:scrollbar-thumb-purple-800 scrollbar-track-transparent"
+        className="px-4 py-4 h-[300px] overflow-y-auto flex flex-col space-y-3 scrollbar-thin scrollbar-thumb-purple-200 dark:scrollbar-thumb-purple-800 scrollbar-track-transparent"
       >
         {messages.length === 0 ? (
           <div className="flex flex-col h-full">
             <div className="flex-grow flex items-center justify-center">
-              <div className="text-center mb-4">
-                <h3 className="text-lg font-medium text-purple-800 dark:text-purple-200">Ask me anything</h3>
-                <p className="text-sm text-purple-600/80 dark:text-purple-300/80 mt-1">about your studies!</p>
+              <div className="text-center mb-3">
+                <h3 className="text-base font-medium text-purple-800 dark:text-purple-200">Ask me anything</h3>
+                <p className="text-xs text-purple-600/80 dark:text-purple-300/80 mt-0.5">about your studies!</p>
               </div>
             </div>
             
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-1.5">
               {sampleQuestions.map((question, index) => (
                 <button
                   key={index}
                   onClick={() => handleSampleQuestionClick(question)}
-                  className="text-left text-xs px-3 py-2 rounded-lg border border-purple-200/50 dark:border-purple-700/30 hover:bg-purple-50 dark:hover:bg-purple-900/20 text-purple-700 dark:text-purple-300 transition-colors"
+                  className="text-left text-xs px-2.5 py-1.5 rounded-md border border-purple-200/40 dark:border-purple-700/20 hover:bg-purple-50 dark:hover:bg-purple-900/20 text-purple-700 dark:text-purple-300 transition-colors"
                 >
                   {question}
                 </button>
@@ -150,10 +150,10 @@ export function LandingChat() {
               >
 
                 <div
-                  className={`max-w-[90%] px-4 py-2.5 ${
+                  className={`max-w-[90%] px-3 py-2 ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-purple-500/80 to-indigo-500/80 text-white rounded-md"
-                      : "bg-white/60 dark:bg-gray-800/60 text-gray-800 dark:text-gray-100 rounded-md"
+                      ? "bg-gradient-to-r from-purple-500/60 to-indigo-500/60 text-white rounded-md"
+                      : "bg-white/50 dark:bg-gray-800/50 text-gray-800 dark:text-gray-100 rounded-md"
                   }`}
                 >
                   {/* Show only classification for assistant messages, no model info */}
@@ -166,18 +166,18 @@ export function LandingChat() {
                       </Badge>
                     </div>
                   )}
-                  <div className="text-sm leading-relaxed whitespace-pre-wrap font-normal" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>{message.content}</div>
+                  <div className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap font-normal" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>{message.content}</div>
                 </div>
 
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="max-w-[90%] px-3 py-2 bg-white/60 dark:bg-gray-800/60 rounded-md">
-                  <div className="flex space-x-2">
-                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-purple-500/80 to-indigo-500/80 animate-pulse"></div>
-                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-purple-500/80 to-indigo-500/80 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
-                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-purple-500/80 to-indigo-500/80 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
+                <div className="max-w-[90%] px-2.5 py-1.5 bg-white/40 dark:bg-gray-800/40 rounded-md">
+                  <div className="flex space-x-1.5">
+                    <div className="w-0.5 h-0.5 rounded-full bg-gradient-to-r from-purple-500/50 to-indigo-500/50 animate-pulse"></div>
+                    <div className="w-0.5 h-0.5 rounded-full bg-gradient-to-r from-purple-500/50 to-indigo-500/50 animate-pulse" style={{ animationDelay: "0.2s" }}></div>
+                    <div className="w-0.5 h-0.5 rounded-full bg-gradient-to-r from-purple-500/50 to-indigo-500/50 animate-pulse" style={{ animationDelay: "0.4s" }}></div>
                   </div>
                 </div>
               </div>
@@ -188,20 +188,20 @@ export function LandingChat() {
       </div>
       
       {/* Chat input */}
-      <div className="border-t border-purple-100/20 dark:border-purple-800/20 px-5 py-4 bg-white/30 dark:bg-gray-800/30">
+      <div className="border-t border-purple-100/20 dark:border-purple-800/20 px-4 py-3 bg-white/30 dark:bg-gray-800/30">
         <form onSubmit={handleSubmit} className="flex items-center relative">
           <Input
             value={inputValue}
             onChange={handleInputChange}
             placeholder="Ask anything about your studies..."
-            className="flex-1 bg-white/70 dark:bg-gray-700/50 border-none shadow-sm rounded-full py-2 pl-5 pr-12 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-purple-400 focus-visible:ring-offset-0"
+            className="flex-1 bg-white/70 dark:bg-gray-700/50 border-none shadow-sm rounded-full py-1.5 pl-4 pr-10 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-purple-400 focus-visible:ring-offset-0"
             disabled={isLoading}
           />
           <Button 
             type="submit" 
             size="icon" 
             disabled={isLoading}
-            className="absolute right-1.5 rounded-full h-8 w-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity"
+            className="absolute right-1 rounded-full h-7 w-7 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="stroke-current">
               <path d="M22 2L11 13" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
