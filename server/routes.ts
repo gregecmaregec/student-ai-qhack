@@ -11,6 +11,7 @@ import {
 import { z } from "zod";
 import { getAIResponse, PerplexityRequest } from "./perplexity";
 import { queryStudentsAI } from "./studentsAi";
+import axios from "axios";
 
 // Firebase Admin initialization for verifying tokens
 import { initializeApp, cert } from "firebase-admin/app";
@@ -305,10 +306,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const validatedRequest = requestSchema.parse(req.body);
       
-      // Get AI response directly from the Students-AI API
-      let response = await queryStudentsAI(validatedRequest.query);
+      // Call the external API directly using axios
+      const apiResponse = await axios.post(
+        'https://api.students-ai.com/api/query',
+        { query: validatedRequest.query },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
       
-      res.json({ response });
+      // Send the exact response from the API without any modification
+      res.json(apiResponse.data);
     } catch (error) {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ 

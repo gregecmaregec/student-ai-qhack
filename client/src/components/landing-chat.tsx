@@ -19,11 +19,12 @@ export function LandingChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hi there! I can help with your academic questions. Ask me anything about university courses, study plans, or learning resources.',
+      content: 'Hi there! I can help with your academic questions. Ask me anything about university courses, study plans, or learning resources.\n\n**You have one chance to ask a question, so make it count!**',
       timestamp: new Date(),
     },
   ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -54,7 +55,8 @@ export function LandingChat() {
     }
 
     const trimmedInput = inputValue.trim();
-    if (!trimmedInput || isLoading) return;
+    // Prevent sending if input is empty, loading, or user has already interacted
+    if (!trimmedInput || isLoading || hasInteracted) return;
 
     // Add user message
     const userMessage: Message = {
@@ -66,6 +68,8 @@ export function LandingChat() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+    // Mark that user has used their one interaction
+    setHasInteracted(true);
 
     try {
       // Call the API to get a response
@@ -73,7 +77,7 @@ export function LandingChat() {
         query: trimmedInput
       });
       
-      // Add assistant response
+      // Add assistant response directly from the API
       const assistantMessage: Message = {
         role: 'assistant',
         content: response.data.response,
@@ -171,14 +175,14 @@ export function LandingChat() {
               ref={inputRef}
               value={inputValue}
               onChange={handleInputChange}
-              placeholder="Ask about courses, study plans, etc..."
+              placeholder={hasInteracted ? "You've used your one question" : "Ask about courses, study plans, etc..."}
               className="flex-1"
-              disabled={isLoading}
+              disabled={isLoading || hasInteracted}
             />
             <Button
               type="submit"
               size="icon"
-              disabled={!inputValue.trim() || isLoading}
+              disabled={!inputValue.trim() || isLoading || hasInteracted}
             >
               <Send className="h-4 w-4" />
             </Button>
