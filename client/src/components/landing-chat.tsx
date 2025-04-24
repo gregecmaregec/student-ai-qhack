@@ -79,8 +79,8 @@ export function LandingChat() {
                   <path d="M8 14H13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </div>
-              <p className="text-center text-muted-foreground text-sm">
-                Ask me anything about your studies!
+              <p className="text-center text-muted-foreground text-sm font-medium">
+                I'm Studie
               </p>
               <p className="text-xs text-center text-muted-foreground/70 max-w-xs mt-2">
                 I can help with research, writing, study plans, and more.
@@ -125,7 +125,7 @@ export function LandingChat() {
           <Input
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Ask about your studies..."
+            placeholder="Chat with Studie..."
             className="flex-1 border-primary/20 focus-visible:ring-primary/30 rounded-full py-5 pl-4 pr-10 bg-card/80"
             disabled={isLoading}
           />
@@ -133,9 +133,12 @@ export function LandingChat() {
             type="submit" 
             size="icon" 
             disabled={isLoading}
-            className="rounded-full h-10 w-10 bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white shadow-md"
+            className="rounded-full h-10 w-10 bg-primary hover:bg-primary/90 text-white shadow-sm transition-all duration-200"
           >
-            <Send className="h-4 w-4" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Button>
         </form>
       </div>
